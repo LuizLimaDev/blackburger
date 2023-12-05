@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import UserButtonNavigation from "./UserButtonNavigation/UserButtonNavigation";
 
 export default function BottomNavigation() {
   return (
@@ -14,7 +15,7 @@ export default function BottomNavigation() {
                 width={0}
                 height={0}
                 sizes="100w"
-                className="w-full h-auto"
+                className="w-6 h-6"
               />
             </Link>
           </button>
@@ -27,21 +28,22 @@ export default function BottomNavigation() {
                 width={0}
                 height={0}
                 sizes="100w"
-                className="w-full h-auto"
+                className="w-6 h-6"
               />
             </Link>
           </button>
 
-          <button type="button">
+          {/* <button type="button">
             <Image
               src="/icons/user.svg"
               alt="user"
               width={0}
               height={0}
               sizes="100w"
-              className="w-full h-auto"
+              className="w-6 h-6"
             />
-          </button>
+          </button> */}
+          <UserButtonNavigation />
 
           <button type="button">
             <Image

@@ -2,10 +2,13 @@
 
 import Image from "next/image";
 import { InputHTMLAttributes, useState } from "react";
+import { UseFormRegisterReturn } from "react-hook-form";
 
-type TInputProps = {} & InputHTMLAttributes<HTMLInputElement>;
+type TInputProps = {
+  register: UseFormRegisterReturn;
+} & InputHTMLAttributes<HTMLInputElement>;
 
-export default function InputPassword({ ...rest }: TInputProps) {
+export default function InputPassword({ register }: TInputProps) {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   return (
@@ -13,16 +16,17 @@ export default function InputPassword({ ...rest }: TInputProps) {
       <Image
         src="/icons/password.svg"
         alt="senha"
-        width={24}
-        height={24}
-        className="m-2 drop-shadow-bb-1"
+        width={0}
+        height={0}
+        sizes="100vw"
+        className="w-6 h-6 m-2 drop-shadow-bb-1"
       />
 
       <input
         type={showPassword ? "text" : "password"}
         placeholder="senha"
         className="w-[83%] h-10 pl-2 pt-1 bg-gray-bb-100 outline-none text-gray-bb-500"
-        {...rest}
+        {...register}
       />
 
       <Image
@@ -30,9 +34,10 @@ export default function InputPassword({ ...rest }: TInputProps) {
           showPassword ? "/icons/password_show.svg" : "/icons/password_hide.svg"
         }
         alt="mostrar senha"
-        width={24}
-        height={24}
-        className="absolute m-auto top-0 right-3 bottom-0 drop-shadow-bb-1"
+        width={0}
+        height={0}
+        sizes="100vw"
+        className="absolute w-6 h-6 m-auto top-0 right-3 bottom-0 drop-shadow-bb-1"
         onClick={() => setShowPassword(!showPassword)}
       />
     </div>
