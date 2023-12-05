@@ -1,5 +1,6 @@
 "use client";
 
+import { deleteCookies } from "@/utils/cookiesControl";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
@@ -9,6 +10,7 @@ export default function UserLoged() {
 
   async function handleLougOut() {
     await signOut({ redirect: false });
+    deleteCookies();
 
     router.replace("/");
   }
