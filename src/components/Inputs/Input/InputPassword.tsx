@@ -5,7 +5,7 @@ import { InputHTMLAttributes, useState } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 
 type TInputProps = {
-  register: UseFormRegisterReturn;
+  register?: UseFormRegisterReturn;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 export default function InputPassword({ register }: TInputProps) {

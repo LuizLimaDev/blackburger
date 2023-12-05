@@ -7,7 +7,7 @@ type TInputProps = {
   alt: string;
   type: string;
   placeholder: string;
-  register: UseFormRegisterReturn;
+  register?: UseFormRegisterReturn;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 export default function Input({
