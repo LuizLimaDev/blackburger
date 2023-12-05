@@ -17,3 +17,14 @@
     @apply font-lilita text-[40px] text-yellow-bb-300 drop-shadow-bb-2 uppercase;
   }
 }
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
