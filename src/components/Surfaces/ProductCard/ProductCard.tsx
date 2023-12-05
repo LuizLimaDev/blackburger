@@ -41,9 +41,14 @@ export default function ProductCard({
   // }
 
   return (
-    <div className="mb-4 flex h-[178px] w-[40%] flex-col items-center justify-start rounded-lg">
+    <div className="mb-4 flex-col-center h-[178px] w-[40%]  justify-start rounded-lg">
       <div>
-        <div className="relative flex h-[121px] w-[132px] items-center justify-center rounded-[25px] bg-gray-400">
+        <div
+          className="
+            relative flex h-[121px] w-[132px] items-center justify-center 
+            rounded-[25px] bg-gray-bb-400
+          "
+        >
           <Image
             src={src}
             alt={alt}
@@ -60,7 +65,7 @@ export default function ProductCard({
             alt={favorite ? "favorito" : "item não favoritado"}
             width={32}
             height={32}
-            className="absolute -bottom-3 -right-3 z-10"
+            className="absolute bottom-[-12px] right-[-12px] z-10"
             // onClick={() => handdleFavoriteProduct()}
           />
         </div>
@@ -69,7 +74,11 @@ export default function ProductCard({
           className="flex-col-center cursor-pointer p-2"
           onClick={() => router.push(`/product/${id}`)}
         >
-          <h5 className="mb-2 text-center font-lilita text-2xl leading-none text-yellow-400 drop-shadow-bb-2">
+          <h5
+            className="
+          mb-2 text-center font-lilita text-2xl leading-none text-yellow-bb-300 drop-shadow-bb-2
+          "
+          >
             {productName}
           </h5>
           <p className="text-base drop-shadow-bb-2">R$ {productPrice}</p>
