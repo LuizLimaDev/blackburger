@@ -1,11 +1,13 @@
 import Image from "next/image";
 import { InputHTMLAttributes } from "react";
+import { UseFormRegisterReturn } from "react-hook-form";
 
 type TInputProps = {
   src: string;
   alt: string;
   type: string;
   placeholder: string;
+  register?: UseFormRegisterReturn;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 export default function Input({
@@ -13,7 +15,7 @@ export default function Input({
   alt,
   type,
   placeholder,
-  ...rest
+  register,
 }: TInputProps) {
   return (
     <div className="w-[296px] flex rounded bg-gray-bb-100 drop-shadow-bb-2">
@@ -28,7 +30,7 @@ export default function Input({
       <input
         type={type}
         placeholder={placeholder}
-        {...rest}
+        {...register}
         className="w-[83%] h-10 pl-2 pt-1 bg-gray-bb-100 outline-none text-gray-bb-500"
       />
     </div>

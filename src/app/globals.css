@@ -16,6 +16,24 @@
   .bb-title {
     @apply font-lilita text-[40px] text-yellow-bb-300 drop-shadow-bb-2 uppercase;
   }
+
+  .popover-arrow {
+    @apply absolute 
+      bottom-0 
+      right-5 
+      
+      h-0 
+      w-0 
+      border-l-[12px] 
+      border-l-transparent 
+      border-r-[12px] 
+      border-r-transparent 
+      border-b-[12px] 
+      border-b-gray-bb-500 
+      
+      bg-inherit 
+      rotate-45;
+  }
 }
 
 @layer utilities {
