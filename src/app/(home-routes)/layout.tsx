@@ -1,9 +1,8 @@
 import BottomNavigation from "@/components/Navigation/BottomNavigation/BottomNavigation";
+import { authOptions } from "@/services/auth/authOptions";
 import { IChildrenProps } from "@/types/children";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
-import NextAuthProvider from "@/providers/sessionProvider";
 
 export default async function Home({ children }: IChildrenProps) {
   const session = await getServerSession(authOptions);
@@ -14,10 +13,8 @@ export default async function Home({ children }: IChildrenProps) {
 
   return (
     <>
-      <NextAuthProvider>
-        {children}
-        <BottomNavigation />
-      </NextAuthProvider>
+      {children}
+      <BottomNavigation />
     </>
   );
 }
