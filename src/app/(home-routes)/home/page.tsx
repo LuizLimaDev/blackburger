@@ -5,7 +5,7 @@ import MenuSlider from "@/components/Navigation/MenuSlider/MenuSlider";
 
 export default function Home() {
   return (
-    <div className="relative xl:px-20">
+    <div className="relative laptop:px-20">
       <HeaderHome />
       <MenuSlider />
       <FeaturingSlider />

@@ -12,15 +12,20 @@ export default async function ProductsDisplay() {
   const evenProducts = products.filter((product) => product.id % 2 === 1);
 
   return (
-    <div className="mb-10 mt-11 flex justify-center px-5 xl:mt-40">
+    <div className="mb-10 mt-11 flex justify-center px-5 laptop:mt-40">
       <div
         className="
-          mb-10 flex flex-col items-center justify-start gap-10 pl-2 xl:relative xl:flex-row
+          flex-col-center justify-start gap-10 pl-2 mb-10 
+          laptop:relative laptop:flex-row
           "
       >
+        {/* TODO - Posicionar no topo no laptop */}
         <Button
           type="button"
-          className=" flex items-center justify-center w-[74px] h-8 text-base"
+          className="
+          flex items-center justify-center w-[74px] h-8 text-base
+          laptop:absolute laptop:top-[-54px] laptop:left-10
+          "
         >
           Filtrar
         </Button>
@@ -40,7 +45,7 @@ export default async function ProductsDisplay() {
 
       <div
         id="rightColumn"
-        className="mb-10 flex flex-col items-center justify-start gap-10 pl-7 xl:flex-row"
+        className="mb-10 flex flex-col items-center justify-start gap-10 pl-7 laptop:flex-row"
       >
         {evenProducts.map((product) => (
           <ProductCard

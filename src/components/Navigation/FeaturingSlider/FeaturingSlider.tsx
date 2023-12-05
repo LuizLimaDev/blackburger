@@ -9,7 +9,7 @@ export default async function FeaturingSlider() {
   // TODO - pegar os produtos do estado do contexto c favoritos
 
   return (
-    <div className="no-scrollbar mt-11 flex h-[100px] justify-start gap-20 overflow-auto pl-6 xl:mt-20 xl:justify-center">
+    <div className="no-scrollbar mt-11 flex h-[100px] justify-start gap-20 overflow-auto pl-6 laptop:mt-20 laptop:justify-center">
       {featuredProducts.map((product) => (
         <FeaturedCard
           key={product.id}

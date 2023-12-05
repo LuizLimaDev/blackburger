@@ -3,7 +3,7 @@ export default function MenuSlider() {
     <div className="mx-4 mt-8 flex justify-center">
       <ul
         className="
-        no-scrollbar flex gap-5 overflow-auto font-lilita text-gray-100 drop-shadow-bb-2 xl:gap-40
+        no-scrollbar flex gap-5 overflow-auto font-lilita text-gray-100 drop-shadow-bb-2 laptop:gap-40
         "
       >
         <li>Carne</li>
