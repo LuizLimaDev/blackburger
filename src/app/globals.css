@@ -12,4 +12,8 @@
   .flex-col-center {
     @apply flex flex-col items-center;
   }
+
+  .bb-title {
+    @apply font-lilita text-[40px] text-yellow-bb-300 drop-shadow-bb-2 uppercase;
+  }
 }
