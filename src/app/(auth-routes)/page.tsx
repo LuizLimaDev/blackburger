@@ -11,6 +11,7 @@ import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 type IUserData = {
@@ -19,6 +20,7 @@ type IUserData = {
 };
 
 export default function SignIn() {
+  const [signInErrors, setSignInErrors] = useState<string>("");
   const router = useRouter();
   const {
     register,
@@ -39,7 +41,7 @@ export default function SignIn() {
       redirect: false,
     });
 
-    if (result?.error) return console.log(result);
+    if (result?.error) return setSignInErrors(result.error);
 
     router.replace("/home");
   }
@@ -78,9 +80,20 @@ export default function SignIn() {
             {errors.password?.message && (
               <FormAlert alert={errors.password?.message} />
             )}
+            {signInErrors && <FormAlert alert={signInErrors} />}
           </div>
 
-          <Button type="submit" className="mt-11 cursor-pointer">
+          <Button
+            type="submit"
+            className={`
+          ${
+            signInErrors || errors.email?.message || errors.password?.message
+              ? "mt-4"
+              : "mt-12"
+          }
+          cursor-pointer
+          `}
+          >
             Entrar
           </Button>
         </form>
