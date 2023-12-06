@@ -24,7 +24,7 @@ export default function FeaturedCard({
 
   return (
     <div
-      className="relative ml-[30px] mr-7 flex w-[254px]"
+      className="relative ml-[30px] mr-7 flex w-[254px] cursor-pointer"
       onClick={() => router.push(`/product/${id}`)}
       // TODO - Testar com link para poder deixar SSR
     >
