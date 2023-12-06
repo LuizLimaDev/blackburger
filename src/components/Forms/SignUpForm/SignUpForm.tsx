@@ -1,3 +1,5 @@
+"use client";
+
 import { signedUpNotify } from "@/components/DataDisplay/Toasts/ToastContainers/ToastContainers";
 import FormAlert from "@/components/Forms/FormAlert/FormAlert";
 import Button from "@/components/Inputs/Button/Button";
