@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import UserButtonNavigation from "./UserButtonNavigation/UserButtonNavigation";
+import CartBadge from "@/components/DataDisplay/CartBadge/CartBadge";
 
 export default function BottomNavigation() {
   return (
@@ -30,6 +31,8 @@ export default function BottomNavigation() {
                 sizes="100w"
                 className="w-6 h-6"
               />
+
+              <CartBadge />
             </Link>
           </button>
 

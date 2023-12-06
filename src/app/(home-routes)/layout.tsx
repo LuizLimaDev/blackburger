@@ -1,4 +1,6 @@
+import ToastContainers from "@/components/DataDisplay/Toasts/ToastContainers/ToastContainers";
 import BottomNavigation from "@/components/Navigation/BottomNavigation/BottomNavigation";
+import CartProvider from "@/context/CartContext";
 import ProductsProvider from "@/context/ProductsContext";
 import { authOptions } from "@/services/auth/authOptions";
 import { IChildrenProps } from "@/types/children";
@@ -15,8 +17,11 @@ export default async function Home({ children }: IChildrenProps) {
   return (
     <>
       <ProductsProvider>
-        {children}
-        <BottomNavigation />
+        <CartProvider>
+          {children}
+          <BottomNavigation />
+          <ToastContainers />
+        </CartProvider>
       </ProductsProvider>
     </>
   );

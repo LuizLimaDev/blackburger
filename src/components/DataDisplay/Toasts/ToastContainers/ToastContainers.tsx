@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 // import { CartContext } from "../../../../context/CartContext";
 import { contextClass } from "../ContextClass";
 import ToastUndoAddedToCart from "../ToastUndoAddedToCart/ToastUndoAddedToCart";
+import { CartContext } from "@/context/CartContext";
 // import ToastUndoFavorite from "../ToastUndoFavorite/ToastUndoFavorite";
 
 export const signedUpNotify = (msg: string) => {
@@ -54,13 +55,13 @@ export const addedOnCartNotify = () => {
 };
 
 export default function ToastContainers() {
-  // const { productsOnCart, removeProductFromCart } = useContext(CartContext);
+  const { productsOnCart, removeProductFromCart } = useContext(CartContext);
 
-  // function undoProductAddedToCart(): void {
-  //   const lastProductAdded = productsOnCart[productsOnCart.length - 1].id;
+  function undoProductAddedToCart(): void {
+    const lastProductAdded = productsOnCart[productsOnCart.length - 1].id;
 
-  //   removeProductFromCart(lastProductAdded);
-  // }
+    removeProductFromCart(lastProductAdded);
+  }
 
   return (
     <>
@@ -78,7 +79,7 @@ export default function ToastContainers() {
         // closeButton={<ToastUndoFavorite />}
         toastClassName={({ type }: any) =>
           contextClass[type || "default"] +
-          " absolute flex w-full bottom-8 left-1 p-1 min-h-10 rounded-md justify-between overflow-hidden cursor-pointer "
+          " absolute flex w-full bottom-11 left-1 p-1 min-h-10 rounded-md justify-between overflow-hidden cursor-pointer "
         }
         bodyClassName={() => "flex "}
       />
@@ -94,10 +95,10 @@ export default function ToastContainers() {
         rtl={false}
         pauseOnFocusLoss
         pauseOnHover={false}
-        // closeButton={<ToastUndoAddedToCart undo={undoProductAddedToCart} />}
+        closeButton={<ToastUndoAddedToCart undo={undoProductAddedToCart} />}
         toastClassName={({ type }: any) =>
           contextClass[type || "default"] +
-          " absolute flex w-full bottom-8 p-1 mb-[48px] min-h-10 rounded-md justify-between overflow-hidden cursor-pointer"
+          " absolute flex w-full bottom-11 p-1  min-h-10 rounded-md justify-between overflow-hidden cursor-pointer"
         }
         bodyClassName={() => "flex"}
       />

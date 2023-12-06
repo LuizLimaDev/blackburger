@@ -14,7 +14,7 @@ export default function ArrowBackToHome() {
         width={0}
         height={0}
         sizes="100vw"
-        className="absolute w-6 h-5 left-4 top-8"
+        className="absolute w-6 h-5 left-4 top-8 cursor-pointer"
         onClick={() => route.push("/home")}
       />
     </>
