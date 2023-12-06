@@ -27,6 +27,10 @@ export const authOptions: AuthOptions = {
 
         const user = await response.json();
 
+        if (response.ok === false) {
+          throw new Error(user.menssagem);
+        }
+
         if (user && response.ok) return user;
 
         return null;
