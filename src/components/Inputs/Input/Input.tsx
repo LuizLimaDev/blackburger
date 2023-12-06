@@ -22,9 +22,10 @@ export default function Input({
       <Image
         src={src}
         alt={alt}
-        width={24}
-        height={24}
-        className="m-2 drop-shadow-bb-1"
+        width={0}
+        height={0}
+        sizes="100vw"
+        className="w-6 h-6 m-2 drop-shadow-bb-1"
       />
 
       <input

@@ -109,17 +109,19 @@ export default function SignIn() {
           <Image
             src="/ui/divider.svg"
             alt="divisor"
-            width={140}
-            height={24}
-            className=""
+            width={0}
+            height={0}
+            sizes="100vw"
+            className="w-[140px] h-6"
           />
           <span>ou</span>
           <Image
             src="/ui/divider.svg"
             alt="divisor"
-            width={140}
-            height={24}
-            className=""
+            width={0}
+            height={0}
+            sizes="100vw"
+            className="w-[140px] h-6"
           />
         </div>
 
