@@ -1,4 +1,5 @@
 import BottomNavigation from "@/components/Navigation/BottomNavigation/BottomNavigation";
+import ProductsProvider from "@/context/ProductsContext";
 import { authOptions } from "@/services/auth/authOptions";
 import { IChildrenProps } from "@/types/children";
 import { getServerSession } from "next-auth";
@@ -13,8 +14,10 @@ export default async function Home({ children }: IChildrenProps) {
 
   return (
     <>
-      {children}
-      <BottomNavigation />
+      <ProductsProvider>
+        {children}
+        <BottomNavigation />
+      </ProductsProvider>
     </>
   );
 }

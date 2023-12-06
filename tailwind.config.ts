@@ -57,6 +57,9 @@ const config: Config = {
         "bb-price":
           "0 3px 1px rgba(255, 255, 255, 1), 0 -3px 1px rgba(255, 255, 255, 1), 3px 0 1px rgba(255, 255, 255, 1), -3px 0 1px rgba(255, 255, 255, 1)",
       },
+      backgroundImage: {
+        "bb-burger-bg": "url('/products/smoke.svg')",
+      },
     },
   },
   plugins: [require("tailwindcss-textshadow")],
