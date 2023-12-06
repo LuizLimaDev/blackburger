@@ -7,14 +7,13 @@ export type CartProduct = {
 
 export type ICartContext = {
   productsOnCart: CartProduct[];
-  cartSubtotal: number;
-  tax: number;
-  cartDiscount: number;
-  cartTotalPrice: number;
+  setProductsOnCart: Dispatch<SetStateAction<CartProduct[]>>;
+  currentProductId: number;
+  setCurrentProductId: Dispatch<SetStateAction<number>>;
   quantityCounter: number;
   setQuantityCounter: Dispatch<SetStateAction<number>>;
+  handleDecreaseQtd: () => void;
+  handleIncreaseQtd: () => void;
   addProductToCart: (product: CartProduct) => void;
   removeProductFromCart: (id: number) => void;
-  decreaseProductQuantity: (product: CartProduct) => void;
-  increaseProductQuantity: (product: CartProduct) => void;
 };

@@ -9,7 +9,7 @@ export default function ToastUndoAddedToCart({
     <>
       <button
         onClick={undo}
-        className="pr-1 font-lilita text-base text-red-500"
+        className="pr-1 font-lilita text-base text-red-bb-500"
       >
         Desfazer
       </button>
