@@ -42,10 +42,6 @@ export default function ProductDetailsCard({ params }: IProps) {
     });
 
     setQuantityCounter(1);
-
-    console.log("Produto adicionado");
-
-    // setTimeout(() => {}, 2500);
   }
 
   return (

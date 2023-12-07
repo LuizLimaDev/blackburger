@@ -36,16 +36,6 @@ export default function BottomNavigation() {
             </Link>
           </button>
 
-          {/* <button type="button">
-            <Image
-              src="/icons/user.svg"
-              alt="user"
-              width={0}
-              height={0}
-              sizes="100w"
-              className="w-6 h-6"
-            />
-          </button> */}
           <UserButtonNavigation />
 
           <button type="button">

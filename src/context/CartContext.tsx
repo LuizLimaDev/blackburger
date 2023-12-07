@@ -10,10 +10,16 @@ export const CartContext = createContext<ICartContext>({
   setCurrentProductId: () => {},
   quantityCounter: 0,
   setQuantityCounter: () => {},
-  handleDecreaseQtd: () => {},
-  handleIncreaseQtd: () => {},
+  decreaseProductCounter: () => {},
+  increaseProductCounter: () => {},
   addProductToCart: () => {},
   removeProductFromCart: () => {},
+  cartSubtotal: 0,
+  cartDiscount: 0,
+  tax: 0,
+  cartTotalPrice: 0,
+  decreaseProductQuantity: () => {},
+  increaseProductQuantity: () => {},
 });
 
 const CartProvider = ({ children }: { children: ReactNode }) => {
@@ -21,12 +27,12 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
   const [quantityCounter, setQuantityCounter] = useState<number>(1);
   const [currentProductId, setCurrentProductId] = useState<number>(0);
 
-  function handleDecreaseQtd(): void {
+  function decreaseProductCounter(product?: CartProduct): void {
     if (quantityCounter > 0) return setQuantityCounter((prev) => (prev -= 1));
     return;
   }
 
-  function handleIncreaseQtd(): void {
+  function increaseProductCounter(product?: CartProduct): void {
     setQuantityCounter((prev) => (prev += 1));
   }
 
@@ -67,12 +73,61 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
   }
 
   // Cart resume
-  const cartSubtotal = productsOnCart.reduce((acc, product) => {
+  const cartSubtotal: number = productsOnCart.reduce((acc, product) => {
     return acc + Number(product.price * product.quantity);
   }, 0);
-  const cartDiscount = 300;
-  const tax = 350;
-  const cartTotalPrice = cartSubtotal + tax - cartDiscount;
+  const cartDiscount: number = 300;
+  const tax: number = 350;
+  const cartTotalPrice: number = cartSubtotal + tax - cartDiscount;
+
+  // Cart qtd management
+  function decreaseProductQuantity(product: CartProduct): void {
+    const productOnCart = productsOnCart.find(
+      (cartProduct) => cartProduct.id === product.id
+    );
+
+    if (productOnCart && productOnCart.quantity > 0) {
+      setProductsOnCart((prev) =>
+        prev
+          .map((cartProduct) => {
+            if (cartProduct.id === product.id) {
+              return {
+                ...productOnCart,
+                quantity: productOnCart.quantity - 1,
+              };
+            }
+
+            return cartProduct;
+          })
+          .filter((cartProduct) => cartProduct.quantity > 0)
+      );
+
+      return;
+    }
+  }
+
+  function increaseProductQuantity(product: CartProduct): void {
+    const productOnCart = productsOnCart.find(
+      (cartProduct) => cartProduct.id === product.id
+    );
+
+    if (productOnCart && productOnCart.quantity > 0) {
+      setProductsOnCart((prev) =>
+        prev.map((cartProduct) => {
+          if (cartProduct.id === product.id) {
+            return {
+              ...productOnCart,
+              quantity: productOnCart.quantity + 1,
+            };
+          }
+
+          return cartProduct;
+        })
+      );
+
+      return;
+    }
+  }
 
   return (
     <CartContext.Provider
@@ -83,10 +138,16 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
         setCurrentProductId,
         quantityCounter,
         setQuantityCounter,
-        handleDecreaseQtd,
-        handleIncreaseQtd,
+        decreaseProductCounter,
+        increaseProductCounter,
         addProductToCart,
         removeProductFromCart,
+        cartSubtotal,
+        cartDiscount,
+        tax,
+        cartTotalPrice,
+        decreaseProductQuantity,
+        increaseProductQuantity,
       }}
     >
       {children}

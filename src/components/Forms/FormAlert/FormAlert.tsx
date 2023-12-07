@@ -3,10 +3,9 @@ import { FieldError, FieldErrorsImpl, Merge } from "react-hook-form";
 
 type TProps = {
   alert: string | FieldError | Merge<FieldError, FieldErrorsImpl<any>>;
-  color?: string;
 };
 
-export default function FormAlert({ alert, color }: TProps) {
+export default function FormAlert({ alert }: TProps) {
   const hookFormAlertMessage = String(alert);
 
   return (
@@ -18,12 +17,7 @@ export default function FormAlert({ alert, color }: TProps) {
         height={0}
         className="w-full h-5 max-h-[20px] max-w-[20px]"
       />
-      <p
-        className={`
-        ${color ? `${color}` : "text-red-bb-500"}
-        font-bold leading-4
-        `}
-      >
+      <p className="text-red-bb-500 font-bold leading-4">
         {hookFormAlertMessage}
       </p>
     </div>
