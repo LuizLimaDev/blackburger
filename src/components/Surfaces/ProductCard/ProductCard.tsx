@@ -1,16 +1,18 @@
 "use client";
 
+import { favoriteNotify } from "@/components/DataDisplay/Toasts/ToastContainers/ToastContainers";
+import { FavoriteProductsContext } from "@/context/FavoriteProducts";
+import { ProductsContext } from "@/context/ProductsContext";
+import { IProduct } from "@/types/products";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-// import { useContext } from "react";
-// import { favoriteNotify } from "../../DataDisplay/Toasts/ToastContainers/ToastContainers";
+import { useContext, useEffect, useState } from "react";
 interface IProductCardProps {
   id: number;
   src: string;
   alt: string;
   productName: string;
   productPrice: string;
-  favorite: boolean;
 }
 
 export default function ProductCard({
@@ -19,26 +21,36 @@ export default function ProductCard({
   alt,
   productName,
   productPrice,
-  favorite,
 }: IProductCardProps) {
-  // const { changeFavoriteStatus, setCurrentProductId, products } =
-  //   useContext(ProductsContext);
+  const { favoritedProducts, addToFavorite, removeFromFavorite } = useContext(
+    FavoriteProductsContext
+  );
+  const { products, setCurrentProductId } = useContext(ProductsContext);
+  const [isFavorite, setIsFavorite] = useState<boolean>(false);
   const router = useRouter();
 
-  // const currentProduct = products.filter((product) => product.id === id)[0];
-  // const isFavorite = currentProduct.favorite;
+  const currentProduct: IProduct = products.filter(
+    (product) => product.id === id
+  )[0];
 
-  // TODO - Adicionar Toast
-  // function handdleFavoriteProduct() {
-  //   changeFavoriteStatus(id);
-  //   setCurrentProductId(id);
+  useEffect(() => {
+    if (favoritedProducts.includes(currentProduct)) {
+      setIsFavorite(true);
+    } else {
+      setIsFavorite(false);
+    }
+  }, [favoritedProducts, setIsFavorite, currentProduct]);
 
-  //   if (favorite === false) {
-  //     favoriteNotify();
+  function handdleFavoriteProduct(currentProduct: IProduct, id: number) {
+    if (isFavorite === false) {
+      favoriteNotify();
+      addToFavorite(currentProduct);
+      return;
+    }
 
-  //     return;
-  //   }
-  // }
+    setCurrentProductId(id);
+    removeFromFavorite(id);
+  }
 
   return (
     <div className="mb-4 flex-col-center h-[178px] w-[40%]  justify-start rounded-lg">
@@ -60,13 +72,12 @@ export default function ProductCard({
             priority={true}
           />
           <Image
-            // TODO - Arrumar favoritos apos pegar do contexto
-            src={favorite ? "/icons/favorite.svg" : "/icons/not-favorite.svg"}
-            alt={favorite ? "favorito" : "item não favoritado"}
+            src={isFavorite ? "/icons/favorite.svg" : "/icons/not-favorite.svg"}
+            alt={isFavorite ? "favorito" : "item não favoritado"}
             width={32}
             height={32}
             className="absolute bottom-[-12px] right-[-12px] z-10"
-            // onClick={() => handdleFavoriteProduct()}
+            onClick={() => handdleFavoriteProduct(currentProduct, id)}
           />
         </div>
 

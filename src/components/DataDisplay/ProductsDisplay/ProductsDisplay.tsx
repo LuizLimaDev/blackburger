@@ -6,7 +6,6 @@ import priceConvert from "@/utils/priceConvert";
 export default async function ProductsDisplay() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
   const products: IProduct[] = await res.json();
-  // TODO - pegar os produtos com favoritos do o contexto
 
   const oddProducts = products.filter((product) => product.id % 2 === 0);
   const evenProducts = products.filter((product) => product.id % 2 === 1);
@@ -38,7 +37,6 @@ export default async function ProductsDisplay() {
             alt={product.name}
             productName={product.name}
             productPrice={priceConvert(product.price)}
-            favorite={false} // TODO - Adicionar favoritos apos pegar do contexto
           />
         ))}
       </div>
@@ -55,7 +53,6 @@ export default async function ProductsDisplay() {
             alt={product.name}
             productName={product.name}
             productPrice={priceConvert(product.price)}
-            favorite={false} // TODO - Adicionar favoritos apos pegar do contexto
           />
         ))}
       </div>

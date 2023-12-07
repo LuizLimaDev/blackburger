@@ -1,10 +1,8 @@
-interface IToastUndoAddedToCartProps {
+interface IProps {
   undo: () => void;
 }
 
-export default function ToastUndoAddedToCart({
-  undo,
-}: IToastUndoAddedToCartProps) {
+export default function ToastUndoAddedToCart({ undo }: IProps) {
   return (
     <>
       <button
