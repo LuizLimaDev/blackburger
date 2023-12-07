@@ -7,6 +7,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { contextClass } from "../ContextClass";
 import ToastUndoAddedToCart from "../ToastUndoAddedToCart/ToastUndoAddedToCart";
 import { CartContext } from "@/context/CartContext";
+import ToastUndoFavorite from "../ToastUndoFavorite/ToastUndoFavorite";
+import { FavoriteProductsContext } from "@/context/FavoriteProducts";
 // import ToastUndoFavorite from "../ToastUndoFavorite/ToastUndoFavorite";
 
 export const signedUpNotify = (msg: string) => {
@@ -56,6 +58,15 @@ export const addedOnCartNotify = () => {
 
 export default function ToastContainers() {
   const { productsOnCart, removeProductFromCart } = useContext(CartContext);
+  const { favoritedProducts, removeFromFavorite } = useContext(
+    FavoriteProductsContext
+  );
+
+  function undoProductAddedToFavorite(): void {
+    const lastProductAdded = favoritedProducts[favoritedProducts.length - 1].id;
+
+    removeFromFavorite(lastProductAdded);
+  }
 
   function undoProductAddedToCart(): void {
     const lastProductAdded = productsOnCart[productsOnCart.length - 1].id;
@@ -76,7 +87,7 @@ export default function ToastContainers() {
         rtl={false}
         pauseOnFocusLoss
         pauseOnHover={false}
-        // closeButton={<ToastUndoFavorite />}
+        closeButton={<ToastUndoFavorite undo={undoProductAddedToFavorite} />}
         toastClassName={({ type }: any) =>
           contextClass[type || "default"] +
           " absolute flex w-full bottom-11 left-1 p-1 min-h-10 rounded-md justify-between overflow-hidden cursor-pointer "

@@ -7,11 +7,11 @@ export type IProduct = {
   description: string;
   price: number;
   category_id: number;
-  favorite?: boolean;
 };
 
 export type IProducts = {
   products: IProduct[];
+  setProducts: Dispatch<SetStateAction<IProduct[]>>;
   currentProductId: number;
   setCurrentProductId: Dispatch<SetStateAction<number>>;
 };
