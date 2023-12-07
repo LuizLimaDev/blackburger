@@ -5,12 +5,8 @@ import Image from "next/image";
 import { useContext } from "react";
 
 export default function QtdCounter() {
-  const {
-    setCurrentProductId,
-    handleDecreaseQtd,
-    quantityCounter,
-    handleIncreaseQtd,
-  } = useContext(CartContext);
+  const { decreaseProductCounter, quantityCounter, increaseProductCounter } =
+    useContext(CartContext);
 
   return (
     <>
@@ -20,7 +16,7 @@ export default function QtdCounter() {
           alt="diminuir quantidade"
           width={24}
           height={24}
-          onClick={() => handleDecreaseQtd()}
+          onClick={() => decreaseProductCounter()}
         />
 
         <p className="min-w-[30px] pb-1 text-center font-lilita text-[32px] drop-shadow-bb-2">
@@ -32,7 +28,7 @@ export default function QtdCounter() {
           alt="aumentar quantidade"
           width={24}
           height={24}
-          onClick={() => handleIncreaseQtd()}
+          onClick={() => increaseProductCounter()}
         />
       </div>
     </>
