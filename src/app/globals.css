@@ -52,6 +52,40 @@
       bg-inherit 
       rotate-45;
   }
+
+  .modal-shade {
+    @apply flex-col-center 
+    justify-center
+     
+    fixed 
+    top-0 
+    left-0 
+    z-10 
+    
+    w-full 
+    h-full 
+    overflow-y-auto 
+    overflow-x-hidden 
+    outline-none 
+    
+    bg-gray-bb-500 
+    bg-opacity-70 
+    transition-opacity;
+  }
+
+  .modal-input {
+    @apply w-[248px] 
+    h-10
+    pt-1 
+    pl-2 
+    rounded 
+    drop-shadow-bb-2 
+    
+    text-gray-bb-500
+    
+    tablet:h-12 
+    tablet:w-[348px];
+  }
 }
 
 @layer utilities {

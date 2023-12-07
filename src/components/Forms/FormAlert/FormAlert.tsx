@@ -15,7 +15,8 @@ export default function FormAlert({ alert }: TProps) {
         alt="alerta"
         width={0}
         height={0}
-        className="w-full h-5 max-h-[20px] max-w-[20px]"
+        sizes="100vw"
+        className="w-6 h-5 max-h-[20px] max-w-[20px]"
       />
       <p className="text-red-bb-500 font-bold leading-4">
         {hookFormAlertMessage}

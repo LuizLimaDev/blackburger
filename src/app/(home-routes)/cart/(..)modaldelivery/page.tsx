@@ -7,7 +7,17 @@ export default function ModalDelivery() {
       <div className="modal-shade z-50">
         <div
           className="
-            flex-col-center w-[320px] rounded-lg bg-gray-bb-300 drop-shadow-bb-4
+            fixed 
+            flex-col-center 
+            
+            w-[320px] 
+            rounded-lg 
+            drop-shadow-bb-4
+            
+            bg-gray-bb-300 
+
+            tablet:w-[40vw]
+            laptop:w-[30vw]
           "
         >
           <Link
@@ -18,8 +28,6 @@ export default function ModalDelivery() {
           </Link>
 
           <div className="px-[34px]">
-            <h1 className="bb-title mb-10">Dados de entrega</h1>
-
             <DeliveryForm />
           </div>
         </div>
