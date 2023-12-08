@@ -22,7 +22,7 @@ export default function FeaturedCard({
     <>
       <Link
         href={`/product/${id}`}
-        className="w-[65%] tablet:w-[35%] laptop:w-[25%]"
+        className="w-[65%] tablet:w-[35%] laptop:w-[24%]"
       >
         <div className="relative ml-[30px] flex w-[65vw] cursor-pointer">
           <Image
