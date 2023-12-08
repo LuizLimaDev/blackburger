@@ -2,9 +2,11 @@ import priceConvert from "@/utils/priceConvert";
 import { IProduct } from "@/types/products";
 import FeaturedCard from "@/components/Surfaces/FeaturedCard/FeaturedCard";
 
-export default async function FeaturingSlider() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
-  const products: IProduct[] = await res.json();
+type TProps = {
+  products: IProduct[];
+};
+
+export default async function FeaturingSlider({ products }: TProps) {
   const featuredProducts: IProduct[] = products.slice(-3);
 
   return (
