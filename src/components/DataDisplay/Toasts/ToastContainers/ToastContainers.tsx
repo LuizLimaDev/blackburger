@@ -90,7 +90,7 @@ export default function ToastContainers() {
         closeButton={<ToastUndoFavorite undo={undoProductAddedToFavorite} />}
         toastClassName={({ type }: any) =>
           contextClass[type || "default"] +
-          " absolute flex w-full bottom-11 left-1 p-1 min-h-10 rounded-md justify-between overflow-hidden cursor-pointer "
+          " absolute flex w-full bottom-11 p-1 min-h-10 rounded-md justify-between overflow-hidden cursor-pointer touch-auto"
         }
         bodyClassName={() => "flex "}
       />
@@ -109,7 +109,7 @@ export default function ToastContainers() {
         closeButton={<ToastUndoAddedToCart undo={undoProductAddedToCart} />}
         toastClassName={({ type }: any) =>
           contextClass[type || "default"] +
-          " absolute flex w-full bottom-11 p-1  min-h-10 rounded-md justify-between overflow-hidden cursor-pointer"
+          " absolute flex w-full bottom-11 p-1 min-h-10 rounded-md justify-between overflow-hidden cursor-pointer touch-auto"
         }
         bodyClassName={() => "flex"}
       />
