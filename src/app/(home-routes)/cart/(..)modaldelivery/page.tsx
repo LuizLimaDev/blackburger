@@ -16,7 +16,7 @@ export default function ModalDelivery() {
             
             bg-gray-bb-300 
 
-            tablet:w-[50vw]
+            tablet:w-[40vw]
             laptop:w-[30vw]
           "
         >
