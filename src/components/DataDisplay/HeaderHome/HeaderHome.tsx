@@ -15,9 +15,7 @@ export default function HeaderHome() {
           priority={true}
           className="h-auto w-auto"
         />
-        <h1 className="font-lilita text-2xl text-yellow-300 drop-shadow-bb-2">
-          Black Burger
-        </h1>
+        <h1 className="bb-title text-2xl capitalize">Black Burger</h1>
       </div>
 
       <div className="flex flex-col items-center">
