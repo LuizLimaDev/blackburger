@@ -4,10 +4,10 @@ import MenuSlider from "@/components/Navigation/MenuSlider/MenuSlider";
 
 export default function Home() {
   return (
-    <div className="relative laptop:px-20">
+    <main className="relative laptop:px-20">
       <HeaderHome />
       <MenuSlider />
       <ProductsDisplay />
-    </div>
+    </main>
   );
 }

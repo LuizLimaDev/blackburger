@@ -17,8 +17,9 @@ export default async function ProductsDisplay() {
 
       <div className="mb-10 mt-11 flex justify-center px-5 laptop:mt-40">
         <div
+          id="columnLeft"
           className="
-          flex-col-center justify-start gap-10 pl-2 mb-10 
+          flex-col-center justify-start gap-10 mb-10 
           laptop:relative laptop:flex-row
           "
         >

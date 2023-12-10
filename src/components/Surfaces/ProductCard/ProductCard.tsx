@@ -87,8 +87,15 @@ export default function ProductCard({
         >
           <h5
             className="
-          mb-2 text-center font-lilita text-2xl leading-none text-yellow-bb-300 drop-shadow-bb-2
-          "
+              mb-2 
+
+              text-center 
+              font-lilita 
+              text-2xl 
+              leading-none 
+              text-yellow-bb-300 
+              drop-shadow-bb-2
+            "
           >
             {productName}
           </h5>

@@ -11,7 +11,6 @@ export default function UserButtonNavigation() {
     <div className="flex-col-center relative">
       <button
         type="button"
-        className=" px-5"
         onClick={() => {
           setActiveUserMenu(!activeUserMenu);
         }}
