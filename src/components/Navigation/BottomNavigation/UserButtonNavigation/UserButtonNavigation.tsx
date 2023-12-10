@@ -45,7 +45,7 @@ export default function UserButtonNavigation() {
   
       `}
       >
-        <UserLoged />
+        <UserLoged setActiveUserMenu={setActiveUserMenu} />
 
         <div id="arrow" className="popover-arrow left-16 xl:left-14"></div>
       </div>

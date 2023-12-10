@@ -1,10 +1,16 @@
 "use client";
 
 import { deleteCookies } from "@/utils/cookiesControl";
-import { useSession, signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Dispatch, SetStateAction } from "react";
 
-export default function UserLoged() {
+type TProps = {
+  setActiveUserMenu: Dispatch<SetStateAction<boolean>>;
+};
+
+export default function UserLoged({ setActiveUserMenu }: TProps) {
   const { data: session } = useSession();
   const router = useRouter();
 
@@ -19,6 +25,10 @@ export default function UserLoged() {
     <div>
       {session && (
         <div className="flex-col-center">
+          <Link href="/favorites" onClick={() => setActiveUserMenu(false)}>
+            Favoritos
+          </Link>
+
           <button
             className="mt-5 text-yellow-bb-400"
             onClick={() => handleLougOut()}
