@@ -1,5 +1,6 @@
 "use client";
 
+import { addedOnCartNotify } from "@/components/DataDisplay/Toasts/ToastContainers/ToastContainers";
 import { CartProduct, ICartContext } from "@/types/cart";
 import { ReactNode, createContext, useState } from "react";
 
@@ -60,6 +61,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     }
 
     setProductsOnCart((prev) => [...prev, product]);
+    addedOnCartNotify();
   }
 
   function removeProductFromCart(id: number): void {

@@ -46,7 +46,7 @@ export default function CartProductCard({ product }: { product: CartProduct }) {
         <h1
           className={`
             ${product.name.length > 8 && "text-lg"}
-            bb-title mb-2 w-[70px] text-2xl leading-none
+            bb-title mb-2 w-[70px] text-2xl leading-none capitalize
             `}
         >
           {product.name}
