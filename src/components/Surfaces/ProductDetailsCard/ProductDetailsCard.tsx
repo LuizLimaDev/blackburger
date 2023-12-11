@@ -1,15 +1,12 @@
 "use client";
 
 import QtdCounter from "@/components/DataDisplay/QtdCounter/QtdCounter";
-import { contextClass } from "@/components/DataDisplay/Toasts/ContextClass";
-import { addedOnCartNotify } from "@/components/DataDisplay/Toasts/ToastContainers/ToastContainers";
 import Button from "@/components/Inputs/Button/Button";
 import { CartContext } from "@/context/CartContext";
 import { ProductsContext } from "@/context/ProductsContext";
 import { IProduct } from "@/types/products";
 import Image from "next/image";
 import { useContext, useEffect } from "react";
-import { ToastContainer } from "react-toastify";
 
 type IProps = {
   params: {
@@ -31,11 +28,12 @@ export default function ProductDetailsCard({ params }: IProps) {
     (product) => product.id === id
   )!;
 
-  const isBurger = currentProduct?.category_id === 1;
+  const burgers: number[] = [1, 2, 3];
+  const isBurger = burgers.some(
+    (product) => currentProduct?.category_id === product
+  );
 
   function handleAddProductToCart(currentProduct: IProduct): void {
-    addedOnCartNotify();
-
     addProductToCart({
       ...currentProduct,
       quantity: quantityCounter,
