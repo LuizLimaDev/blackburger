@@ -1,12 +1,12 @@
 "use client";
 
-import { favoriteNotify } from "@/components/DataDisplay/Toasts/ToastContainers/ToastContainers";
 import { FavoriteProductsContext } from "@/context/FavoriteProducts";
 import { ProductsContext } from "@/context/ProductsContext";
+import useFavoriteCheck from "@/hooks/useFavoriteCheck";
 import { IProduct } from "@/types/products";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 interface IProductCardProps {
   id: number;
   src: string;
@@ -22,35 +22,15 @@ export default function ProductCard({
   productName,
   productPrice,
 }: IProductCardProps) {
-  const { favoritedProducts, addToFavorite, removeFromFavorite } = useContext(
-    FavoriteProductsContext
-  );
-  const { products, setCurrentProductId } = useContext(ProductsContext);
-  const [isFavorite, setIsFavorite] = useState<boolean>(false);
+  const { products } = useContext(ProductsContext);
   const router = useRouter();
 
   const currentProduct: IProduct = products.filter(
     (product) => product.id === id
   )[0];
 
-  useEffect(() => {
-    if (favoritedProducts.includes(currentProduct)) {
-      setIsFavorite(true);
-    } else {
-      setIsFavorite(false);
-    }
-  }, [favoritedProducts, setIsFavorite, currentProduct]);
-
-  function handdleFavoriteProduct(currentProduct: IProduct, id: number) {
-    if (isFavorite === false) {
-      favoriteNotify();
-      addToFavorite(currentProduct);
-      return;
-    }
-
-    setCurrentProductId(id);
-    removeFromFavorite(id);
-  }
+  const { handdleFavoriteProduct, isFavorite } =
+    useFavoriteCheck(currentProduct);
 
   return (
     <div className="mb-4 flex-col-center h-[178px] w-[40%]  justify-start rounded-lg">
@@ -76,7 +56,7 @@ export default function ProductCard({
             alt={isFavorite ? "favorito" : "item não favoritado"}
             width={32}
             height={32}
-            className="absolute bottom-[-12px] right-[-12px] z-10"
+            className="absolute bottom-[-12px] right-[-12px] z-10 cursor-pointer"
             onClick={() => handdleFavoriteProduct(currentProduct, id)}
           />
         </div>
