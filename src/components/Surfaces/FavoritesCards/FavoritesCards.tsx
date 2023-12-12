@@ -2,13 +2,13 @@
 
 import { CartContext } from "@/context/CartContext";
 import { FavoriteProductsContext } from "@/context/FavoriteProducts";
-import { IProduct } from "@/types/products";
+import { TProduct } from "@/types/products";
 import Image from "next/image";
 import { Dispatch, SetStateAction, useContext } from "react";
 import priceConvert from "../../../utils/priceConvert";
 
 type TProps = {
-  product: IProduct;
+  product: TProduct;
   setOpenModalRemoveFavorite: Dispatch<SetStateAction<boolean>>;
 };
 

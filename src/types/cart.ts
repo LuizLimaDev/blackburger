@@ -1,11 +1,11 @@
 import { Dispatch, SetStateAction } from "react";
-import { IProduct } from "./products";
+import { TProduct } from "./products";
 
 export type CartProduct = {
   quantity: number;
-} & IProduct;
+} & TProduct;
 
-export type ICartContext = {
+export type TCartContext = {
   productsOnCart: CartProduct[];
   setProductsOnCart: Dispatch<SetStateAction<CartProduct[]>>;
   currentProductId: number;
