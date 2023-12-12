@@ -1,21 +1,23 @@
 "use client";
 
 import { CartContext } from "@/context/CartContext";
+import { FavoriteProductsContext } from "@/context/FavoriteProducts";
 import { IProduct } from "@/types/products";
 import Image from "next/image";
-import { useContext } from "react";
+import { Dispatch, SetStateAction, useContext } from "react";
 import priceConvert from "../../../utils/priceConvert";
 
 type TProps = {
   product: IProduct;
-  removeFromFavorite: (id: number) => void;
+  setOpenModalRemoveFavorite: Dispatch<SetStateAction<boolean>>;
 };
 
 export default function FavoritesCards({
   product,
-  removeFromFavorite,
+  setOpenModalRemoveFavorite,
 }: TProps) {
   const { addProductToCart } = useContext(CartContext);
+  const { setCurrentProduct } = useContext(FavoriteProductsContext);
 
   const cartQuantityObject = {
     ...product,
@@ -73,8 +75,9 @@ export default function FavoritesCards({
               height={0}
               sizes="100vw"
               className="w-6 h-6 drop-shadow-bb-1 cursor-pointer"
-              onClick={() => removeFromFavorite(product.id)}
-              // TODO - modal de confirmacao p retirar dos favoritos
+              onClick={() => {
+                setOpenModalRemoveFavorite(true), setCurrentProduct(product);
+              }}
             />
           </div>
         </div>

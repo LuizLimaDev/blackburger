@@ -8,12 +8,15 @@ import { ReactNode, createContext, useState } from "react";
 export const FavoriteProductsContext = createContext<IFavoritedProducts>({
   favoritedProducts: [],
   setFavoritedProducts: () => {},
+  currentProduct: null,
+  setCurrentProduct: () => {},
   addToFavorite: () => {},
   removeFromFavorite: () => {},
 });
 
 const FavoriteProductsProvider = ({ children }: { children: ReactNode }) => {
   const [favoritedProducts, setFavoritedProducts] = useState<IProduct[]>([]);
+  const [currentProduct, setCurrentProduct] = useState<IProduct | null>(null);
 
   function addToFavorite(currentProduct: IProduct): void {
     const isFavorite = favoritedProducts.find(
@@ -39,6 +42,8 @@ const FavoriteProductsProvider = ({ children }: { children: ReactNode }) => {
       value={{
         favoritedProducts,
         setFavoritedProducts,
+        currentProduct,
+        setCurrentProduct,
         addToFavorite,
         removeFromFavorite,
       }}
