@@ -21,10 +21,26 @@ export default function UserLoged({ setActiveUserMenu }: TProps) {
     router.replace("/");
   }
 
+  function username() {
+    if (session?.user?.name) {
+      return session?.user?.name?.split(" ")[0];
+    }
+
+    return session?.user?.UserLoged?.name.split(" ")[0];
+  }
+
   return (
     <div>
       {session && (
-        <div className="flex-col-center">
+        <div className="flex-col-center py-[18px]">
+          <span
+            className="
+              bb-title text-base capitalize text center
+            "
+          >
+            {username()}
+          </span>
+
           <Link href="/favorites" onClick={() => setActiveUserMenu(false)}>
             Favoritos
           </Link>

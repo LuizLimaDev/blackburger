@@ -30,8 +30,7 @@ export default function UserButtonNavigation() {
             ${activeUserMenu === true ? "flex" : "hidden"}
 
             absolute
-            top-[-110px]
-            h-[100px]
+            top-[-145px]
             
             min-w-[160px]
             flex-col
