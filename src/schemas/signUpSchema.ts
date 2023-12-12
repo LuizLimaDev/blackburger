@@ -16,5 +16,5 @@ export const SignUpSchema = yup.object({
   password: yup
     .string()
     .min(6, "A senha deve conter no mín 6 caracteres!")
-    .required(),
+    .required("Preencha o password por favor!"),
 });
