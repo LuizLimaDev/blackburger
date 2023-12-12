@@ -52,6 +52,7 @@ const config: Config = {
         "bb-2": "2px 2px 2px #000000",
         "bb-3": "0px 3px 3px #000000",
         "bb-4": "0px 4px 4px #000000",
+        "bb-white-shadow": ".75px .75px .75px #FFFFFF",
       },
       textShadow: {
         "bb-price":
