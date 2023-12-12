@@ -1,31 +1,34 @@
 "use client";
 
+import { CartContext } from "@/context/CartContext";
+import { IProduct } from "@/types/products";
 import Image from "next/image";
+import { useContext } from "react";
+import priceConvert from "../../../utils/priceConvert";
 
 type TProps = {
-  id: number;
-  src: string;
-  alt: string;
-  name: string;
-  price: string;
+  product: IProduct;
   removeFromFavorite: (id: number) => void;
 };
 
 export default function FavoritesCards({
-  id,
-  src,
-  alt,
-  name,
-  price,
+  product,
   removeFromFavorite,
 }: TProps) {
+  const { addProductToCart } = useContext(CartContext);
+
+  const cartQuantityObject = {
+    ...product,
+    quantity: 1,
+  };
+
   return (
     <>
       <div className="w-[140px] h-[217px] mt-11">
         <div className="flex-col-center relative w-[140px] h-[161px] rounded-3xl drop-shadow-bb-2 bg-gray-bb-400">
           <Image
-            src={src}
-            alt={alt}
+            src={product.img}
+            alt={product.name}
             width={0}
             height={0}
             sizes="100vw"
@@ -46,9 +49,11 @@ export default function FavoritesCards({
                 overflow-ellipsis
             "
           >
-            {name}
+            {product.name}
           </h1>
-          <p className="mt-1 drop-shadow-bb-1">R$ {price}</p>
+          <p className="mt-1 drop-shadow-bb-1">
+            R$ {priceConvert(product.price)}
+          </p>
 
           <div className="flex justify-between w-full px-8 mt-3">
             <Image
@@ -58,6 +63,7 @@ export default function FavoritesCards({
               height={0}
               sizes="100vw"
               className="w-6 h-6 drop-shadow-bb-1 cursor-pointer"
+              onClick={() => addProductToCart(cartQuantityObject)}
             />
 
             <Image
@@ -67,7 +73,7 @@ export default function FavoritesCards({
               height={0}
               sizes="100vw"
               className="w-6 h-6 drop-shadow-bb-1 cursor-pointer"
-              onClick={() => removeFromFavorite(id)}
+              onClick={() => removeFromFavorite(product.id)}
               // TODO - modal de confirmacao p retirar dos favoritos
             />
           </div>
