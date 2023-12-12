@@ -26,14 +26,29 @@ export default async function ProductDetails({
   );
 
   return (
-    <main className="relative flex flex-col justify-between h-[87vh] px-4">
+    <main className="relative flex-col-center justify-between h-[87vh] px-4">
       <ArrowBackToHome />
+
       <div className="flex flex-col px-2">
         <h1 className="mt-[73px] bb-title text-[32px] capitalize self-center">
           {params.slug}
         </h1>
 
-        <div className="self-end flex-col-center gap-7 mt-9">
+        <div
+          className="
+            self-end
+             flex-col-center 
+             gap-7 
+             mt-9 
+             
+             tablet:flex-row 
+             tablet:gap-20
+             tablet:flex-wrap
+
+             tablet:max-w-[620px]
+             laptop:max-w-[980px]
+          "
+        >
           {products.map((product) => (
             <CategoryCard
               key={product.id}

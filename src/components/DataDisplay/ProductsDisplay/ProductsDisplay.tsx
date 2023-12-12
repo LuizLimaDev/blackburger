@@ -15,21 +15,45 @@ export default async function ProductsDisplay() {
     <>
       <FeaturingSlider products={products} />
 
-      <div className="mb-10 mt-11 flex justify-center px-5 laptop:mt-40">
+      <div
+        className="
+          mb-10 
+          mt-11 
+          flex 
+          justify-center 
+          px-5 
+          
+          laptop:mt-40 
+          laptop:flex-col-center
+        "
+      >
         <div
           id="columnLeft"
           className="
-          flex-col-center justify-start gap-10 mb-10 
-          laptop:relative laptop:flex-row
+            flex-col-center 
+            justify-start 
+            gap-10 
+            
+            mb-10 
+
+            laptop:relative 
+            laptop:flex-row
           "
         >
-          {/* TODO - Posicionar no topo no laptop */}
           <Button
             type="button"
             className="
-          flex items-center justify-center w-[74px] h-8 text-base
-          laptop:absolute laptop:top-[-54px] laptop:left-10
-          "
+              flex 
+              items-center 
+              justify-center 
+              w-[74px] 
+              h-8 
+              text-base
+
+              laptop:absolute 
+              laptop:top-[-54px] 
+              laptop:left-10
+            "
           >
             Filtrar
           </Button>
@@ -48,7 +72,9 @@ export default async function ProductsDisplay() {
 
         <div
           id="rightColumn"
-          className="mb-10 flex flex-col items-center justify-start gap-10 pl-7 laptop:flex-row"
+          className="
+            flex-col-center justify-start gap-10 pl-7 mb-10 laptop:flex-row laptop:pl-7
+          "
         >
           {evenProducts.map((product) => (
             <ProductCard

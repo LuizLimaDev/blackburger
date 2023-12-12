@@ -14,8 +14,10 @@ export default function Favorites() {
     <main className="relative">
       <ArrowBackToHome />
 
-      <div className="flex-col-center mt-[72px] px-6">
-        <h1 className="bb-title text-2xl capitalize">Favoritos</h1>
+      <div className="flex-col-center px-6">
+        <h1 className="mt-[72px] bb-title text-2xl capitalize tablet:text-[32px]">
+          Favoritos
+        </h1>
 
         <div
           className="

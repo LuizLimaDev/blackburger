@@ -70,7 +70,7 @@ export default function CategoryCard({
           <p
             className="
                 max-w-[160px] 
-                max-h-[68px] 
+                h-[68px] 
                 mt-2
                 
                 whitespace-wrap  

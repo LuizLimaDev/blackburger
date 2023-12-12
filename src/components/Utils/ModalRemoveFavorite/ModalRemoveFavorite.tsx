@@ -55,7 +55,7 @@ export default function ModalRemoveFavorite({
             bg-gray-bb-300 
 
             tablet:w-[50vw]
-            laptop:w-[28vw]
+            laptop:w-[20vw]
           "
         >
           <Link
@@ -92,7 +92,7 @@ export default function ModalRemoveFavorite({
                 font-bold 
                 text-gray-bb-500
                 
-                bg-gray-bb-100 
+                bg-gray-bb-200 
                 cursor-pointer
               "
             >
