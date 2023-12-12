@@ -1,10 +1,10 @@
 "use client";
 
 import { addedOnCartNotify } from "@/components/DataDisplay/Toasts/ToastContainers/ToastContainers";
-import { CartProduct, ICartContext } from "@/types/cart";
+import { CartProduct, TCartContext } from "@/types/cart";
 import { ReactNode, createContext, useState } from "react";
 
-export const CartContext = createContext<ICartContext>({
+export const CartContext = createContext<TCartContext>({
   productsOnCart: [],
   setProductsOnCart: () => {},
   currentProductId: 0,

@@ -1,8 +1,8 @@
-interface IProps {
+type TProps = {
   undo: () => void;
-}
+};
 
-export default function ToastUndoAddedToCart({ undo }: IProps) {
+export default function ToastUndoAddedToCart({ undo }: TProps) {
   return (
     <>
       <button

@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 
-export type IProduct = {
+export type TProduct = {
   id: number;
   img: string;
   name: string;
@@ -9,9 +9,9 @@ export type IProduct = {
   category_id: number;
 };
 
-export type IProducts = {
-  products: IProduct[];
-  setProducts: Dispatch<SetStateAction<IProduct[]>>;
+export type TProducts = {
+  products: TProduct[];
+  setProducts: Dispatch<SetStateAction<TProduct[]>>;
   currentProductId: number;
   setCurrentProductId: Dispatch<SetStateAction<number>>;
 };

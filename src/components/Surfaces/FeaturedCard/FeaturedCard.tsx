@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 
-interface IFeaturedCardsProps {
+type TFeaturedCardsProps = {
   id: number;
   src: string;
   alt: string;
   productName: string;
   productPrice: string;
-}
+};
 
 export default function FeaturedCard({
   id,
@@ -15,7 +15,7 @@ export default function FeaturedCard({
   alt,
   productName,
   productPrice,
-}: IFeaturedCardsProps) {
+}: TFeaturedCardsProps) {
   const nameSplit = productName.split(" ");
 
   return (

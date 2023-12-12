@@ -1,9 +1,9 @@
 "use client";
 
 import { ReactNode, createContext, useEffect, useState } from "react";
-import { IProduct, IProducts } from "@/types/products";
+import { TProduct, TProducts } from "@/types/products";
 
-export const ProductsContext = createContext<IProducts>({
+export const ProductsContext = createContext<TProducts>({
   products: [],
   setProducts: () => {},
   currentProductId: 0,
@@ -11,13 +11,13 @@ export const ProductsContext = createContext<IProducts>({
 });
 
 const ProductsProvider = ({ children }: { children: ReactNode }) => {
-  const [products, setProducts] = useState<IProduct[]>([]);
+  const [products, setProducts] = useState<TProduct[]>([]);
   const [currentProductId, setCurrentProductId] = useState<number>(0);
 
   useEffect(() => {
     async function getProducts() {
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
-      const allProducts: IProduct[] = await res.json();
+      const allProducts: TProduct[] = await res.json();
 
       setProducts(allProducts);
     }

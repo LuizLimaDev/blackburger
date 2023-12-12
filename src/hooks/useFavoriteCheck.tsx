@@ -2,10 +2,10 @@
 
 import { FavoriteProductsContext } from "@/context/FavoriteProducts";
 import { ProductsContext } from "@/context/ProductsContext";
-import { IProduct } from "@/types/products";
+import { TProduct } from "@/types/products";
 import { useContext, useEffect, useState } from "react";
 
-export default function useFavoriteCheck(product: IProduct) {
+export default function useFavoriteCheck(product: TProduct) {
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
   const { favoritedProducts, addToFavorite, removeFromFavorite } = useContext(
     FavoriteProductsContext
@@ -20,7 +20,7 @@ export default function useFavoriteCheck(product: IProduct) {
     }
   }, [favoritedProducts, setIsFavorite, product]);
 
-  function handdleFavoriteProduct(currentProduct: IProduct, id: number) {
+  function handdleFavoriteProduct(currentProduct: TProduct, id: number) {
     if (isFavorite === false) {
       addToFavorite(currentProduct);
       return;

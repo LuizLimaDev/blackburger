@@ -1,13 +1,13 @@
 import priceConvert from "@/utils/priceConvert";
-import { IProduct } from "@/types/products";
+import { TProduct } from "@/types/products";
 import FeaturedCard from "@/components/Surfaces/FeaturedCard/FeaturedCard";
 
 type TProps = {
-  products: IProduct[];
+  products: TProduct[];
 };
 
 export default async function FeaturingSlider({ products }: TProps) {
-  const featuredProducts: IProduct[] = products.slice(-3);
+  const featuredProducts: TProduct[] = products.slice(-3);
 
   return (
     <div

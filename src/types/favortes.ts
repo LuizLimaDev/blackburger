@@ -1,11 +1,11 @@
 import { Dispatch, SetStateAction } from "react";
-import { IProduct } from "./products";
+import { TProduct } from "./products";
 
-export type IFavoritedProducts = {
-  favoritedProducts: IProduct[];
-  setFavoritedProducts: Dispatch<SetStateAction<IProduct[]>>;
-  currentProduct: IProduct | null;
-  setCurrentProduct: Dispatch<SetStateAction<IProduct | null>>;
-  addToFavorite: (product: IProduct) => void;
+export type TFavoritedProducts = {
+  favoritedProducts: TProduct[];
+  setFavoritedProducts: Dispatch<SetStateAction<TProduct[]>>;
+  currentProduct: TProduct | null;
+  setCurrentProduct: Dispatch<SetStateAction<TProduct | null>>;
+  addToFavorite: (product: TProduct) => void;
   removeFromFavorite: (id: number) => void;
 };

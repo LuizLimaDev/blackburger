@@ -1,7 +1,7 @@
 import ArrowBackToHome from "@/components/Navigation/ArrowBackToHome/ArrowBackToHome";
 import CategoryCard from "@/components/Surfaces/CategoryCard/CategoryCard";
 import { TCategorie } from "@/types/categories";
-import { IProduct } from "@/types/products";
+import { TProduct } from "@/types/products";
 import priceConvert from "../../../../utils/priceConvert";
 
 export default async function ProductDetails({
@@ -12,7 +12,7 @@ export default async function ProductDetails({
   const resProducts = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/products`
   );
-  const dataProducts: IProduct[] = await resProducts.json();
+  const dataProducts: TProduct[] = await resProducts.json();
 
   const resCategories = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/categories`
@@ -21,7 +21,7 @@ export default async function ProductDetails({
   const currentProductCategory = dataCategories.find(
     (categorie) => categorie.name === params.slug
   );
-  const products: IProduct[] = dataProducts.filter(
+  const products: TProduct[] = dataProducts.filter(
     (product) => product.category_id === currentProductCategory?.id
   );
 

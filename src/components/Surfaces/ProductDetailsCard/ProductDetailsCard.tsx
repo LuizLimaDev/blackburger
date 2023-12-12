@@ -4,7 +4,7 @@ import QtdCounter from "@/components/DataDisplay/QtdCounter/QtdCounter";
 import Button from "@/components/Inputs/Button/Button";
 import { CartContext } from "@/context/CartContext";
 import { ProductsContext } from "@/context/ProductsContext";
-import { IProduct } from "@/types/products";
+import { TProduct } from "@/types/products";
 import Image from "next/image";
 import { useContext, useEffect } from "react";
 
@@ -24,7 +24,7 @@ export default function ProductDetailsCard({ params }: IProps) {
     setQuantityCounter(1);
   }, [id, setQuantityCounter]);
 
-  const currentProduct: IProduct = products.find(
+  const currentProduct: TProduct = products.find(
     (product) => product.id === id
   )!;
 
@@ -33,7 +33,7 @@ export default function ProductDetailsCard({ params }: IProps) {
     (product) => currentProduct?.category_id === product
   );
 
-  function handleAddProductToCart(currentProduct: IProduct): void {
+  function handleAddProductToCart(currentProduct: TProduct): void {
     addProductToCart({
       ...currentProduct,
       quantity: quantityCounter,

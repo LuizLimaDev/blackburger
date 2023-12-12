@@ -1,11 +1,11 @@
 "use client";
 
 import { favoriteNotify } from "@/components/DataDisplay/Toasts/ToastContainers/ToastContainers";
-import { IFavoritedProducts } from "@/types/favortes";
-import { IProduct } from "@/types/products";
+import { TFavoritedProducts } from "@/types/favortes";
+import { TProduct } from "@/types/products";
 import { ReactNode, createContext, useState } from "react";
 
-export const FavoriteProductsContext = createContext<IFavoritedProducts>({
+export const FavoriteProductsContext = createContext<TFavoritedProducts>({
   favoritedProducts: [],
   setFavoritedProducts: () => {},
   currentProduct: null,
@@ -15,10 +15,10 @@ export const FavoriteProductsContext = createContext<IFavoritedProducts>({
 });
 
 const FavoriteProductsProvider = ({ children }: { children: ReactNode }) => {
-  const [favoritedProducts, setFavoritedProducts] = useState<IProduct[]>([]);
-  const [currentProduct, setCurrentProduct] = useState<IProduct | null>(null);
+  const [favoritedProducts, setFavoritedProducts] = useState<TProduct[]>([]);
+  const [currentProduct, setCurrentProduct] = useState<TProduct | null>(null);
 
-  function addToFavorite(currentProduct: IProduct): void {
+  function addToFavorite(currentProduct: TProduct): void {
     const isFavorite = favoritedProducts.find(
       (product) => currentProduct.id === product.id
     );
