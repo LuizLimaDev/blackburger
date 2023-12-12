@@ -1,5 +1,6 @@
 "use client";
 
+import { favoriteNotify } from "@/components/DataDisplay/Toasts/ToastContainers/ToastContainers";
 import { IFavoritedProducts } from "@/types/favortes";
 import { IProduct } from "@/types/products";
 import { ReactNode, createContext, useState } from "react";
@@ -7,15 +8,25 @@ import { ReactNode, createContext, useState } from "react";
 export const FavoriteProductsContext = createContext<IFavoritedProducts>({
   favoritedProducts: [],
   setFavoritedProducts: () => {},
+  currentProduct: null,
+  setCurrentProduct: () => {},
   addToFavorite: () => {},
   removeFromFavorite: () => {},
 });
 
 const FavoriteProductsProvider = ({ children }: { children: ReactNode }) => {
   const [favoritedProducts, setFavoritedProducts] = useState<IProduct[]>([]);
+  const [currentProduct, setCurrentProduct] = useState<IProduct | null>(null);
 
   function addToFavorite(currentProduct: IProduct): void {
-    setFavoritedProducts((prev) => [...prev, currentProduct]);
+    const isFavorite = favoritedProducts.find(
+      (product) => currentProduct.id === product.id
+    );
+
+    if (!isFavorite) {
+      setFavoritedProducts((prev) => [...prev, currentProduct]);
+      favoriteNotify();
+    }
   }
 
   function removeFromFavorite(id: number): void {
@@ -31,6 +42,8 @@ const FavoriteProductsProvider = ({ children }: { children: ReactNode }) => {
       value={{
         favoritedProducts,
         setFavoritedProducts,
+        currentProduct,
+        setCurrentProduct,
         addToFavorite,
         removeFromFavorite,
       }}

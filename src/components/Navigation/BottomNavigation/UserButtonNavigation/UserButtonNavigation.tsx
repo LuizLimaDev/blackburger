@@ -11,7 +11,6 @@ export default function UserButtonNavigation() {
     <div className="flex-col-center relative">
       <button
         type="button"
-        className=" px-5"
         onClick={() => {
           setActiveUserMenu(!activeUserMenu);
         }}
@@ -31,8 +30,7 @@ export default function UserButtonNavigation() {
             ${activeUserMenu === true ? "flex" : "hidden"}
 
             absolute
-            top-[-110px]
-            h-[100px]
+            top-[-145px]
             
             min-w-[160px]
             flex-col
@@ -45,7 +43,7 @@ export default function UserButtonNavigation() {
   
       `}
       >
-        <UserLoged />
+        <UserLoged setActiveUserMenu={setActiveUserMenu} />
 
         <div id="arrow" className="popover-arrow left-16 xl:left-14"></div>
       </div>
