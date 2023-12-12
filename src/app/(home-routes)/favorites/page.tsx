@@ -3,14 +3,12 @@
 import ArrowBackToHome from "@/components/Navigation/ArrowBackToHome/ArrowBackToHome";
 import FavoritesCards from "@/components/Surfaces/FavoritesCards/FavoritesCards";
 import { FavoriteProductsContext } from "@/context/FavoriteProducts";
-import priceConvert from "@/utils/priceConvert";
 import { useContext } from "react";
 
 export default function Favorites() {
   const { favoritedProducts, removeFromFavorite } = useContext(
     FavoriteProductsContext
   );
-  console.log(favoritedProducts);
 
   return (
     <main>
@@ -33,15 +31,10 @@ export default function Favorites() {
             laptop:w-[40%]
             "
         >
-          {/* products list 2 column flex wrap in favoritesCard*/}
           {favoritedProducts.map((product) => (
             <FavoritesCards
               key={product.id}
-              id={product.id}
-              src={product.img}
-              alt={product.name}
-              name={product.name}
-              price={priceConvert(product.price)}
+              product={product}
               removeFromFavorite={removeFromFavorite}
             />
           ))}
