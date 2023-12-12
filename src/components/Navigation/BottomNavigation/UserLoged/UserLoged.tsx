@@ -26,7 +26,7 @@ export default function UserLoged({ setActiveUserMenu }: TProps) {
       return session?.user?.name?.split(" ")[0];
     }
 
-    return session?.user?.UserLoged?.name.split(" ")[0];
+    return session?.user?.userLoged?.name.split(" ")[0];
   }
 
   return (
