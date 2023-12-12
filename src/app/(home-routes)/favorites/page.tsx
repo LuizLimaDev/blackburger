@@ -2,16 +2,16 @@
 
 import ArrowBackToHome from "@/components/Navigation/ArrowBackToHome/ArrowBackToHome";
 import FavoritesCards from "@/components/Surfaces/FavoritesCards/FavoritesCards";
+import ModalRemoveFavorite from "@/components/Utils/ModalRemoveFavorite/ModalRemoveFavorite";
 import { FavoriteProductsContext } from "@/context/FavoriteProducts";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 export default function Favorites() {
-  const { favoritedProducts, removeFromFavorite } = useContext(
-    FavoriteProductsContext
-  );
+  const { favoritedProducts } = useContext(FavoriteProductsContext);
+  const [openModalRemoveFavorite, setOpenModalRemoveFavorite] = useState(false);
 
   return (
-    <main>
+    <main className="relative">
       <ArrowBackToHome />
 
       <div className="flex-col-center mt-[72px] px-6">
@@ -35,11 +35,16 @@ export default function Favorites() {
             <FavoritesCards
               key={product.id}
               product={product}
-              removeFromFavorite={removeFromFavorite}
+              setOpenModalRemoveFavorite={setOpenModalRemoveFavorite}
             />
           ))}
         </div>
       </div>
+
+      <ModalRemoveFavorite
+        openModalRemoveFavorite={openModalRemoveFavorite}
+        setOpenModalRemoveFavorite={setOpenModalRemoveFavorite}
+      />
     </main>
   );
 }

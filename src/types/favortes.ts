@@ -4,6 +4,8 @@ import { IProduct } from "./products";
 export type IFavoritedProducts = {
   favoritedProducts: IProduct[];
   setFavoritedProducts: Dispatch<SetStateAction<IProduct[]>>;
+  currentProduct: IProduct | null;
+  setCurrentProduct: Dispatch<SetStateAction<IProduct | null>>;
   addToFavorite: (product: IProduct) => void;
   removeFromFavorite: (id: number) => void;
 };
