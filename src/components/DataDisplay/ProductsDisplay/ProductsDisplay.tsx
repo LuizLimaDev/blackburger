@@ -5,11 +5,16 @@ import { TProduct } from "@/types/products";
 import priceConvert from "@/utils/priceConvert";
 
 export default async function ProductsDisplay() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
-  const products: TProduct[] = await res.json();
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API}/api/products`);
+  const { data } = await res.json();
+  const products: TProduct[] = data;
 
-  const oddProducts = products.filter((product) => product.id % 2 === 0);
-  const evenProducts = products.filter((product) => product.id % 2 === 1);
+  const oddProducts: TProduct[] = products.filter(
+    (product: TProduct) => product.id % 2 === 0
+  );
+  const evenProducts: TProduct[] = products.filter(
+    (product: TProduct) => product.id % 2 === 1
+  );
 
   return (
     <>
@@ -58,7 +63,7 @@ export default async function ProductsDisplay() {
             Filtrar
           </Button>
 
-          {oddProducts.map((product) => (
+          {oddProducts.map((product: TProduct) => (
             <ProductCard
               key={product.id}
               id={product.id}
@@ -76,7 +81,7 @@ export default async function ProductsDisplay() {
             flex-col-center justify-start gap-10 pl-7 mb-10 laptop:flex-row laptop:pl-7
           "
         >
-          {evenProducts.map((product) => (
+          {evenProducts.map((product: TProduct) => (
             <ProductCard
               key={product.id}
               id={product.id}
