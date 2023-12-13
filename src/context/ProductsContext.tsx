@@ -16,9 +16,8 @@ const ProductsProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     async function getProducts() {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API}/api/products`);
-      const { data } = await res.json();
-      const allProducts: TProduct[] = data;
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
+      const allProducts: TProduct[] = await res.json();
 
       setProducts(allProducts);
     }
