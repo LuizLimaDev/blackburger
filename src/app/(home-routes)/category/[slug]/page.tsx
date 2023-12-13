@@ -9,20 +9,21 @@ export default async function ProductDetails({
 }: {
   params: { slug: string };
 }) {
-  const resProducts = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/products`
-  );
-  const dataProducts: TProduct[] = await resProducts.json();
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API}/api/products`);
+  const { data } = await res.json();
+  const dataProducts: TProduct[] = data;
 
   const resCategories = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/categories`
+    `${process.env.NEXT_PUBLIC_API}/api/categories`
   );
-  const dataCategories: TCategorie[] = await resCategories.json();
+  const { data: categories } = await resCategories.json();
+  const dataCategories: TCategorie[] = categories;
+
   const currentProductCategory = dataCategories.find(
-    (categorie) => categorie.name === params.slug
+    (categorie: TCategorie) => categorie.name === params.slug
   );
   const products: TProduct[] = dataProducts.filter(
-    (product) => product.category_id === currentProductCategory?.id
+    (product: TProduct) => product.category_id === currentProductCategory?.id
   );
 
   return (
