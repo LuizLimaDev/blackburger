@@ -6,9 +6,11 @@ import Button from "@/components/Inputs/Button/Button";
 import Input from "@/components/Inputs/Input/Input";
 import InputPassword from "@/components/Inputs/Input/InputPassword";
 import { SignUpSchema } from "@/schemas/signUpSchema";
+import supabase from "@/services/supabase/supabase";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { IMaskInput } from "react-imask";
 
@@ -20,6 +22,7 @@ type IUserData = {
 };
 
 export default function SignUpForm() {
+  const [ApiError, setApiError] = useState<string>("");
   const router = useRouter();
   const {
     register,
@@ -38,13 +41,24 @@ export default function SignUpForm() {
   });
 
   const onSubmit: SubmitHandler<IUserData> = async (data: IUserData) => {
-    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/signup`, {
+    setApiError("");
+
+    const res = await fetch(`${location.origin}/api/signup`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
       body: JSON.stringify(data),
     });
+
+    const status = await res.ok;
+
+    if (!status) {
+      const result = await res.json();
+      setApiError(result.message);
+      return;
+    }
+
     reset();
 
     signedUpNotify("Cadastrado com sucesso!");
@@ -123,6 +137,7 @@ export default function SignUpForm() {
           {errors.password?.message && (
             <FormAlert alert={errors.password?.message} />
           )}
+          {ApiError && <FormAlert alert={ApiError} />}
         </div>
 
         <Button type="submit" className="mt-11">
