@@ -2,7 +2,6 @@
 
 import { FavoriteProductsContext } from "@/context/FavoriteProducts";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import {
   Dispatch,
   SetStateAction,
@@ -31,7 +30,6 @@ export default function ModalRemoveFavorite({
 
   function handleRemoveFavorite() {
     removeFromFavorite(currentProductId);
-    console.log("removendo dos favoritos", currentProductId);
     setOpenModalRemoveFavorite(false);
   }
 

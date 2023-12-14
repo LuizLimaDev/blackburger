@@ -8,5 +8,5 @@ export const signInSchema = yup.object({
   password: yup
     .string()
     .min(5, "A senha deve conter no mín 5 caracteres!")
-    .required(),
+    .required("Preencha o password por favor!"),
 });

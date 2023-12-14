@@ -3,12 +3,12 @@
 import { CartContext } from "@/context/CartContext";
 import { ProductsContext } from "@/context/ProductsContext";
 import useFavoriteCheck from "@/hooks/useFavoriteCheck";
-import { IProduct } from "@/types/products";
+import { TProduct } from "@/types/products";
 import Image from "next/image";
 import { useContext } from "react";
 
 type TProps = {
-  product: IProduct;
+  product: TProduct;
   src: string;
   alt: string;
   name: string;
@@ -27,7 +27,7 @@ export default function CategoryCard({
   const { products } = useContext(ProductsContext);
   const { addProductToCart } = useContext(CartContext);
 
-  const currentProduct: IProduct = products.filter(
+  const currentProduct: TProduct = products.filter(
     (allProduct) => allProduct.id === product.id
   )[0];
 

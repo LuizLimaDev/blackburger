@@ -1,9 +1,15 @@
+import supabase from "@/services/supabase/supabase";
 import { TCategorie } from "@/types/categories";
 import Link from "next/link";
 
 export default async function MenuSlider() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`);
-  const categories: TCategorie[] = await res.json();
+  const { data } = await supabase.from("products_categories").select();
+
+  if (!data) {
+    throw new Error("Nenhuma categoria cadastrada!");
+  }
+
+  const categories: TCategorie[] = data;
 
   return (
     <div className="mx-4 mt-8 flex justify-center">

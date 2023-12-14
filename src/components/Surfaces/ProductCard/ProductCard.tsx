@@ -3,11 +3,11 @@
 import { FavoriteProductsContext } from "@/context/FavoriteProducts";
 import { ProductsContext } from "@/context/ProductsContext";
 import useFavoriteCheck from "@/hooks/useFavoriteCheck";
-import { IProduct } from "@/types/products";
+import { TProduct } from "@/types/products";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
-interface IProductCardProps {
+interface TProductCardProps {
   id: number;
   src: string;
   alt: string;
@@ -21,11 +21,11 @@ export default function ProductCard({
   alt,
   productName,
   productPrice,
-}: IProductCardProps) {
+}: TProductCardProps) {
   const { products } = useContext(ProductsContext);
   const router = useRouter();
 
-  const currentProduct: IProduct = products.filter(
+  const currentProduct: TProduct = products.filter(
     (product) => product.id === id
   )[0];
 

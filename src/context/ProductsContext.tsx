@@ -1,9 +1,10 @@
 "use client";
 
 import { ReactNode, createContext, useEffect, useState } from "react";
-import { IProduct, IProducts } from "@/types/products";
+import { TProduct, TProducts } from "@/types/products";
+import supabase from "@/services/supabase/supabase";
 
-export const ProductsContext = createContext<IProducts>({
+export const ProductsContext = createContext<TProducts>({
   products: [],
   setProducts: () => {},
   currentProductId: 0,
@@ -11,13 +12,18 @@ export const ProductsContext = createContext<IProducts>({
 });
 
 const ProductsProvider = ({ children }: { children: ReactNode }) => {
-  const [products, setProducts] = useState<IProduct[]>([]);
+  const [products, setProducts] = useState<TProduct[]>([]);
   const [currentProductId, setCurrentProductId] = useState<number>(0);
 
   useEffect(() => {
     async function getProducts() {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
-      const allProducts: IProduct[] = await res.json();
+      const { data } = await supabase.from("products").select();
+
+      if (!data) {
+        throw new Error("Nenhum produto cadastrado!");
+      }
+
+      const allProducts: TProduct[] = data;
 
       setProducts(allProducts);
     }

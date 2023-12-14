@@ -4,6 +4,7 @@ import ArrowBackToHome from "@/components/Navigation/ArrowBackToHome/ArrowBackTo
 import CartProductCard from "@/components/Surfaces/CartProductCard/CartProductCard";
 import { CartContext } from "@/context/CartContext";
 import priceConvert from "@/utils/priceConvert";
+import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
 
@@ -15,7 +16,7 @@ export default function Cart() {
     <main className="relative flex h-screen flex-col items-center laptop:mx-40">
       <ArrowBackToHome />
 
-      <h1 className="bb-title mt-10">Carrinho</h1>
+      <h1 className="mt-[72px] bb-title text-[32px] capitalize">Carrinho</h1>
 
       <div className="no-scrollbar h-[47%] overflow-y-scroll pb-6 tablet:h-[75%]">
         {productsOnCart.map((product) => (
@@ -24,6 +25,26 @@ export default function Cart() {
           </div>
         ))}
       </div>
+
+      {productsOnCart.length === 0 && (
+        <Image
+          src="/ui/empty-cart.svg"
+          alt="carrinho vazio"
+          width={0}
+          height={0}
+          sizes="100vw"
+          className="
+            w-[200px] 
+            h-[167px] 
+            mb-[50vh] 
+            
+            drop-shadow-bb-white-shadow
+            
+            tablet:w-[300px]
+            tablet:h-[267px] 
+            "
+        />
+      )}
 
       <div
         className="
@@ -51,7 +72,12 @@ export default function Cart() {
             <p>R$ {priceConvert(cartTotalPrice)}</p>
           </div>
 
-          <Link href="/modaldelivery" className="bb-button h-[34px]">
+          <Link
+            href={productsOnCart.length > 0 ? "/modaldelivery" : ""}
+            className={`${
+              productsOnCart.length > 0 ? "" : "text-gray-bb-300"
+            } bb-button h-[34px]`}
+          >
             Finalizar Compra
           </Link>
         </div>
