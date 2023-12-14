@@ -30,7 +30,9 @@ export default function FeaturedCard({
             alt={alt}
             width={0}
             height={0}
-            className="absolute -left-11 bottom-1 z-10 h-full max-h-[114px] w-full max-w-[110px]"
+            className="
+              absolute -left-11 bottom-1 z-10 h-full max-h-[114px] w-full max-w-[110px]
+            "
           />
           <div
             className="
@@ -38,33 +40,23 @@ export default function FeaturedCard({
             "
           >
             <div className="absolute top-2">
-              <h5
-                className={`
-            ${
-              nameSplit[0].length > 5
-                ? "text-[28px]"
-                : "pl-2 text-[38px] tracking-[0.7rem]"
-            } 
-            ml-10 w-[97px] font-lilita uppercase leading-none text-gray-bb-100 drop-shadow-bb-2
-            `}
-              >
-                {nameSplit[0]}
-              </h5>
-              <h5
-                className={`
-            ${
-              nameSplit[0].length > 5
-                ? "text-[28px]"
-                : "pl-2 text-[38px] tracking-[0.7rem]"
-            }
-            ml-12 w-[97px] font-lilita text-[32px] uppercase leading-none text-gray-bb-100100 drop-shadow-bb-2
-            `}
-              >
-                {nameSplit[1]}
-              </h5>
+              <h5 className="featuring-title">{nameSplit[0]}</h5>
+              <h5 className="featuring-title pl-6">{nameSplit[1]}</h5>
             </div>
 
-            <p className="drop-shadow-bb-price absolute -bottom-2 ml-14 w-full font-lilita text-base  text-gray-bb-500 text-shadow-bb-price">
+            <p
+              className="
+                drop-shadow-bb-price
+                absolute
+                bottom-[-8px]
+                ml-14
+                w-full
+                font-lilita
+                text-base
+                text-gray-bb-500
+                text-shadow-bb-price
+              "
+            >
               R$ {productPrice}
             </p>
           </div>
