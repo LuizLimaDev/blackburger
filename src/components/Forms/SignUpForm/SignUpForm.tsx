@@ -10,6 +10,7 @@ import supabase from "@/services/supabase/supabase";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { IMaskInput } from "react-imask";
 
@@ -21,6 +22,7 @@ type IUserData = {
 };
 
 export default function SignUpForm() {
+  const [ApiError, setApiError] = useState<string>("");
   const router = useRouter();
   const {
     register,
@@ -39,13 +41,23 @@ export default function SignUpForm() {
   });
 
   const onSubmit: SubmitHandler<IUserData> = async (data: IUserData) => {
-    await fetch(`${location.origin}/api/signup`, {
+    setApiError("");
+
+    const res = await fetch(`${location.origin}/api/signup`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
       body: JSON.stringify(data),
-    }).catch((error) => console.log(error));
+    });
+
+    const status = await res.ok;
+
+    if (!status) {
+      const result = await res.json();
+      setApiError(result.message);
+      return;
+    }
 
     reset();
 
@@ -125,6 +137,7 @@ export default function SignUpForm() {
           {errors.password?.message && (
             <FormAlert alert={errors.password?.message} />
           )}
+          {ApiError && <FormAlert alert={ApiError} />}
         </div>
 
         <Button type="submit" className="mt-11">

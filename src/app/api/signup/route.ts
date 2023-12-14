@@ -1,6 +1,5 @@
 const bcrypt = require("bcrypt");
 import supabase from "@/services/supabase/supabase";
-import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   const { name, email, phone, password } = await request.json();
@@ -13,19 +12,19 @@ export async function POST(request: Request) {
 
   // TODO - Verificar pq ele nao retorna o erro
   if (emailVerification) {
-    return Response.json({ result: "Email já cadastrado" }, { status: 400 });
+    return Response.json({ message: "Email já cadastrado!" }, { status: 400 });
+  } else {
+    const { error } = await supabase.from("users").insert({
+      name,
+      email,
+      phone,
+      password: passwordCryptograpy,
+    });
+
+    if (error) {
+      return Response.json(error);
+    }
+
+    return Response.json({ message: "Usuário cadastrado com sucesso!" });
   }
-
-  const { error } = await supabase.from("users").insert({
-    name,
-    email,
-    phone,
-    password: passwordCryptograpy,
-  });
-
-  if (error) {
-    return Response.json(error);
-  }
-
-  return Response.json({ message: "Usuário cadastrado com sucesso!" });
 }
