@@ -1,12 +1,18 @@
 import Button from "@/components/Inputs/Button/Button";
 import FeaturingSlider from "@/components/Navigation/FeaturingSlider/FeaturingSlider";
 import ProductCard from "@/components/Surfaces/ProductCard/ProductCard";
+import supabase from "@/services/supabase/supabase";
 import { TProduct } from "@/types/products";
 import priceConvert from "@/utils/priceConvert";
 
 export default async function ProductsDisplay() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
-  const products: TProduct[] = await res.json();
+  const { data } = await supabase.from("products").select();
+
+  if (!data) {
+    throw new Error("Nenhum produto cadastrado!");
+  }
+
+  const products: TProduct[] = data;
 
   const oddProducts = products.filter((product) => product.id % 2 === 0);
   const evenProducts = products.filter((product) => product.id % 2 === 1);

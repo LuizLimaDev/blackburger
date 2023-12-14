@@ -3,21 +3,32 @@ import CategoryCard from "@/components/Surfaces/CategoryCard/CategoryCard";
 import { TCategorie } from "@/types/categories";
 import { TProduct } from "@/types/products";
 import priceConvert from "../../../../utils/priceConvert";
+import supabase from "@/services/supabase/supabase";
 
 export default async function ProductDetails({
   params,
 }: {
   params: { slug: string };
 }) {
-  const resProducts = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/products`
-  );
-  const dataProducts: TProduct[] = await resProducts.json();
+  // products data
+  const { data } = await supabase.from("products").select();
 
-  const resCategories = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/categories`
-  );
-  const dataCategories: TCategorie[] = await resCategories.json();
+  if (!data) {
+    throw new Error("Nenhum produto cadastrado!");
+  }
+
+  const dataProducts: TProduct[] = data;
+
+  // categories data
+  const response = await supabase.from("products_categories").select();
+
+  if (!response.data) {
+    throw new Error("Nenhuma categoria cadastrada!");
+  }
+
+  const dataCategories: TCategorie[] = response.data;
+
+  // finding products by category
   const currentProductCategory = dataCategories.find(
     (categorie) => categorie.name === params.slug
   );

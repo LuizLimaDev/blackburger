@@ -105,25 +105,6 @@ export default function ProductDetailsCard({ params }: IProps) {
       >
         Adicionar
       </Button>
-
-      {/* <ToastContainer
-        enableMultiContainer
-        containerId={"cart"}
-        position="bottom-center"
-        limit={2}
-        hideProgressBar
-        icon={false}
-        newestOnTop={false}
-        rtl={false}
-        pauseOnFocusLoss
-        pauseOnHover={false}
-        // closeButton={<ToastUndoAddedToCart undo={undoProductAddedToCart} />}
-        toastClassName={({ type }: any) =>
-          contextClass[type || "default"] +
-          " absolute flex w-full bottom-8 p-1 mb-[48px] min-h-10 rounded-md justify-between overflow-hidden cursor-pointer"
-        }
-        bodyClassName={() => "flex"}
-      /> */}
     </>
   );
 }

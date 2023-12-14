@@ -2,6 +2,7 @@
 
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { TProduct, TProducts } from "@/types/products";
+import supabase from "@/services/supabase/supabase";
 
 export const ProductsContext = createContext<TProducts>({
   products: [],
@@ -16,8 +17,13 @@ const ProductsProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     async function getProducts() {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`);
-      const allProducts: TProduct[] = await res.json();
+      const { data } = await supabase.from("products").select();
+
+      if (!data) {
+        throw new Error("Nenhum produto cadastrado!");
+      }
+
+      const allProducts: TProduct[] = data;
 
       setProducts(allProducts);
     }
