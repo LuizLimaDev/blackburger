@@ -14,6 +14,7 @@ export const authOptions: AuthOptions = {
       },
 
       async authorize(credentials) {
+        // TODO - fazer o post de login no Supabase
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/`, {
           method: "POST",
           headers: {
