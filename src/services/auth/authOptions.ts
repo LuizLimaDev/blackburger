@@ -23,7 +23,7 @@ export const authOptions: AuthOptions = {
           .single();
 
         if (error) {
-          throw new Error(String(error));
+          throw new Error("Email ou senha inválido!");
         }
 
         const passwordVerification = await bcrypt.compare(
@@ -31,7 +31,7 @@ export const authOptions: AuthOptions = {
           data.password
         );
 
-        if (!passwordVerification) {
+        if (!passwordVerification || credentials?.email !== data.email) {
           throw new Error("Email ou senha inválido!");
         }
 
