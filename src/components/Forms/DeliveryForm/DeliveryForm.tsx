@@ -179,10 +179,12 @@ export default function DeliveryForm() {
 
               disabled:text-gray-bb-300
             "
-                defaultValue="placeholder"
-                {...register("paymentMethod")}
+                defaultValue=""
+                {...register("paymentMethod", {
+                  required: "Escolha uma forma de pagamento!",
+                })}
               >
-                <option value="placeholder" disabled>
+                <option value="" disabled>
                   tipo de pagamento
                 </option>
                 <option value="Pix"> Pix </option>
