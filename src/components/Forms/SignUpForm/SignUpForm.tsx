@@ -6,7 +6,6 @@ import Button from "@/components/Inputs/Button/Button";
 import Input from "@/components/Inputs/Input/Input";
 import InputPassword from "@/components/Inputs/Input/InputPassword";
 import { SignUpSchema } from "@/schemas/signUpSchema";
-import supabase from "@/services/supabase/supabase";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
