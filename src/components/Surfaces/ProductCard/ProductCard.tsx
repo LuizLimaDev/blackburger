@@ -1,6 +1,5 @@
 "use client";
 
-import { FavoriteProductsContext } from "@/context/FavoriteProducts";
 import { ProductsContext } from "@/context/ProductsContext";
 import useFavoriteCheck from "@/hooks/useFavoriteCheck";
 import { TProduct } from "@/types/products";
