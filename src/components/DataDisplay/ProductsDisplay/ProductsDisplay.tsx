@@ -1,4 +1,3 @@
-import Button from "@/components/Inputs/Button/Button";
 import FeaturingSlider from "@/components/Navigation/FeaturingSlider/FeaturingSlider";
 import ProductCard from "@/components/Surfaces/ProductCard/ProductCard";
 import supabase from "@/services/supabase/supabase";
@@ -14,8 +13,12 @@ export default async function ProductsDisplay() {
 
   const products: TProduct[] = data;
 
-  const oddProducts = products.filter((product) => product.id % 2 === 0);
-  const evenProducts = products.filter((product) => product.id % 2 === 1);
+  const oddProducts: TProduct[] = products.filter(
+    (product) => product.id % 2 === 0
+  );
+  const evenProducts: TProduct[] = products.filter(
+    (product) => product.id % 2 === 1
+  );
 
   return (
     <>
@@ -23,14 +26,13 @@ export default async function ProductsDisplay() {
 
       <div
         className="
-          mb-10 
-          mt-11 
           flex 
           justify-center 
-          px-5 
+          gap-6
           
-          laptop:mt-40 
-          laptop:flex-col-center
+          pt-16
+          pb-5 
+          mb-10 
         "
       >
         <div
@@ -40,30 +42,17 @@ export default async function ProductsDisplay() {
             justify-start 
             gap-10 
             
+            mt-14
             mb-10 
 
-            laptop:relative 
-            laptop:flex-row
+            tablet:flex-row
+            tablet:flex-wrap
+            tablet:justify-center
+            tablet:max-w-[359px]
+            tablet:mt-0
+            laptop:hidden
           "
         >
-          <Button
-            type="button"
-            className="
-              flex 
-              items-center 
-              justify-center 
-              w-[74px] 
-              h-8 
-              text-base
-
-              laptop:absolute 
-              laptop:top-[-54px] 
-              laptop:left-10
-            "
-          >
-            Filtrar
-          </Button>
-
           {oddProducts.map((product) => (
             <ProductCard
               key={product.id}
@@ -79,10 +68,46 @@ export default async function ProductsDisplay() {
         <div
           id="rightColumn"
           className="
-            flex-col-center justify-start gap-10 pl-7 mb-10 laptop:flex-row laptop:pl-7
+            flex-col-center 
+            justify-start 
+            gap-10 
+            
+            mb-10 
+
+            tablet:flex-row
+            tablet:flex-wrap
+            tablet:justify-center
+            tablet:gap-8
+            tablet:max-w-[359px]
+            tablet:mt-0 
+            laptop:hidden
+
           "
         >
           {evenProducts.map((product) => (
+            <ProductCard
+              key={product.id}
+              id={product.id}
+              src={product.img}
+              alt={product.name}
+              productName={product.name}
+              productPrice={priceConvert(product.price)}
+            />
+          ))}
+        </div>
+
+        <div
+          className="
+            hidden 
+            
+            laptop:flex
+            laptop:justify-start
+            laptop:gap-6
+            laptop:flex-wrap
+            laptop:w-[80%]
+          "
+        >
+          {products.map((product) => (
             <ProductCard
               key={product.id}
               id={product.id}
