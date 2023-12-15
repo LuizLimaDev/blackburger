@@ -2,6 +2,8 @@ import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import FacebookProvider from "next-auth/providers/facebook";
 import GoogleProvider from "next-auth/providers/google";
+import supabase from "../supabase/supabase";
+const bcrypt = require("bcrypt");
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -14,24 +16,32 @@ export const authOptions: AuthOptions = {
       },
 
       async authorize(credentials) {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: credentials?.email,
-            password: credentials?.password,
-          }),
-        });
+        let { data, error } = await supabase
+          .from("users")
+          .select()
+          .eq("email", `${credentials?.email}`)
+          .single();
 
-        const user = await response.json();
-
-        if (response.ok === false) {
-          throw new Error(user.menssagem);
+        if (error) {
+          throw new Error("Email ou senha inválido!");
         }
 
-        if (user && response.ok) return user;
+        const passwordVerification = await bcrypt.compare(
+          credentials?.password,
+          data.password
+        );
+
+        if (!passwordVerification || credentials?.email !== data.email) {
+          throw new Error("Email ou senha inválido!");
+        }
+
+        const user = {
+          id: data.id,
+          name: data.name,
+          email: data.email,
+        };
+
+        if (user) return user;
 
         return null;
       },
