@@ -3,18 +3,24 @@
 import { useContext } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import { CartContext } from "../../../../context/CartContext";
 import { contextClass } from "../ContextClass";
 import ToastUndoAddedToCart from "../ToastUndoAddedToCart/ToastUndoAddedToCart";
 import { CartContext } from "@/context/CartContext";
 import ToastUndoFavorite from "../ToastUndoFavorite/ToastUndoFavorite";
 import { FavoriteProductsContext } from "@/context/FavoriteProducts";
-// import ToastUndoFavorite from "../ToastUndoFavorite/ToastUndoFavorite";
+import Image from "next/image";
 
 export const signedUpNotify = (msg: string) => {
   toast.success(msg, {
     containerId: "favorite",
-    icon: () => <img src="/icons/success.svg" width={24} />,
+    icon: () => (
+      <Image
+        src="/icons/success.svg"
+        alt="sucesso no cadastro"
+        width={24}
+        height={24}
+      />
+    ),
     position: "bottom-center",
     autoClose: 3000,
     hideProgressBar: true,
@@ -29,7 +35,14 @@ export const signedUpNotify = (msg: string) => {
 export const favoriteNotify = () => {
   toast.success("Favoritado com sucesso!", {
     containerId: "favorite",
-    icon: () => <img src="/icons/favorite.svg" width={24} />,
+    icon: () => (
+      <Image
+        src="/icons/favorite.svg"
+        alt="favoritado"
+        width={24}
+        height={24}
+      />
+    ),
     position: "bottom-center",
     autoClose: 3000,
     hideProgressBar: true,
@@ -44,7 +57,14 @@ export const favoriteNotify = () => {
 export const addedOnCartNotify = () => {
   toast.success("Adicionado ao carrinho!", {
     containerId: "cart",
-    icon: () => <img src="/icons/notify-cart.svg" />,
+    icon: () => (
+      <Image
+        src="/icons/notify-cart.svg"
+        alt="adicionado ao carrinho"
+        width={24}
+        height={24}
+      />
+    ),
     position: "bottom-center",
     autoClose: 3000,
     hideProgressBar: true,
