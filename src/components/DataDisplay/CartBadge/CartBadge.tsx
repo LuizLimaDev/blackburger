@@ -2,13 +2,14 @@
 
 import { useContext } from "react";
 import { CartContext } from "../../../context/CartContext";
+import useProductsOnCart from "@/hooks/useProductsOnCart";
 
 export default function CartBadge() {
-  const { productsOnCart } = useContext(CartContext);
+  const numberOfProductsOnCart = useProductsOnCart();
 
   return (
     <>
-      {productsOnCart.length > 0 && (
+      {numberOfProductsOnCart > 0 && (
         <span
           className="
             absolute 
@@ -25,9 +26,10 @@ export default function CartBadge() {
             font-lilita 
             text-gray-bb-100
             bg-red-bb-500  
-            "
+          "
+          role="numberOfProducts"
         >
-          {productsOnCart.length}
+          {numberOfProductsOnCart}
         </span>
       )}
     </>

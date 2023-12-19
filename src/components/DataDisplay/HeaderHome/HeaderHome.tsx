@@ -14,6 +14,7 @@ export default function HeaderHome() {
           height={67}
           priority={true}
           className="h-auto w-auto"
+          aria-label="logo black burger"
         />
         <h1 className="bb-title text-2xl capitalize">Black Burger</h1>
       </div>
@@ -26,15 +27,17 @@ export default function HeaderHome() {
           height={0}
           sizes="100vw"
           className="w-6 h-7 drop-shadow-bb-2"
+          aria-label="imagem de notificação"
         />
-        <span
+        <p
           className={`
         ${isOpen ? "text-green-500" : "text-red-500"}
         font-lilita text-xs uppercase mt-1 drop-shadow-bb-2
         `}
+          role="paragraph"
         >
           {isOpen ? "Aberto" : "Fechado"}
-        </span>
+        </p>
       </div>
     </div>
   );
