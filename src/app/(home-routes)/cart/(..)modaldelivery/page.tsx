@@ -1,7 +1,32 @@
-import DeliveryForm from "@/components/Forms/DeliveryForm/DeliveryForm";
+"use client";
+
+import DeliveryForm, {
+  TDeliveryData,
+} from "@/components/Forms/DeliveryForm/DeliveryForm";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { SubmitHandler } from "react-hook-form";
 
 export default function ModalDelivery() {
+  const [orderSended, setOrderSended] = useState<boolean>(false);
+  const router = useRouter();
+
+  const onSubmit: SubmitHandler<TDeliveryData> = async (
+    data: TDeliveryData
+  ) => {
+    console.log(data);
+    setOrderSended(true);
+
+    setTimeout(() => {
+      router.push("/");
+    }, 2500);
+
+    setTimeout(() => {
+      setOrderSended(false);
+    }, 2600);
+  };
+
   return (
     <>
       <div className="modal-shade z-50">
@@ -28,7 +53,7 @@ export default function ModalDelivery() {
           </Link>
 
           <div className="px-[34px]">
-            <DeliveryForm />
+            <DeliveryForm onSubmit={onSubmit} orderSended={orderSended} />
           </div>
         </div>
       </div>
