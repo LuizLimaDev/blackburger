@@ -6,6 +6,4 @@ export type TFavoritedProducts = {
   setFavoritedProducts: Dispatch<SetStateAction<TProduct[]>>;
   currentProduct: TProduct | null;
   setCurrentProduct: Dispatch<SetStateAction<TProduct | null>>;
-  addToFavorite: (product: TProduct) => void;
-  removeFromFavorite: (id: number) => void;
 };

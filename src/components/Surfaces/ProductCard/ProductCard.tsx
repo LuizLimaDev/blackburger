@@ -1,7 +1,7 @@
 "use client";
 
 import { ProductsContext } from "@/context/ProductsContext";
-import useFavoriteCheck from "@/hooks/useFavoriteCheck";
+import useFavoriteCheck from "@/hooks/useFavorite";
 import { TProduct } from "@/types/products";
 import Image from "next/image";
 import { useRouter } from "next/navigation";

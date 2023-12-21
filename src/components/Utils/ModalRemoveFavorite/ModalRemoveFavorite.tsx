@@ -1,6 +1,7 @@
 "use client";
 
-import { FavoriteProductsContext } from "@/context/FavoriteProducts";
+import { FavoriteProductsContext } from "@/context/FavoriteProductsContext";
+import useFavorite from "@/hooks/useFavorite";
 import Link from "next/link";
 import {
   Dispatch,
@@ -19,9 +20,8 @@ export default function ModalRemoveFavorite({
   openModalRemoveFavorite,
   setOpenModalRemoveFavorite,
 }: TProps) {
-  const { currentProduct, removeFromFavorite } = useContext(
-    FavoriteProductsContext
-  );
+  const { currentProduct } = useContext(FavoriteProductsContext);
+  const { removeFromFavorite } = useFavorite();
   const [currentProductId, setCurrentProductId] = useState<number>(0);
 
   useEffect(() => {
