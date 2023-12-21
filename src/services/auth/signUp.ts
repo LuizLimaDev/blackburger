@@ -13,7 +13,7 @@ export const signUpService = async (
     body: JSON.stringify(data),
   });
 
-  const status = await res.ok;
+  const status = res.ok;
 
   if (!status) {
     const result = await res.json();
