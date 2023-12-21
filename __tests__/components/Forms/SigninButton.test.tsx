@@ -1,7 +1,6 @@
 import SignInButton from "@/components/Forms/SignInForm/SignInButton/SignInButton";
-import * as signInresult from "@/services/auth/signin";
 import "@testing-library/jest-dom";
-import { fireEvent, getByTestId, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 jest.mock("next/navigation", () => ({
   useRouter() {
@@ -9,10 +8,6 @@ jest.mock("next/navigation", () => ({
       replace: () => null,
     };
   },
-}));
-
-jest.mock("../../../src/services/auth/signin.ts", () => ({
-  fetchData: jest.fn(),
 }));
 
 describe("render the button", () => {
