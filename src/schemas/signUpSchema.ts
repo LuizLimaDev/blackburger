@@ -3,7 +3,7 @@ import * as yup from "yup";
 export const SignUpSchema = yup.object({
   name: yup
     .string()
-    .min(6, "Preencha nome e sobrenome por favor!")
+    .min(6, "O nome precisa conter no min 6 caracteres!")
     .required("Preencha o campo nome por favor!"),
   email: yup
     .string()
@@ -11,7 +11,7 @@ export const SignUpSchema = yup.object({
     .required("Preencha o email por favor!"),
   phone: yup
     .string()
-    .min(14, "Preencha o campo telefone com o DDD!")
+    .min(14, "O telefone precisa conter 11 digitos!")
     .required("Preencha o telefone por favor!"),
   password: yup
     .string()
