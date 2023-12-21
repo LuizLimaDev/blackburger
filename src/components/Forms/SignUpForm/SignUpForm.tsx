@@ -13,7 +13,7 @@ import { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { IMaskInput } from "react-imask";
 
-type IUserData = {
+export type IUserData = {
   name: string;
   email: string;
   phone: string;
