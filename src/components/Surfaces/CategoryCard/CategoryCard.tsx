@@ -2,6 +2,7 @@
 
 import { CartContext } from "@/context/CartContext";
 import { ProductsContext } from "@/context/ProductsContext";
+import useCart from "@/hooks/useCart";
 import useFavoriteCheck from "@/hooks/useFavoriteCheck";
 import { TProduct } from "@/types/products";
 import Image from "next/image";
@@ -25,7 +26,7 @@ export default function CategoryCard({
   price,
 }: TProps) {
   const { products } = useContext(ProductsContext);
-  const { addProductToCart } = useContext(CartContext);
+  const { addProductToCart } = useCart();
 
   const currentProduct: TProduct = products.filter(
     (allProduct) => allProduct.id === product.id

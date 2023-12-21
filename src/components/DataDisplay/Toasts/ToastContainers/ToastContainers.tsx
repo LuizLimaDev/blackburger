@@ -9,6 +9,7 @@ import { CartContext } from "@/context/CartContext";
 import ToastUndoFavorite from "../ToastUndoFavorite/ToastUndoFavorite";
 import { FavoriteProductsContext } from "@/context/FavoriteProducts";
 import Image from "next/image";
+import useCart from "@/hooks/useCart";
 
 export const signedUpNotify = (msg: string) => {
   toast.success(msg, {
@@ -77,10 +78,11 @@ export const addedOnCartNotify = () => {
 };
 
 export default function ToastContainers() {
-  const { productsOnCart, removeProductFromCart } = useContext(CartContext);
+  const { productsOnCart } = useContext(CartContext);
   const { favoritedProducts, removeFromFavorite } = useContext(
     FavoriteProductsContext
   );
+  const { removeProductFromCart } = useCart();
 
   function undoProductAddedToFavorite(): void {
     const lastProductAdded = favoritedProducts[favoritedProducts.length - 1].id;

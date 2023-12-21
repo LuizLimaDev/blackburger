@@ -1,12 +1,13 @@
 "use client";
 
 import { CartContext } from "@/context/CartContext";
+import useCart from "@/hooks/useCart";
 import Image from "next/image";
 import { useContext } from "react";
 
 export default function QtdCounter() {
-  const { decreaseProductCounter, quantityCounter, increaseProductCounter } =
-    useContext(CartContext);
+  const { quantityCounter } = useContext(CartContext);
+  const { decreaseProductCounter, increaseProductCounter } = useCart();
 
   return (
     <>
