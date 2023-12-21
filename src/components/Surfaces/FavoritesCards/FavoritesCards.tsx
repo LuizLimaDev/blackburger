@@ -1,7 +1,7 @@
 "use client";
 
 import { CartContext } from "@/context/CartContext";
-import { FavoriteProductsContext } from "@/context/FavoriteProducts";
+import { FavoriteProductsContext } from "@/context/FavoriteProductsContext";
 import { TProduct } from "@/types/products";
 import Image from "next/image";
 import { Dispatch, SetStateAction, useContext } from "react";

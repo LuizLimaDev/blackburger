@@ -3,7 +3,7 @@
 import { CartContext } from "@/context/CartContext";
 import { ProductsContext } from "@/context/ProductsContext";
 import useCart from "@/hooks/useCart";
-import useFavoriteCheck from "@/hooks/useFavoriteCheck";
+import useFavoriteCheck from "@/hooks/useFavorite";
 import { TProduct } from "@/types/products";
 import Image from "next/image";
 import { useContext } from "react";

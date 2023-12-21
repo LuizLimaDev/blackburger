@@ -1,7 +1,7 @@
 import ToastContainers from "@/components/DataDisplay/Toasts/ToastContainers/ToastContainers";
 import BottomNavigation from "@/components/Navigation/BottomNavigation/BottomNavigation";
 import CartProvider from "@/context/CartContext";
-import FavoriteProductsProvider from "@/context/FavoriteProducts";
+import FavoriteProductsProvider from "@/context/FavoriteProductsContext";
 import ProductsProvider from "@/context/ProductsContext";
 import { authOptions } from "@/services/auth/authOptions";
 import { TChildrenProps } from "@/types/children";
