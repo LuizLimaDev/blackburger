@@ -1,6 +1,6 @@
 import FormAlert from "@/components/Forms/FormAlert/FormAlert";
 import "@testing-library/jest-dom";
-import { logRoles, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 describe("render form alert correctly", () => {
   test("render alert image", () => {

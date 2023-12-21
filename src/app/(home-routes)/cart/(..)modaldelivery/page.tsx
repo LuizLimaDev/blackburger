@@ -15,7 +15,6 @@ export default function ModalDelivery() {
   const onSubmit: SubmitHandler<TDeliveryData> = async (
     data: TDeliveryData
   ) => {
-    console.log(data);
     setOrderSended(true);
 
     setTimeout(() => {
