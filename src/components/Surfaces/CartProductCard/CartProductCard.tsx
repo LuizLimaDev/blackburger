@@ -1,12 +1,10 @@
-import { CartContext } from "@/context/CartContext";
+import useCart from "@/hooks/useCart";
 import { CartProduct } from "@/types/cart";
 import priceConvert from "@/utils/priceConvert";
 import Image from "next/image";
-import { useContext } from "react";
 
 export default function CartProductCard({ product }: { product: CartProduct }) {
-  const { decreaseProductQuantity, increaseProductQuantity } =
-    useContext(CartContext);
+  const { decreaseProductQuantity, increaseProductQuantity } = useCart();
 
   function handleDecreaseQtd(product: CartProduct): void {
     decreaseProductQuantity(product);

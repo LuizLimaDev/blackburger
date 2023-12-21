@@ -4,6 +4,7 @@ import QtdCounter from "@/components/DataDisplay/QtdCounter/QtdCounter";
 import Button from "@/components/Inputs/Button/Button";
 import { CartContext } from "@/context/CartContext";
 import { ProductsContext } from "@/context/ProductsContext";
+import useCart from "@/hooks/useCart";
 import { TProduct } from "@/types/products";
 import Image from "next/image";
 import { useContext, useEffect } from "react";
@@ -16,8 +17,8 @@ type IProps = {
 
 export default function ProductDetailsCard({ params }: IProps) {
   const { products } = useContext(ProductsContext);
-  const { quantityCounter, setQuantityCounter, addProductToCart } =
-    useContext(CartContext);
+  const { quantityCounter, setQuantityCounter } = useContext(CartContext);
+  const { addProductToCart } = useCart();
   const id: number = Number(params.productId);
 
   useEffect(() => {
