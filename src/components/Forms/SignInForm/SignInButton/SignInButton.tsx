@@ -1,5 +1,6 @@
 "use client";
 
+import { signInresult } from "@/services/auth/signin";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -20,9 +21,9 @@ export default function SignInButton({
   const router = useRouter();
 
   async function handleLogin() {
-    const result = await signIn(provider, { redirect: false });
+    await signInresult(provider);
 
-    if (!result) {
+    if (!signInresult) {
       router.replace("/");
     }
 
@@ -45,6 +46,7 @@ export default function SignInButton({
         drop-shadow-bb-2
       "
         onClick={() => handleLogin()}
+        aria-label="login container"
       >
         <Image
           src={img}
