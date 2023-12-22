@@ -1,6 +1,6 @@
 import SignUpForm from "@/components/Forms/SignUpForm/SignUpForm";
 import "@testing-library/jest-dom";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 jest.mock("next/navigation", () => ({
@@ -11,33 +11,35 @@ jest.mock("next/navigation", () => ({
   },
 }));
 
+const onSubmit = jest.fn();
+
 describe("render signUp form", () => {
   test("render name input", () => {
-    render(<SignUpForm />);
+    render(<SignUpForm onSubmit={onSubmit} ApiError="testMock" />);
     const inputName = screen.getByPlaceholderText("nome");
     expect(inputName).toBeInTheDocument();
   });
 
   test("render email input", () => {
-    render(<SignUpForm />);
+    render(<SignUpForm onSubmit={onSubmit} ApiError="testMock" />);
     const inputEmail = screen.getByPlaceholderText("email");
     expect(inputEmail).toBeInTheDocument();
   });
 
   test("render phone input", () => {
-    render(<SignUpForm />);
+    render(<SignUpForm onSubmit={onSubmit} ApiError="testMock" />);
     const inputPhone = screen.getByPlaceholderText("telefone");
     expect(inputPhone).toBeInTheDocument();
   });
 
   test("render password input", () => {
-    render(<SignUpForm />);
+    render(<SignUpForm onSubmit={onSubmit} ApiError="testMock" />);
     const inputPassword = screen.getByPlaceholderText("senha");
     expect(inputPassword).toBeInTheDocument();
   });
 
   test("render submit button", () => {
-    render(<SignUpForm />);
+    render(<SignUpForm onSubmit={onSubmit} ApiError="testMock" />);
     const submitButton = screen.getByRole("button");
     expect(submitButton).toBeInTheDocument();
     expect(submitButton).toHaveTextContent("Cadastrar");
@@ -46,17 +48,17 @@ describe("render signUp form", () => {
 
 describe("render form errors when they are empty", () => {
   test("render image alert error", async () => {
-    render(<SignUpForm />);
+    render(<SignUpForm onSubmit={onSubmit} ApiError="testMock" />);
     const submitButton = screen.getByRole("button");
     await userEvent.click(submitButton);
 
     const errorImg = screen.getAllByLabelText("alert-img");
 
-    expect(errorImg).toHaveLength(4);
+    expect(errorImg).toHaveLength(5);
   });
 
   test("render name input error", async () => {
-    render(<SignUpForm />);
+    render(<SignUpForm onSubmit={onSubmit} ApiError="testMock" />);
     const submitButton = screen.getByRole("button");
     await userEvent.click(submitButton);
 
@@ -68,7 +70,7 @@ describe("render form errors when they are empty", () => {
   });
 
   test("render email input error", async () => {
-    render(<SignUpForm />);
+    render(<SignUpForm onSubmit={onSubmit} ApiError="testMock" />);
     const submitButton = screen.getByRole("button");
     await userEvent.click(submitButton);
 
@@ -78,7 +80,7 @@ describe("render form errors when they are empty", () => {
   });
 
   test("render phone input error", async () => {
-    render(<SignUpForm />);
+    render(<SignUpForm onSubmit={onSubmit} ApiError="testMock" />);
     const submitButton = screen.getByRole("button");
     await userEvent.click(submitButton);
 
@@ -90,7 +92,7 @@ describe("render form errors when they are empty", () => {
   });
 
   test("render password input error", async () => {
-    render(<SignUpForm />);
+    render(<SignUpForm onSubmit={onSubmit} ApiError="testMock" />);
     const submitButton = screen.getByRole("button");
     await userEvent.click(submitButton);
 

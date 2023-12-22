@@ -1,18 +1,19 @@
 "use client";
 
-import { signedUpNotify } from "@/components/DataDisplay/Toasts/ToastContainers/ToastContainers";
 import FormAlert from "@/components/Forms/FormAlert/FormAlert";
 import Button from "@/components/Inputs/Button/Button";
 import Input from "@/components/Inputs/Input/Input";
 import InputPassword from "@/components/Inputs/Input/InputPassword";
 import { SignUpSchema } from "@/schemas/signUpSchema";
-import { signUpService } from "@/services/auth/signUp";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { IMaskInput } from "react-imask";
+
+type TProps = {
+  onSubmit: SubmitHandler<IUserData>;
+  ApiError: string;
+};
 
 export type IUserData = {
   name: string;
@@ -21,14 +22,11 @@ export type IUserData = {
   password: string;
 };
 
-export default function SignUpForm() {
-  const [ApiError, setApiError] = useState<string>("");
-  const router = useRouter();
+export default function SignUpForm({ onSubmit, ApiError }: TProps) {
   const {
     register,
     handleSubmit,
     control,
-    reset,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -39,18 +37,6 @@ export default function SignUpForm() {
     },
     resolver: yupResolver(SignUpSchema),
   });
-
-  const onSubmit: SubmitHandler<IUserData> = async (data: IUserData) => {
-    setApiError("");
-    signUpService(data, setApiError);
-
-    reset();
-    signedUpNotify("Cadastrado com sucesso!");
-
-    setTimeout(() => {
-      router.push("/");
-    }, 2500);
-  };
 
   return (
     <>
