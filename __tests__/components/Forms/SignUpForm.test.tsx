@@ -105,5 +105,30 @@ describe("render form errors when they are empty", () => {
 });
 
 describe("handle submit form", () => {
-  // TODO - como testar o onbumit do proprio form?
+  test("calling onSubmit function", async () => {
+    const user = userEvent.setup();
+    const formData = {
+      name: "testMock",
+      email: "test@test.com",
+      phone: "11988110001",
+      password: "123456",
+    };
+    render(<SignUpForm onSubmit={onSubmit} ApiError="testMock" />);
+    await user.type(screen.getByPlaceholderText("nome"), formData.name);
+    await user.type(screen.getByPlaceholderText("email"), formData.email);
+    await user.type(screen.getByPlaceholderText("telefone"), formData.phone);
+    await user.type(screen.getByPlaceholderText("senha"), formData.password);
+    await user.click(screen.getByRole("button"));
+
+    expect(onSubmit).toHaveBeenCalledTimes(1);
+    expect(onSubmit).toHaveBeenCalledWith(
+      {
+        name: "testMock",
+        email: "test@test.com",
+        phone: "(11)98811-0001",
+        password: "123456",
+      },
+      expect.anything()
+    );
+  });
 });
