@@ -22,7 +22,7 @@ export default function Button({
       onClick={onClick}
       className={`
       ${className}
-      py-2 px-4 font-lilita text-2xl text-yellow-bb-300 uppercase bg-gray-bb-400 rounded drop-shadow-bb-2
+        bb-button py-2 px-4
       `}
     >
       <span className="drop-shadow-bb-2">{children}</span>
