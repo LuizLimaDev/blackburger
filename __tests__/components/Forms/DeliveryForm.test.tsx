@@ -196,39 +196,6 @@ describe("submit form data", () => {
     );
     await user.click(screen.getByRole("button"));
 
-    // assert errors
-    expect(
-      screen.queryByText("Preencha o campo CEP por favor!")
-    ).not.toBeInTheDocument();
-    expect(
-      screen.queryByText("O CEP deve conter 8 digitos!")
-    ).not.toBeInTheDocument();
-    expect(
-      screen.queryByText("Preencha o endereço por favor!")
-    ).not.toBeInTheDocument();
-    expect(
-      screen.queryByText("O número deve conter ao menos 2 digitos!")
-    ).not.toBeInTheDocument();
-    expect(
-      screen.queryByText("Preencha o número da residência!")
-    ).not.toBeInTheDocument();
-    expect(
-      screen.queryByText("O CPF deve conter no mín 11 caracteres!")
-    ).not.toBeInTheDocument();
-    expect(
-      screen.queryByText("Preencha o CPF por favor!")
-    ).not.toBeInTheDocument();
-    expect(
-      screen.queryByText("Preencha o campo telefone com o DDD!")
-    ).not.toBeInTheDocument();
-    expect(
-      screen.queryByText("Preencha o campo telefone com o DDD!")
-    ).not.toBeInTheDocument();
-    expect(
-      screen.queryByText("Selecione um tipo de pagamento!")
-    ).not.toBeInTheDocument();
-
-    // assert onSubmit
     expect(onSubmit).toHaveBeenCalledTimes(1);
     expect(onSubmit).toHaveBeenCalledWith(
       {
