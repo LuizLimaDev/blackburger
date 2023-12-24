@@ -1,4 +1,4 @@
-import SignInButton from "@/components/Forms/SignInForm/SignInButton/SignInButton";
+import SignInButton from "@/components/Forms/SignInForm/SignInButton";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 

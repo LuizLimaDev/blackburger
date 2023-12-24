@@ -2,7 +2,7 @@
 
 import FormAlert from "@/components/Forms/FormAlert/FormAlert";
 import Button from "@/components/Inputs/Button/Button";
-import Input from "@/components/Inputs/Input/Input";
+import BBInput from "@/components/Inputs/Input/BBInput";
 import InputPassword from "@/components/Inputs/Input/InputPassword";
 import { SignUpSchema } from "@/schemas/signUpSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -44,7 +44,7 @@ export default function SignUpForm({ onSubmit, ApiError }: TProps) {
         className="flex-col-center gap-4 mt-1"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <Input
+        <BBInput
           src="/icons/user.svg"
           alt="nome"
           type="text"
@@ -53,7 +53,7 @@ export default function SignUpForm({ onSubmit, ApiError }: TProps) {
             ...register("name", { required: "Preencha o nome por favor!" }),
           }}
         />
-        <Input
+        <BBInput
           src="/icons/email.svg"
           alt="email"
           type="email"
