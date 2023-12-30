@@ -1,34 +1,32 @@
 "use client";
 
-import { signedUpNotify } from "@/components/DataDisplay/Toasts/ToastContainers/ToastContainers";
 import FormAlert from "@/components/Forms/FormAlert/FormAlert";
 import Button from "@/components/Inputs/Button/Button";
-import Input from "@/components/Inputs/Input/Input";
+import BBInput from "@/components/Inputs/Input/BBInput";
 import InputPassword from "@/components/Inputs/Input/InputPassword";
 import { SignUpSchema } from "@/schemas/signUpSchema";
-import supabase from "@/services/supabase/supabase";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { IMaskInput } from "react-imask";
 
-type IUserData = {
+type TProps = {
+  onSubmit: SubmitHandler<IUserData>;
+  ApiError: string;
+};
+
+export type IUserData = {
   name: string;
   email: string;
   phone: string;
   password: string;
 };
 
-export default function SignUpForm() {
-  const [ApiError, setApiError] = useState<string>("");
-  const router = useRouter();
+export default function SignUpForm({ onSubmit, ApiError }: TProps) {
   const {
     register,
     handleSubmit,
     control,
-    reset,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -40,41 +38,13 @@ export default function SignUpForm() {
     resolver: yupResolver(SignUpSchema),
   });
 
-  const onSubmit: SubmitHandler<IUserData> = async (data: IUserData) => {
-    setApiError("");
-
-    const res = await fetch(`${location.origin}/api/signup`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-
-    const status = await res.ok;
-
-    if (!status) {
-      const result = await res.json();
-      setApiError(result.message);
-      return;
-    }
-
-    reset();
-
-    signedUpNotify("Cadastrado com sucesso!");
-
-    setTimeout(() => {
-      router.push("/");
-    }, 2500);
-  };
-
   return (
     <>
       <form
         className="flex-col-center gap-4 mt-1"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <Input
+        <BBInput
           src="/icons/user.svg"
           alt="nome"
           type="text"
@@ -83,7 +53,7 @@ export default function SignUpForm() {
             ...register("name", { required: "Preencha o nome por favor!" }),
           }}
         />
-        <Input
+        <BBInput
           src="/icons/email.svg"
           alt="email"
           type="email"

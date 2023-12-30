@@ -1,11 +1,12 @@
 "use client";
 
 import { CartContext } from "@/context/CartContext";
-import { FavoriteProductsContext } from "@/context/FavoriteProducts";
+import { FavoriteProductsContext } from "@/context/FavoriteProductsContext";
 import { TProduct } from "@/types/products";
 import Image from "next/image";
 import { Dispatch, SetStateAction, useContext } from "react";
 import priceConvert from "../../../utils/priceConvert";
+import useCart from "@/hooks/useCart";
 
 type TProps = {
   product: TProduct;
@@ -16,8 +17,8 @@ export default function FavoritesCards({
   product,
   setOpenModalRemoveFavorite,
 }: TProps) {
-  const { addProductToCart } = useContext(CartContext);
   const { setCurrentProduct } = useContext(FavoriteProductsContext);
+  const { addProductToCart } = useCart();
 
   const cartQuantityObject = {
     ...product,

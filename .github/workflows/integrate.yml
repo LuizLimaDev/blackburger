@@ -1,0 +1,17 @@
+name: Black Burger CI
+
+on:
+  pull_request:
+    branches: [release]
+
+jobs:
+  test_pull_request:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 18.17.1
+      - run: npm ci
+      - run: npm test
+      - run: npm run build

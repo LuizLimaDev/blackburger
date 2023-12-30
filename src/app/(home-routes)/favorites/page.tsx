@@ -3,7 +3,7 @@
 import ArrowBackToHome from "@/components/Navigation/ArrowBackToHome/ArrowBackToHome";
 import FavoritesCards from "@/components/Surfaces/FavoritesCards/FavoritesCards";
 import ModalRemoveFavorite from "@/components/Utils/ModalRemoveFavorite/ModalRemoveFavorite";
-import { FavoriteProductsContext } from "@/context/FavoriteProducts";
+import { FavoriteProductsContext } from "@/context/FavoriteProductsContext";
 import Image from "next/image";
 import { useContext, useState } from "react";
 

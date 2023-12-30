@@ -11,7 +11,12 @@ import { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { IMaskInput } from "react-imask";
 
-interface IDeliveryData {
+type TProps = {
+  onSubmit: SubmitHandler<TDeliveryData>;
+  orderSended: boolean;
+};
+
+export type TDeliveryData = {
   cep: string;
   adress: string;
   number: number;
@@ -19,11 +24,9 @@ interface IDeliveryData {
   cpf: string;
   phone: string;
   paymentMethod: string;
-}
+};
 
-export default function DeliveryForm() {
-  const [orderSended, setOrderSended] = useState<boolean>(false);
-  const router = useRouter();
+export default function DeliveryForm({ onSubmit, orderSended }: TProps) {
   const {
     register,
     handleSubmit,
@@ -41,18 +44,6 @@ export default function DeliveryForm() {
     },
     resolver: yupResolver(deliverySchema),
   });
-
-  const onSubmit: SubmitHandler<IDeliveryData> = async (
-    data: IDeliveryData
-  ) => {
-    console.log(data);
-    setOrderSended(true);
-
-    setTimeout(() => {
-      setOrderSended(false);
-      router.push("/");
-    }, 2500);
-  };
 
   return (
     <>
@@ -179,10 +170,12 @@ export default function DeliveryForm() {
 
               disabled:text-gray-bb-300
             "
-                defaultValue="placeholder"
-                {...register("paymentMethod")}
+                defaultValue=""
+                {...register("paymentMethod", {
+                  required: "Escolha uma forma de pagamento!",
+                })}
               >
-                <option value="placeholder" disabled>
+                <option value="" disabled>
                   tipo de pagamento
                 </option>
                 <option value="Pix"> Pix </option>
@@ -206,7 +199,7 @@ export default function DeliveryForm() {
                 ? "overflow-y-scroll"
                 : ""
             }
-            flex-col-center gap-3 pt-2 mt-4 max-h-[100px] 
+            flex-col-center gap-3 pt-2 px-2 mt-4 max-h-[100px] 
             `}
             >
               {errors.cep?.message && <FormAlert alert={errors.cep?.message} />}

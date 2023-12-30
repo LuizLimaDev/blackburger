@@ -1,8 +1,7 @@
 "use client";
 
-import { FavoriteProductsContext } from "@/context/FavoriteProducts";
 import { ProductsContext } from "@/context/ProductsContext";
-import useFavoriteCheck from "@/hooks/useFavoriteCheck";
+import useFavoriteCheck from "@/hooks/useFavorite";
 import { TProduct } from "@/types/products";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -33,7 +32,19 @@ export default function ProductCard({
     useFavoriteCheck(currentProduct);
 
   return (
-    <div className="mb-4 flex-col-center h-[178px] w-[40%]  justify-start rounded-lg">
+    <div
+      className="
+        flex-col-center 
+        justify-start 
+        
+        h-[178px] 
+        w-[40%]  
+        mb-4 
+        rounded-lg 
+          
+        laptop:w-[180px]
+      "
+    >
       <div>
         <div
           className="
@@ -67,6 +78,7 @@ export default function ProductCard({
         >
           <h5
             className="
+              max-w-[132px]
               mb-2 
 
               text-center 

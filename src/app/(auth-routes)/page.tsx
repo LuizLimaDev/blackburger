@@ -1,9 +1,9 @@
 "use client";
 
 import FormAlert from "@/components/Forms/FormAlert/FormAlert";
-import SignInButton from "@/components/Forms/SignInForm/SignInButton/SignInButton";
+import SignInButton from "@/components/Forms/SignInForm/SignInButton";
 import Button from "@/components/Inputs/Button/Button";
-import Input from "@/components/Inputs/Input/Input";
+import BBInput from "@/components/Inputs/Input/BBInput";
 import InputPassword from "@/components/Inputs/Input/InputPassword";
 import { signInSchema } from "@/schemas/signInSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -58,7 +58,7 @@ export default function SignIn() {
           className="flex-col-center gap-4 mt-1"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <Input
+          <BBInput
             src="/icons/email.svg"
             alt="email"
             type="email"

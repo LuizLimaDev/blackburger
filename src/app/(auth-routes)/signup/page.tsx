@@ -1,11 +1,34 @@
 "use client";
 
 import { contextClass } from "@/components/DataDisplay/Toasts/ContextClass";
-import SignUpForm from "@/components/Forms/SignUpForm/SignUpForm";
+import { signedUpNotify } from "@/components/DataDisplay/Toasts/ToastContainers/ToastContainers";
+import SignUpForm, {
+  IUserData,
+} from "@/components/Forms/SignUpForm/SignUpForm";
+import { signUpService } from "@/services/auth/signUp";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { ToastContainer } from "react-toastify";
 
 export default function SignUp() {
+  const [ApiError, setApiError] = useState<string>("");
+  const { reset } = useForm();
+  const router = useRouter();
+
+  const onSubmit: SubmitHandler<IUserData> = async (data: IUserData) => {
+    setApiError("");
+    signUpService(data, setApiError);
+
+    reset();
+    signedUpNotify("Cadastrado com sucesso!");
+
+    setTimeout(() => {
+      router.push("/");
+    }, 2500);
+  };
+
   return (
     <main>
       <section
@@ -15,7 +38,7 @@ export default function SignUp() {
       >
         <h1 className="bb-title">Black Burger</h1>
 
-        <SignUpForm />
+        <SignUpForm onSubmit={onSubmit} ApiError={ApiError} />
 
         <p>
           Não tem cadastro? &nbsp;

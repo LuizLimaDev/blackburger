@@ -35,6 +35,19 @@
     bg-gray-bb-400;
   }
 
+  .featuring-title {
+    @apply pl-2
+    ml-10 
+    w-[97px] 
+    font-lilita 
+    text-[28px] 
+    uppercase 
+    leading-none 
+    text-gray-bb-100 
+    drop-shadow-bb-2 
+    tracking-tight;
+  }
+
   .popover-arrow {
     @apply absolute 
       bottom-0 

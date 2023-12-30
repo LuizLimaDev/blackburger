@@ -10,7 +10,7 @@ type TInputProps = {
   register?: UseFormRegisterReturn;
 } & InputHTMLAttributes<HTMLInputElement>;
 
-export default function Input({
+export default function BBInput({
   src,
   alt,
   type,

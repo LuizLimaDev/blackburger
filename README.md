@@ -9,7 +9,7 @@
 Aplicação web do Ecommerce Black Burger, meu projeto final do cruso de Desing de Layouts em Figma.
 Que pode ser visualizada clicando [aqui!](https://www.figma.com/file/N6el2YBLDYpEiiCHMv0E9D/Black-Burger?type=design&node-id=0%3A1&mode=design&t=9UvlzBTva2a9ClPc-1)
 
-![](https://kaxldpcjxwaekolzjlsh.supabase.co/storage/v1/object/sign/Images/layout%20user.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvbGF5b3V0IHVzZXIucG5nIiwiaWF0IjoxNzAyMDg5MzgxLCJleHAiOjQ4MjQxNTMzODF9.v1_oAWUcpnHBbBKXU4tkIeoeIuQkeyDTColQRerry_8&t=2023-12-09T02%3A36%3A21.995Z)
+![](https://kaxldpcjxwaekolzjlsh.supabase.co/storage/v1/object/sign/Images/figma%20layout.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvZmlnbWEgbGF5b3V0LnBuZyIsImlhdCI6MTcwMjU5ODE1NSwiZXhwIjo0ODI0NjYyMTU1fQ.ppd7poXTe6ZYTlcroIXA7wdQkJROm0YzzA_o3A5JcEY&t=2023-12-14T23%3A55%3A55.265Z)
 
 <br><br>
 

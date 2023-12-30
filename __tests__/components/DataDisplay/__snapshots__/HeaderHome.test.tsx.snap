@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`expect the Header have your elements render text Abert if isOpen is true 1`] = `
+<p
+  class="
+        text-green-500
+        font-lilita text-xs uppercase mt-1 drop-shadow-bb-2
+        "
+  role="paragraph"
+>
+  Aberto
+</p>
+`;
+
+exports[`expect the Header have your elements render text Fechado if isOpen is false 1`] = `
+<p
+  class="
+        text-red-500
+        font-lilita text-xs uppercase mt-1 drop-shadow-bb-2
+        "
+  role="paragraph"
+>
+  Fechado
+</p>
+`;
