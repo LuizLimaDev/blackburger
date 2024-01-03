@@ -1,25 +1,16 @@
 "use client";
 
-import { deleteCookies } from "@/utils/cookiesControl";
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { Dispatch, SetStateAction } from "react";
 
 type TProps = {
   setActiveUserMenu: Dispatch<SetStateAction<boolean>>;
+  handleLogOut: () => void;
 };
 
-export default function UserLoged({ setActiveUserMenu }: TProps) {
+export default function UserLoged({ setActiveUserMenu, handleLogOut }: TProps) {
   const { data: session } = useSession();
-  const router = useRouter();
-
-  async function handleLougOut() {
-    await signOut({ redirect: false });
-    deleteCookies();
-
-    router.replace("/");
-  }
 
   function username() {
     if (session?.user?.name) {
@@ -37,6 +28,7 @@ export default function UserLoged({ setActiveUserMenu }: TProps) {
             className="
               bb-title text-base capitalize text center
             "
+            title="username"
           >
             {username()}
           </span>
@@ -47,7 +39,7 @@ export default function UserLoged({ setActiveUserMenu }: TProps) {
 
           <button
             className="mt-5 text-yellow-bb-400"
-            onClick={() => handleLougOut()}
+            onClick={() => handleLogOut()}
           >
             Logout
           </button>

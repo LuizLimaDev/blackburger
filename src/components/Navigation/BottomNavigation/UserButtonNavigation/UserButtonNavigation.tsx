@@ -3,9 +3,20 @@
 import Image from "next/image";
 import { useState } from "react";
 import UserLoged from "../UserLoged/UserLoged";
+import { signOut } from "next-auth/react";
+import { deleteCookies } from "@/utils/cookiesControl";
+import { useRouter } from "next/navigation";
 
-export default function UserButtonNavigation() {
+export default function UserButtoNavigation() {
   const [activeUserMenu, setActiveUserMenu] = useState<boolean>(false);
+  const router = useRouter();
+
+  async function handleLogOut() {
+    await signOut({ redirect: false });
+    deleteCookies();
+
+    router.replace("/");
+  }
 
   return (
     <div className="flex-col-center relative">
@@ -43,7 +54,10 @@ export default function UserButtonNavigation() {
   
       `}
       >
-        <UserLoged setActiveUserMenu={setActiveUserMenu} />
+        <UserLoged
+          setActiveUserMenu={setActiveUserMenu}
+          handleLogOut={handleLogOut}
+        />
 
         <div id="arrow" className="popover-arrow left-16 xl:left-14"></div>
       </div>
