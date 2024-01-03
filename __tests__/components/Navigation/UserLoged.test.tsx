@@ -12,7 +12,6 @@ jest.mock("next-auth/react", () => {
     useSession: jest.fn(() => {
       return { data: mockSession, status: "authenticated" };
     }),
-    signOut: jest.fn(),
   };
 });
 const mockHandleLogOut = jest.fn();
