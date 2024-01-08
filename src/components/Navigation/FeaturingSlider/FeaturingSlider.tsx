@@ -25,17 +25,21 @@ export default async function FeaturingSlider({ products }: TProps) {
           laptop:justify-center
           laptop:gap-4
         "
+      aria-label="container-listItem"
     >
-      {featuredProducts.map((product) => (
-        <FeaturedCard
-          key={product.id}
-          id={product.id}
-          src={product.img}
-          alt={product.name}
-          productName={product.name}
-          productPrice={priceConvert(product.price)}
-        />
-      ))}
+      <ul>
+        {featuredProducts.map((product) => (
+          <li key={product.id}>
+            <FeaturedCard
+              id={product.id}
+              src={product.img}
+              alt={product.name}
+              productName={product.name}
+              productPrice={priceConvert(product.price)}
+            />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
