@@ -25,7 +25,7 @@ export default function UserButtoNavigation() {
         onClick={() => {
           setActiveUserMenu(!activeUserMenu);
         }}
-        aria-label="user-menu"
+        aria-label="button-user"
       >
         <Image
           src="/icons/user.svg"
