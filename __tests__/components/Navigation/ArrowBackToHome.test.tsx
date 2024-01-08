@@ -20,7 +20,7 @@ describe("User navigation to home page", () => {
   });
 
   test("navigation after click", () => {
-    useRouter.mockReturnValue({ push: pushMock });
+    (useRouter as jest.Mock).mockReturnValue({ push: pushMock });
     render(<ArrowBackToHome />);
     fireEvent.click(screen.getByRole("img"));
     expect(pushMock).toHaveBeenCalledWith("/home");
