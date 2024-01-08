@@ -8,7 +8,7 @@ export default function BottomNavigation() {
     <>
       <div className="fixed bottom-0 left-0 z-40 h-12 w-full border-t border-gray-bb-500 bg-gray-bb-500">
         <div className="mx-auto flex px-10 h-full max-w-lg items-center justify-between ">
-          <button type="button">
+          <button type="button" aria-label="button-home">
             <Link href="/home">
               <Image
                 src="/icons/home.svg"
@@ -21,7 +21,7 @@ export default function BottomNavigation() {
             </Link>
           </button>
 
-          <button type="button" className="relative">
+          <button type="button" className="relative" aria-label="button-cart">
             <Link href="/cart">
               <Image
                 src="/icons/cart.svg"
