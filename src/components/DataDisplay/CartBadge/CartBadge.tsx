@@ -1,7 +1,5 @@
 "use client";
 
-import { useContext } from "react";
-import { CartContext } from "../../../context/CartContext";
 import useProductsOnCart from "@/hooks/useProductsOnCart";
 
 export default function CartBadge() {
