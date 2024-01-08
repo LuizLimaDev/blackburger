@@ -25,6 +25,7 @@ export default function UserButtoNavigation() {
         onClick={() => {
           setActiveUserMenu(!activeUserMenu);
         }}
+        aria-label="user-menu"
       >
         <Image
           src="/icons/user.svg"
@@ -53,6 +54,7 @@ export default function UserButtoNavigation() {
             drop-shadow-bb-2
   
       `}
+        aria-label="menu-container"
       >
         <UserLoged
           setActiveUserMenu={setActiveUserMenu}
