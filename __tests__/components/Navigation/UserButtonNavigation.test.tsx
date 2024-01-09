@@ -18,7 +18,7 @@ jest.mock("next-auth/react", () => {
 describe("User Button Navigation UI", () => {
   test("render menu button", () => {
     render(<UserButtoNavigation />);
-    const button = screen.getByLabelText("user-menu");
+    const button = screen.getByLabelText("button-user");
     expect(button).toBeInTheDocument();
   });
 
@@ -33,7 +33,7 @@ describe("User Button Navigation functionality", () => {
   test("showing menu button", async () => {
     render(<UserButtoNavigation />);
     const menuWindow = screen.getByLabelText("menu-container");
-    const button = screen.getByLabelText("user-menu");
+    const button = screen.getByLabelText("button-user");
 
     fireEvent.click(button);
 
@@ -43,7 +43,7 @@ describe("User Button Navigation functionality", () => {
   test("hiding menu button", async () => {
     render(<UserButtoNavigation />);
     const menuWindow = screen.getByLabelText("menu-container");
-    const button = screen.getByLabelText("user-menu");
+    const button = screen.getByLabelText("button-user");
 
     expect(menuWindow).toHaveClass("hidden");
 
