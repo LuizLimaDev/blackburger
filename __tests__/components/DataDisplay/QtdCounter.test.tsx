@@ -1,25 +1,10 @@
 import QtdCounter from "@/components/DataDisplay/QtdCounter/QtdCounter";
 import { CartContext } from "@/context/CartContext";
+import contextValues from "@/context/__mocks__/contextValues";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 
-const contextValues = {
-  productsOnCart: [],
-  setProductsOnCart: () => {},
-  currentProductId: 0,
-  setCurrentProductId: () => {},
-  setQuantityCounter: () => {},
-  decreaseProductCounter: () => {},
-  increaseProductCounter: () => {},
-  addProductToCart: () => {},
-  removeProductFromCart: () => {},
-  cartSubtotal: 0,
-  cartDiscount: 0,
-  tax: 0,
-  cartTotalPrice: 0,
-  decreaseProductQuantity: () => {},
-  increaseProductQuantity: () => {},
-};
+const contextValuesMock = contextValues;
 
 describe("Render the product quantity", () => {
   test("render the minus image", () => {
@@ -32,7 +17,9 @@ describe("Render the product quantity", () => {
 
   test("render the initial qtd 01", () => {
     const { rerender } = render(
-      <CartContext.Provider value={{ quantityCounter: 1, ...contextValues }}>
+      <CartContext.Provider
+        value={{ quantityCounter: 1, ...contextValuesMock }}
+      >
         <QtdCounter />
       </CartContext.Provider>
     );
@@ -43,7 +30,9 @@ describe("Render the product quantity", () => {
     expect(quantity).toHaveTextContent("01");
 
     rerender(
-      <CartContext.Provider value={{ quantityCounter: 2, ...contextValues }}>
+      <CartContext.Provider
+        value={{ quantityCounter: 2, ...contextValuesMock }}
+      >
         <QtdCounter />
       </CartContext.Provider>
     );

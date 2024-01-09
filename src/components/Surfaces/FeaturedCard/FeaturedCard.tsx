@@ -56,6 +56,7 @@ export default function FeaturedCard({
                 text-gray-bb-500
                 text-shadow-bb-price
               "
+              aria-label="price"
             >
               R$ {productPrice}
             </p>
