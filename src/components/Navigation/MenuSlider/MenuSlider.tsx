@@ -19,9 +19,9 @@ export default async function MenuSlider() {
         "
       >
         {categories.map((categorie) => (
-          <Link key={categorie.id} href={`/category/${categorie.name}`}>
-            {categorie.name}
-          </Link>
+          <li key={categorie.id}>
+            <Link href={`/category/${categorie.name}`}>{categorie.name}</Link>
+          </li>
         ))}
       </ul>
     </div>
