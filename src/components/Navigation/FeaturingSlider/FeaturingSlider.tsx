@@ -10,9 +10,11 @@ export default async function FeaturingSlider({ products }: TProps) {
   const featuredProducts: TProduct[] = products.slice(-3);
 
   return (
-    <div
-      className="
+    <>
+      <ul
+        className="
           justify-start
+          items-center
           mt-11 flex
           h-[100px]
           pl-6
@@ -25,9 +27,8 @@ export default async function FeaturingSlider({ products }: TProps) {
           laptop:justify-center
           laptop:gap-4
         "
-      aria-label="container-listItem"
-    >
-      <ul>
+        aria-label="container-listItem"
+      >
         {featuredProducts.map((product) => (
           <li key={product.id}>
             <FeaturedCard
@@ -40,6 +41,6 @@ export default async function FeaturingSlider({ products }: TProps) {
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 }

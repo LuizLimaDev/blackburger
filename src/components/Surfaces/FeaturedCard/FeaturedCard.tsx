@@ -24,7 +24,18 @@ export default function FeaturedCard({
         href={`/product/${id}`}
         className="w-[65%] tablet:w-[35%] laptop:w-[24%]"
       >
-        <div className="relative ml-[30px] flex w-[65vw] cursor-pointer">
+        <div
+          className="
+            relative 
+            ml-[30px] 
+            flex 
+            w-[55vw] 
+            cursor-pointer
+
+            tablet:w-[30vw] 
+            laptop:w-[22vw]
+            "
+        >
           <Image
             src={src}
             alt={alt}
