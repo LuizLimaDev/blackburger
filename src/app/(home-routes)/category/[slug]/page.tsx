@@ -44,7 +44,7 @@ export default async function ProductDetails({
           {params.slug}
         </h1>
 
-        <div
+        <ul
           className="
             self-end
              flex-col-center 
@@ -60,18 +60,11 @@ export default async function ProductDetails({
           "
         >
           {products.map((product) => (
-            <CategoryCard key={product.id} product={product} />
-            // <CategoryCard
-            //   key={product.id}
-            //   product={product}
-            //   src={product.img}
-            //   alt={product.name}
-            //   name={product.name}
-            //   description={product.description}
-            //   price={priceConvert(product.price)}
-            // />
+            <li key={product.id}>
+              <CategoryCard product={product} />
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </main>
   );
