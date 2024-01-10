@@ -5,26 +5,15 @@ import { ProductsContext } from "@/context/ProductsContext";
 import useCart from "@/hooks/useCart";
 import useFavoriteCheck from "@/hooks/useFavorite";
 import { TProduct } from "@/types/products";
+import priceConvert from "@/utils/priceConvert";
 import Image from "next/image";
 import { useContext } from "react";
 
 type TProps = {
   product: TProduct;
-  src: string;
-  alt: string;
-  name: string;
-  description: string;
-  price: string;
 };
 
-export default function CategoryCard({
-  product,
-  src,
-  alt,
-  name,
-  description,
-  price,
-}: TProps) {
+export default function CategoryCard({ product }: TProps) {
   const { products } = useContext(ProductsContext);
   const { addProductToCart } = useCart();
 
@@ -56,8 +45,8 @@ export default function CategoryCard({
         "
       >
         <Image
-          src={src}
-          alt={alt}
+          src={product.img}
+          alt={product.name}
           width={0}
           height={0}
           sizes="100vw"
@@ -66,7 +55,7 @@ export default function CategoryCard({
 
         <div className="max-w-[150px] ml-[94px]">
           <h1 className="mt-4 bb-title text-2xl capitalize whitespace-nowrap overflow-hidden text-ellipsis">
-            {name}
+            {product.name}
           </h1>
           <p
             className="
@@ -79,7 +68,7 @@ export default function CategoryCard({
                 text-ellipsis
             "
           >
-            {description}
+            {product.description}
           </p>
         </div>
 
@@ -104,7 +93,9 @@ export default function CategoryCard({
             onClick={() => handdleFavoriteProduct(currentProduct, product.id)}
           />
 
-          <span className="drop-shadow-bb-1">{price}</span>
+          <span className="drop-shadow-bb-1">
+            {priceConvert(product.price)}
+          </span>
         </div>
       </div>
     </>

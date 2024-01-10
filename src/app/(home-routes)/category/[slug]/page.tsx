@@ -1,9 +1,8 @@
 import ArrowBackToHome from "@/components/Navigation/ArrowBackToHome/ArrowBackToHome";
 import CategoryCard from "@/components/Surfaces/CategoryCard/CategoryCard";
+import supabase from "@/services/supabase/supabase";
 import { TCategorie } from "@/types/categories";
 import { TProduct } from "@/types/products";
-import priceConvert from "../../../../utils/priceConvert";
-import supabase from "@/services/supabase/supabase";
 
 export default async function ProductDetails({
   params,
@@ -45,7 +44,7 @@ export default async function ProductDetails({
           {params.slug}
         </h1>
 
-        <div
+        <ul
           className="
             self-end
              flex-col-center 
@@ -61,17 +60,11 @@ export default async function ProductDetails({
           "
         >
           {products.map((product) => (
-            <CategoryCard
-              key={product.id}
-              product={product}
-              src={product.img}
-              alt={product.name}
-              name={product.name}
-              description={product.description}
-              price={priceConvert(product.price)}
-            />
+            <li key={product.id}>
+              <CategoryCard product={product} />
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </main>
   );
