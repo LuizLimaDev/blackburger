@@ -1,12 +1,11 @@
 "use client";
 
-import { CartContext } from "@/context/CartContext";
 import { FavoriteProductsContext } from "@/context/FavoriteProductsContext";
+import useCart from "@/hooks/useCart";
 import { TProduct } from "@/types/products";
 import Image from "next/image";
 import { Dispatch, SetStateAction, useContext } from "react";
 import priceConvert from "../../../utils/priceConvert";
-import useCart from "@/hooks/useCart";
 
 type TProps = {
   product: TProduct;
