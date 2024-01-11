@@ -3,29 +3,20 @@
 import { ProductsContext } from "@/context/ProductsContext";
 import useFavoriteCheck from "@/hooks/useFavorite";
 import { TProduct } from "@/types/products";
+import priceConvert from "@/utils/priceConvert";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
 interface TProductCardProps {
-  id: number;
-  src: string;
-  alt: string;
-  productName: string;
-  productPrice: string;
+  product: TProduct;
 }
 
-export default function ProductCard({
-  id,
-  src,
-  alt,
-  productName,
-  productPrice,
-}: TProductCardProps) {
+export default function ProductCard({ product }: TProductCardProps) {
   const { products } = useContext(ProductsContext);
   const router = useRouter();
 
   const currentProduct: TProduct = products.filter(
-    (product) => product.id === id
+    (products) => products.id === product.id
   )[0];
 
   const { handdleFavoriteProduct, isFavorite } =
@@ -41,13 +32,13 @@ export default function ProductCard({
           "
         >
           <Image
-            src={src}
-            alt={alt}
+            src={product.img}
+            alt={product.name}
             width={0}
             height={0}
             sizes="100vw"
             className="h-[85%] w-[85%] cursor-pointer object-contain"
-            onClick={() => router.push(`/product/${id}`)}
+            onClick={() => router.push(`/product/${product.id}`)}
             priority={true}
           />
           <Image
@@ -56,13 +47,13 @@ export default function ProductCard({
             width={32}
             height={32}
             className="absolute bottom-[-12px] right-[-12px] z-10 cursor-pointer"
-            onClick={() => handdleFavoriteProduct(currentProduct, id)}
+            onClick={() => handdleFavoriteProduct(currentProduct, product.id)}
           />
         </div>
 
         <div
           className="flex-col-center cursor-pointer p-2"
-          onClick={() => router.push(`/product/${id}`)}
+          onClick={() => router.push(`/product/${product.id}`)}
         >
           <h5
             className="
@@ -77,9 +68,11 @@ export default function ProductCard({
               drop-shadow-bb-2
             "
           >
-            {productName}
+            {product.name}
           </h5>
-          <p className="text-base drop-shadow-bb-2">R$ {productPrice}</p>
+          <p className="text-base drop-shadow-bb-2">
+            R$ {priceConvert(product.price)}
+          </p>
         </div>
       </div>
     </>
