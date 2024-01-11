@@ -32,19 +32,7 @@ export default function ProductCard({
     useFavoriteCheck(currentProduct);
 
   return (
-    <div
-      className="
-        flex-col-center 
-        justify-start 
-        
-        h-[178px] 
-        w-[40%]  
-        mb-4 
-        rounded-lg 
-          
-        laptop:w-[180px]
-      "
-    >
+    <>
       <div>
         <div
           className="
@@ -94,6 +82,6 @@ export default function ProductCard({
           <p className="text-base drop-shadow-bb-2">R$ {productPrice}</p>
         </div>
       </div>
-    </div>
+    </>
   );
 }
