@@ -35,7 +35,7 @@ export default async function ProductsDisplay() {
           mb-10 
         "
       >
-        <div
+        <ul
           id="columnLeft"
           className="
             flex-col-center 
@@ -54,18 +54,32 @@ export default async function ProductsDisplay() {
           "
         >
           {oddProducts.map((product) => (
-            <ProductCard
+            <li
               key={product.id}
-              id={product.id}
-              src={product.img}
-              alt={product.name}
-              productName={product.name}
-              productPrice={priceConvert(product.price)}
-            />
+              className="
+                flex-col-center 
+                justify-start 
+                
+                h-[178px] 
+                w-[40%]  
+                mb-4 
+                rounded-lg 
+                  
+                laptop:w-[180px]
+              "
+            >
+              <ProductCard
+                id={product.id}
+                src={product.img}
+                alt={product.name}
+                productName={product.name}
+                productPrice={priceConvert(product.price)}
+              />
+            </li>
           ))}
-        </div>
+        </ul>
 
-        <div
+        <ul
           id="rightColumn"
           className="
             flex-col-center 
@@ -85,39 +99,67 @@ export default async function ProductsDisplay() {
           "
         >
           {evenProducts.map((product) => (
-            <ProductCard
+            <li
               key={product.id}
-              id={product.id}
-              src={product.img}
-              alt={product.name}
-              productName={product.name}
-              productPrice={priceConvert(product.price)}
-            />
+              className="
+                flex-col-center 
+                justify-start 
+                
+                h-[178px] 
+                w-[40%]  
+                mb-4 
+                rounded-lg 
+                  
+                laptop:w-[180px]
+              "
+            >
+              <ProductCard
+                id={product.id}
+                src={product.img}
+                alt={product.name}
+                productName={product.name}
+                productPrice={priceConvert(product.price)}
+              />
+            </li>
           ))}
-        </div>
+        </ul>
 
-        <div
+        <ul
           className="
             hidden 
             
             laptop:flex
-            laptop:justify-start
+            laptop:justify-center
             laptop:gap-6
             laptop:flex-wrap
             laptop:w-[80%]
           "
         >
           {products.map((product) => (
-            <ProductCard
+            <li
               key={product.id}
-              id={product.id}
-              src={product.img}
-              alt={product.name}
-              productName={product.name}
-              productPrice={priceConvert(product.price)}
-            />
+              className="
+                flex-col-center 
+                justify-start 
+                
+                h-[178px] 
+                w-[40%]  
+                mb-4 
+                rounded-lg 
+                  
+                laptop:w-[180px]
+              "
+            >
+              <ProductCard
+                id={product.id}
+                src={product.img}
+                alt={product.name}
+                productName={product.name}
+                productPrice={priceConvert(product.price)}
+              />
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </>
   );
