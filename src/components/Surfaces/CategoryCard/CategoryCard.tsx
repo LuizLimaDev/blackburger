@@ -1,6 +1,5 @@
 "use client";
 
-import { CartContext } from "@/context/CartContext";
 import { ProductsContext } from "@/context/ProductsContext";
 import useCart from "@/hooks/useCart";
 import useFavoriteCheck from "@/hooks/useFavorite";
