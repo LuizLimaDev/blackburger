@@ -2,7 +2,6 @@ import FeaturingSlider from "@/components/Navigation/FeaturingSlider/FeaturingSl
 import ProductCard from "@/components/Surfaces/ProductCard/ProductCard";
 import supabase from "@/services/supabase/supabase";
 import { TProduct } from "@/types/products";
-import priceConvert from "@/utils/priceConvert";
 
 export default async function ProductsDisplay() {
   const { data } = await supabase.from("products").select();
@@ -68,13 +67,7 @@ export default async function ProductsDisplay() {
                 laptop:w-[180px]
               "
             >
-              <ProductCard
-                id={product.id}
-                src={product.img}
-                alt={product.name}
-                productName={product.name}
-                productPrice={priceConvert(product.price)}
-              />
+              <ProductCard product={product} />
             </li>
           ))}
         </ul>
@@ -113,13 +106,7 @@ export default async function ProductsDisplay() {
                 laptop:w-[180px]
               "
             >
-              <ProductCard
-                id={product.id}
-                src={product.img}
-                alt={product.name}
-                productName={product.name}
-                productPrice={priceConvert(product.price)}
-              />
+              <ProductCard product={product} />
             </li>
           ))}
         </ul>
@@ -150,13 +137,7 @@ export default async function ProductsDisplay() {
                 laptop:w-[180px]
               "
             >
-              <ProductCard
-                id={product.id}
-                src={product.img}
-                alt={product.name}
-                productName={product.name}
-                productPrice={priceConvert(product.price)}
-              />
+              <ProductCard product={product} />
             </li>
           ))}
         </ul>
