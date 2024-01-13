@@ -48,6 +48,7 @@ export default function ProductCard({ product }: TProductCardProps) {
             height={32}
             className="absolute bottom-[-12px] right-[-12px] z-10 cursor-pointer"
             onClick={() => handdleFavoriteProduct(currentProduct, product.id)}
+            aria-label="favorite"
           />
         </div>
 
