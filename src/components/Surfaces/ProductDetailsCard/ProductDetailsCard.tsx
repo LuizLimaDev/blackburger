@@ -3,36 +3,25 @@
 import QtdCounter from "@/components/DataDisplay/QtdCounter/QtdCounter";
 import Button from "@/components/Inputs/Button/Button";
 import { CartContext } from "@/context/CartContext";
-import { ProductsContext } from "@/context/ProductsContext";
 import useCart from "@/hooks/useCart";
 import { TProduct } from "@/types/products";
+import priceConvert from "@/utils/priceConvert";
 import Image from "next/image";
 import { useContext, useEffect } from "react";
 
 type IProps = {
-  params: {
-    productId: string;
-  };
+  id: number;
+  product: TProduct;
+  isBurger: boolean;
 };
 
-export default function ProductDetailsCard({ params }: IProps) {
-  const { products } = useContext(ProductsContext);
+export default function ProductDetailsCard({ id, product, isBurger }: IProps) {
   const { quantityCounter, setQuantityCounter } = useContext(CartContext);
   const { addProductToCart } = useCart();
-  const id: number = Number(params.productId);
 
   useEffect(() => {
     setQuantityCounter(1);
   }, [id, setQuantityCounter]);
-
-  const currentProduct: TProduct = products.find(
-    (product) => product.id === id
-  )!;
-
-  const burgers: number[] = [1, 2, 3];
-  const isBurger = burgers.some(
-    (product) => currentProduct?.category_id === product
-  );
 
   function handleAddProductToCart(currentProduct: TProduct): void {
     addProductToCart({
@@ -55,8 +44,8 @@ export default function ProductDetailsCard({ params }: IProps) {
         `}
       >
         <Image
-          src={currentProduct?.img!}
-          alt={currentProduct?.name!}
+          src={product?.img}
+          alt={product?.name}
           width={0}
           height={0}
           sizes="100vw"
@@ -66,10 +55,10 @@ export default function ProductDetailsCard({ params }: IProps) {
 
       <div className="laptop:mt-10 mt-2">
         <h1 className="bb-title text-[32px] capitalize pb-2">
-          {currentProduct?.name}
+          {product?.name}
         </h1>
         <p className="max-w-[450px] pb-8 text-sm tablet:text-base laptop:text-lg">
-          {currentProduct?.description}
+          {product?.description}
         </p>
       </div>
 
@@ -96,14 +85,11 @@ export default function ProductDetailsCard({ params }: IProps) {
         <QtdCounter />
 
         <p className="bb-title text-[32px] self-center justify-self-center">
-          R$ {(currentProduct?.price! / 100).toFixed(2)}
+          R$ {priceConvert(product?.price)}
         </p>
       </div>
 
-      <Button
-        type="button"
-        onClick={() => handleAddProductToCart(currentProduct)}
-      >
+      <Button type="button" onClick={() => handleAddProductToCart(product)}>
         Adicionar
       </Button>
     </>
