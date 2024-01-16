@@ -21,7 +21,7 @@ export default function useFavorite(product?: TProduct) {
     }
   }, [favoritedProducts, setIsFavorite, product]);
 
-  function handdleFavoriteProduct(currentProduct: TProduct, id: number) {
+  function handdleFavoriteProduct(currentProduct: TProduct, id: number): void {
     if (isFavorite === false) {
       addToFavorite(currentProduct);
       return;
