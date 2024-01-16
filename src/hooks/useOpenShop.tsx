@@ -1,5 +1,4 @@
-export default function useOpenShop() {
-  const date = new Date();
+export default function useOpenShop(date = new Date()) {
   const format = new Intl.DateTimeFormat("pt-BR", {
     dateStyle: "full",
     timeStyle: "long",
