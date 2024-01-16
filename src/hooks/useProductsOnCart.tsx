@@ -1,10 +1,14 @@
 import { CartContext } from "@/context/CartContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 export default function useProductsOnCart() {
   const { productsOnCart } = useContext(CartContext);
+  const [numberOfProductsOnCart, setNumberOfProductsOnCart] =
+    useState<number>(0);
 
-  const numberOfProductsOnCart: number = productsOnCart.length;
+  useEffect(() => {
+    setNumberOfProductsOnCart(productsOnCart.length);
+  }, [productsOnCart]);
 
   return numberOfProductsOnCart;
 }
