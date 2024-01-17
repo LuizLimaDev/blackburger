@@ -1,13 +1,15 @@
 import FeaturingSlider from "@/components/Navigation/FeaturingSlider/FeaturingSlider";
 import ProductCard from "@/components/Surfaces/ProductCard/ProductCard";
-import fetchProducts from "@/services/supabase/fetchProducts";
 import { TProduct } from "@/types/products";
 import filterProductsById from "@/utils/filterProductsById";
 import RenderProductList from "../RenderProductList/RenderProductList";
 
-export default async function ProductsDisplay() {
-  const products: TProduct[] = await fetchProducts();
+type TProps = {
+  productsList: TProduct[];
+};
 
+export default function ProductsDisplay({ productsList }: TProps) {
+  const products: TProduct[] = productsList;
   const oddProducts = 0;
   const evenProducts = 1;
 
@@ -15,31 +17,16 @@ export default async function ProductsDisplay() {
     <>
       <FeaturingSlider products={products} />
 
-      <div
-        className="
-          flex 
-          justify-center 
-          gap-6
-          
-          pt-16
-          pb-5 
-          mb-10 
-        "
-      >
-        {RenderProductList(filterProductsById(products, oddProducts))}
-        {RenderProductList(filterProductsById(products, evenProducts))}
+      <div className="flex justify-center gap-6 pt-16 pb-5 mb-10">
+        <ul className="columnMobile-dataDisplay" data-testid="columnLeft">
+          {RenderProductList(filterProductsById(products, oddProducts))}
+        </ul>
 
-        <ul
-          className="
-            hidden 
-            
-            laptop:flex
-            laptop:justify-center
-            laptop:gap-6
-            laptop:flex-wrap
-            laptop:w-[80%]
-          "
-        >
+        <ul className="columnMobile-dataDisplay" data-testid="columRight">
+          {RenderProductList(filterProductsById(products, evenProducts))}
+        </ul>
+
+        <ul className="columnLaptop-dataDisplay" data-testid="columLaptop">
           {products.map((product) => (
             <li
               key={product.id}

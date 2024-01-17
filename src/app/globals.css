@@ -99,6 +99,30 @@
     tablet:h-12 
     tablet:w-[348px];
   }
+
+  .columnMobile-dataDisplay {
+    @apply flex-col-center 
+      justify-start 
+      gap-10 
+      
+      mb-10 
+
+      tablet:flex-row
+      tablet:flex-wrap
+      tablet:justify-center
+      tablet:max-w-[359px]
+      tablet:mt-0
+      laptop:hidden;
+  }
+
+  .columnLaptop-dataDisplay {
+    @apply hidden 
+      laptop:flex
+      laptop:justify-center
+      laptop:gap-6
+      laptop:flex-wrap
+      laptop:w-[80%];
+  }
 }
 
 @layer utilities {

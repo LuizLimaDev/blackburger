@@ -6,7 +6,7 @@ type TProps = {
   products: TProduct[];
 };
 
-export default async function FeaturingSlider({ products }: TProps) {
+export default function FeaturingSlider({ products }: TProps) {
   const featuredProducts: TProduct[] = products.slice(-3);
 
   return (
