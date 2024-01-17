@@ -3,23 +3,7 @@ import { TProduct } from "@/types/products";
 
 export default function RenderProductList(products: TProduct[]) {
   return (
-    <ul
-      className="
-            flex-col-center 
-            justify-start 
-            gap-10 
-            
-            mt-14
-            mb-10 
-
-            tablet:flex-row
-            tablet:flex-wrap
-            tablet:justify-center
-            tablet:max-w-[359px]
-            tablet:mt-0
-            laptop:hidden
-          "
-    >
+    <>
       {products.map((product) => (
         <li
           key={product.id}
@@ -39,6 +23,6 @@ export default function RenderProductList(products: TProduct[]) {
           <ProductCard product={product} />
         </li>
       ))}
-    </ul>
+    </>
   );
 }

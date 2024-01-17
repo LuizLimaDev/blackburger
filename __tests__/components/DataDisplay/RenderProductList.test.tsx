@@ -7,12 +7,6 @@ const productsMock = productListMock;
 jest.mock("next/navigation");
 
 describe("Render product list", () => {
-  test("render products list", () => {
-    render(RenderProductList(productsMock));
-    const productList = screen.getByRole("list");
-    expect(productList).toBeInTheDocument();
-  });
-
   test("render list items", () => {
     render(RenderProductList(productsMock));
     const productList = screen.getAllByRole("listitem");
