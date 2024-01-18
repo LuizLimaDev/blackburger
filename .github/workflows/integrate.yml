@@ -2,7 +2,7 @@ name: Black Burger CI
 
 on:
   pull_request:
-    branches: [release]
+    branches: [develop, release, main]
 
 jobs:
   test_pull_request:
