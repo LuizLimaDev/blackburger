@@ -7,6 +7,8 @@ on:
 jobs:
   test_pull_request:
     runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_SUPABASE_URL: ${{ env.NEXT_PUBLIC_SUPABASE_URL }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -15,5 +17,3 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
-        env:
-          NEXT_PUBLIC_SUPABASE_URL: ${{ env.NEXT_PUBLIC_SUPABASE_URL }}
