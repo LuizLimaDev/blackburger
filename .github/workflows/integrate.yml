@@ -8,8 +8,8 @@ jobs:
   test_pull_request:
     runs-on: ubuntu-latest
     env:
-      NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
-      NEXT_PUBLIC_ANON_KEY: ${{ secrets.NEXT_PUBLIC_ANON_KEY }}
+      NEXT_PUBLIC_SUPABASE_URL: ${{ vars.NEXT_PUBLIC_SUPABASE_URL }}
+      NEXT_PUBLIC_ANON_KEY: ${{ vars.NEXT_PUBLIC_ANON_KEY }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
