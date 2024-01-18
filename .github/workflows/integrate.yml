@@ -16,4 +16,4 @@ jobs:
       - run: npm test
       - run: npm run build
         env:
-          SUPABASE_URL: ${{ env.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ env.NEXT_PUBLIC_SUPABASE_URL }}
