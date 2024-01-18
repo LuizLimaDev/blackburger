@@ -8,12 +8,15 @@ jobs:
   test_pull_request:
     runs-on: ubuntu-latest
     env:
-      NEXT_PUBLIC_SUPABASE_URL: ${{ env.NEXT_PUBLIC_SUPABASE_URL }}
+      NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+      NEXT_PUBLIC_ANON_KEY: ${{ secrets.NEXT_PUBLIC_ANON_KEY }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: 18.17.1
       - run: npm ci
+      - run: echo "$NEXT_PUBLIC_SUPABASE_URL"
+      - run: echo "$NEXT_PUBLIC_ANON_KEY"
       - run: npm test
       - run: npm run build
