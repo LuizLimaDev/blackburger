@@ -13,19 +13,21 @@ export default function FeaturingSlider({ products }: TProps) {
     <>
       <ul
         className="
+          flex
           justify-start
           items-center
-          mt-11 flex
-          h-[100px]
-          pl-6
           gap-10
+          h-[100px]
+          mt-11 
+          
           
           overflow-auto
           no-scrollbar
           
-          laptop:mt-20
           laptop:justify-center
           laptop:gap-4
+          laptop:w-screen
+          laptop:mt-20
         "
         aria-label="container-listItem"
       >
