@@ -53,7 +53,7 @@ export default function ProductCard({ product }: TProductCardProps) {
         </div>
 
         <div
-          className="flex-col-center cursor-pointer p-2"
+          className="flex-col-center cursor-pointer py-2"
           onClick={() => router.push(`/product/${product.id}`)}
         >
           <h5
