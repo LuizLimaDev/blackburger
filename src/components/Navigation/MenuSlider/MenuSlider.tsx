@@ -1,15 +1,9 @@
-import supabase from "@/services/supabase/supabase";
+import fetchCategories from "@/services/supabase/fetchCategories";
 import { TCategorie } from "@/types/categories";
 import Link from "next/link";
 
 export default async function MenuSlider() {
-  const { data } = await supabase.from("products_categories").select();
-
-  if (!data) {
-    throw new Error("Nenhuma categoria cadastrada!");
-  }
-
-  const categories: TCategorie[] = data;
+  const categories: TCategorie[] = await fetchCategories();
 
   return (
     <div className="mx-4 mt-8 flex justify-center">

@@ -1,6 +1,7 @@
 import ArrowBackToHome from "@/components/Navigation/ArrowBackToHome/ArrowBackToHome";
 import CategoryCard from "@/components/Surfaces/CategoryCard/CategoryCard";
-import supabase from "@/services/supabase/supabase";
+import fetchCategories from "@/services/supabase/fetchCategories";
+import fetchProducts from "@/services/supabase/fetchProducts";
 import { TCategorie } from "@/types/categories";
 import { TProduct } from "@/types/products";
 
@@ -9,25 +10,9 @@ export default async function ProductDetails({
 }: {
   params: { slug: string };
 }) {
-  // products data
-  const { data } = await supabase.from("products").select();
+  const dataProducts: TProduct[] = await fetchProducts();
+  const dataCategories: TCategorie[] = await fetchCategories();
 
-  if (!data) {
-    throw new Error("Nenhum produto cadastrado!");
-  }
-
-  const dataProducts: TProduct[] = data;
-
-  // categories data
-  const response = await supabase.from("products_categories").select();
-
-  if (!response.data) {
-    throw new Error("Nenhuma categoria cadastrada!");
-  }
-
-  const dataCategories: TCategorie[] = response.data;
-
-  // finding products by category
   const currentProductCategory = dataCategories.find(
     (categorie) => categorie.name === params.slug
   );
