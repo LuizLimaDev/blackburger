@@ -1,7 +1,6 @@
 "use client";
 
 import { signInresult } from "@/services/auth/signin";
-import { signIn } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -55,6 +54,7 @@ export default function SignInButton({
           height={0}
           sizes="100vw"
           className="w-6 h-6"
+          aria-label="third-part-service-login"
         />
 
         <button className="font-lilita text-gray-bb-100 drop-shadow-bb-1 cursor-pointer">

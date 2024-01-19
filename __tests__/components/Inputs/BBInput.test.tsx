@@ -5,7 +5,7 @@ import { render, screen } from "@testing-library/react";
 describe("Black Burger input with image", () => {
   test("render image", () => {
     render(<BBInput src="/test" alt="test" type="test" placeholder="test" />);
-    const image = screen.getByRole("img");
+    const image = screen.getByLabelText("input icon");
     expect(image).toBeInTheDocument();
   });
 

@@ -27,7 +27,7 @@ describe("Featured card", () => {
         productPrice="1000"
       />
     );
-    const img = screen.getByRole("img");
+    const img = screen.getByLabelText("product-image");
     expect(img).toBeInTheDocument();
     expect(img).toHaveAttribute("alt", "alt test");
     expect(img).toHaveAttribute("src", "/test.svg");
