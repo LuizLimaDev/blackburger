@@ -1,21 +1,21 @@
-"use client";
-
 import ArrowBackToHome from "@/components/Navigation/ArrowBackToHome/ArrowBackToHome";
 import ProductDetailsCard from "@/components/Surfaces/ProductDetailsCard/ProductDetailsCard";
-import { ProductsContext } from "@/context/ProductsContext";
+import fetchProducts from "@/services/supabase/fetchProducts";
 import { TProduct } from "@/types/products";
-import { useContext } from "react";
+import { notFound } from "next/navigation";
 
-export default function ProductDetails({
+export default async function ProductDetails({
   params,
 }: {
   params: { productId: string };
 }) {
-  const { products } = useContext(ProductsContext);
+  const products = await fetchProducts();
   const id: number = Number(params.productId);
   const currentProduct: TProduct = products.find(
     (product) => product.id === id
   )!;
+
+  if (!currentProduct) return notFound();
 
   const burgers: number[] = [1, 2, 3];
   const isBurger = burgers.some(
