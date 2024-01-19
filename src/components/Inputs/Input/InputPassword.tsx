@@ -20,7 +20,6 @@ export default function InputPassword({ register }: TInputProps) {
         height={0}
         sizes="100vw"
         className="w-6 h-6 m-2 drop-shadow-bb-1"
-        aria-label="icon"
       />
 
       <input

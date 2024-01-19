@@ -44,6 +44,7 @@ export default function FeaturedCard({
             className="
               absolute -left-11 bottom-1 z-10 h-full max-h-[114px] w-full max-w-[110px]
             "
+            aria-label="product-image"
           />
           <div
             className="

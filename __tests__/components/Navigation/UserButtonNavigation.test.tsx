@@ -24,7 +24,7 @@ describe("User Button Navigation UI", () => {
 
   test("render menu icon", () => {
     render(<UserButtoNavigation />);
-    const icon = screen.getByRole("img");
+    const icon = screen.getByAltText("user");
     expect(icon).toBeInTheDocument();
   });
 });

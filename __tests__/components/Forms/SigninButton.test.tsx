@@ -27,7 +27,7 @@ describe("render the button", () => {
         Facebook
       </SignInButton>
     );
-    const image = screen.getByRole("img");
+    const image = screen.getByLabelText("third-part-service-login");
     expect(image).toBeInTheDocument();
   });
 

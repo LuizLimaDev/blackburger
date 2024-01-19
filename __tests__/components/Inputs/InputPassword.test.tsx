@@ -5,7 +5,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 describe("Render input password", () => {
   test("render image", () => {
     render(<InputPassword />);
-    const image = screen.getByRole("img", { name: "icon" });
+    const image = screen.getByAltText("senha");
     expect(image).toBeInTheDocument();
   });
 
