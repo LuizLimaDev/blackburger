@@ -5,7 +5,11 @@ export default function NotFound() {
   return (
     <>
       <div className="flex-col-center justify-center w-screen h-screen relative">
-        <div className="flex items-center gap-4 absolute top-4 left-4">
+        <Link
+          href="/home"
+          className="flex items-center gap-4 absolute top-4 left-4"
+          aria-label="logo-blackburger"
+        >
           <Image
             src="/ui/logo.png"
             alt="logo black burger"
@@ -22,11 +26,11 @@ export default function NotFound() {
           >
             Black Burger
           </h1>
-        </div>
+        </Link>
 
         <Image
           src="/ui/not-found.svg"
-          alt="logo black burger"
+          alt="produto não encontrado"
           width={72}
           height={67}
           priority={true}
@@ -44,13 +48,18 @@ export default function NotFound() {
           "
         />
 
-        <p className="bb-title capitalize text-center leading-10">
+        <p
+          className="
+            font-lilita text-[40px] text-yellow-bb-300 drop-shadow-bb-2 text-center leading-10
+          "
+        >
           Página não encontrada!
         </p>
 
         <Link
           href="/home"
           className="mt-8 text-xl font-bold cursor-pointer laptop:mt-20"
+          aria-label="back-to-home"
         >
           Voltar
         </Link>
