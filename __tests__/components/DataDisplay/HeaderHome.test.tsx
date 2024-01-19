@@ -9,7 +9,7 @@ const MockUseOpenShop = useOpenShop as jest.MockedFunction<typeof useOpenShop>;
 describe("expect the Header have your elements", () => {
   test("render the logo img of Black Burger", () => {
     render(<HeaderHome />);
-    const img = screen.getByRole("img", { name: "logo black burger" });
+    const img = screen.getByAltText("logo black burger");
     expect(img).toBeInTheDocument();
   });
 
@@ -33,7 +33,7 @@ describe("expect the Header have your elements", () => {
 
   test("render the notification img", () => {
     render(<HeaderHome />);
-    const img = screen.getByRole("img", { name: "imagem de notificação" });
+    const img = screen.getByAltText("icone de notificação");
     expect(img).toBeInTheDocument();
   });
 

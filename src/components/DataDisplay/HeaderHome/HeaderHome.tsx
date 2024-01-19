@@ -14,7 +14,6 @@ export default function HeaderHome() {
           height={67}
           priority={true}
           className="h-auto w-auto"
-          aria-label="logo black burger"
         />
         <h1 className="bb-title text-2xl capitalize">Black Burger</h1>
       </div>
@@ -22,12 +21,11 @@ export default function HeaderHome() {
       <div className="flex flex-col items-center">
         <Image
           src="/icons/notification.svg"
-          alt="notificação"
+          alt="icone de notificação"
           width={0}
           height={0}
           sizes="100vw"
           className="w-6 h-7 drop-shadow-bb-2"
-          aria-label="imagem de notificação"
         />
         <p
           className={`

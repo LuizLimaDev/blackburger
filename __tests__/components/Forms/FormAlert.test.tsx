@@ -5,7 +5,7 @@ import { render, screen } from "@testing-library/react";
 describe("render form alert correctly", () => {
   test("render alert image", () => {
     render(<FormAlert alert="test" />);
-    const image = screen.getByRole("img");
+    const image = screen.getByAltText("alerta");
     expect(image).toBeInTheDocument();
   });
 

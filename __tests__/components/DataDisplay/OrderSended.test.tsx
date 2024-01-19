@@ -6,7 +6,7 @@ describe("Return order sended message", () => {
   test("return sended image", () => {
     render(<OrderSended />);
 
-    const img = screen.getByRole("img");
+    const img = screen.getByAltText("pedido enviado!");
 
     expect(img).toBeInTheDocument();
   });
