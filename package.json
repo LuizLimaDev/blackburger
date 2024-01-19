@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "build": "rm -rf .next && next build && next start",
     "lint": "next lint",
     "test": "NODE_ENV=test jest",
     "test:all": "jest --watchAll",
