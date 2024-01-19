@@ -53,7 +53,7 @@ export default function ModalRemoveFavorite({
             bg-gray-bb-300 
 
             tablet:w-[50vw]
-            laptop:w-[20vw]
+            laptop:w-[22vw]
           "
         >
           <Link
