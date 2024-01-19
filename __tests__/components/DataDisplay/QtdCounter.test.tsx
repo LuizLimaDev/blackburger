@@ -9,9 +9,7 @@ const contextValuesMock = contextValues;
 describe("Render the product quantity", () => {
   test("render the minus image", () => {
     render(<QtdCounter />);
-
-    const img = screen.getByRole("img", { name: /diminuir quantidade/ });
-
+    const img = screen.getByAltText("diminuir quantidade");
     expect(img).toBeInTheDocument();
   });
 
@@ -41,9 +39,7 @@ describe("Render the product quantity", () => {
 
   test("render the plus image", () => {
     render(<QtdCounter />);
-
-    const img = screen.getByRole("img", { name: /aumentar quantidade/ });
-
+    const img = screen.getByAltText("aumentar quantidade");
     expect(img).toBeInTheDocument();
   });
 });

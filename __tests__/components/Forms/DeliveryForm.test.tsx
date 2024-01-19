@@ -89,7 +89,7 @@ describe("Render form to delivery products", () => {
   test("render arrow down of select input", () => {
     render(<DeliveryForm onSubmit={onSubmit} orderSended={false} />);
 
-    const img = screen.getByRole("img");
+    const img = screen.getByAltText("selecionar método de pagamento");
     expect(img).toBeInTheDocument();
   });
 
