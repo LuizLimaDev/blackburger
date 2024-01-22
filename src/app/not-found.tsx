@@ -21,7 +21,7 @@ export default function NotFound() {
 
           <h1
             className="
-              bb-title text-[32px] capitalize tablet:text-[24px]
+              bb-title text-2xl capitalize
             "
           >
             Black Burger
