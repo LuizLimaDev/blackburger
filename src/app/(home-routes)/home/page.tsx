@@ -2,7 +2,6 @@ import HeaderHome from "@/components/DataDisplay/HeaderHome/HeaderHome";
 import ProductsDisplay from "@/components/DataDisplay/ProductsDisplay/ProductsDisplay";
 import MenuSlider from "@/components/Navigation/MenuSlider/MenuSlider";
 import fetchProducts from "@/services/supabase/fetchProducts";
-import supabase from "@/services/supabase/supabase";
 import { TProduct } from "@/types/products";
 
 export default async function Home() {

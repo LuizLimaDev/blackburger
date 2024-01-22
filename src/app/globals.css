@@ -123,6 +123,24 @@
       laptop:flex-wrap
       laptop:w-[80%];
   }
+
+  .loader {
+    @apply w-full 
+      h-[4.8px]
+      inline-block
+      relative
+      bg-yellow-bb-400
+      overflow-hidden
+      rounded-3xl
+
+      after:content-[""]
+      after:box-border
+      after:w-0
+      after:h-[4.8px]
+      after:absolute
+      after:top-0
+      after:left-0;
+  }
 }
 
 @layer utilities {
