@@ -4,8 +4,8 @@ import Image from "next/image";
 
 export default function ErrorBoundary({ error }: { error: Error }) {
   return (
-    <main className="flex flex-col justify-center w-screen h-screen">
-      <div className="flex-col-center">
+    <main className="w-screen h-screen">
+      <div className="flex-col-center justify-center">
         <Image
           src="/ui/not-found.svg"
           alt="produto não encontrado"
