@@ -61,14 +61,14 @@ const config: Config = {
       backgroundImage: {
         "bb-burger-bg": "url('/products/smoke.svg')",
       },
-      animation: {
-        loading: "loader 10s linear infinite",
-      },
       keyframes: {
         loader: {
           "0%": { width: "0%" },
           "100%": { width: "100%" },
         },
+      },
+      animation: {
+        loading: "loader 10s linear infinite",
       },
     },
   },
