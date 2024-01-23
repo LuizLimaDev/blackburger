@@ -12,7 +12,7 @@ export default function Loder() {
           sizes="100vw"
         />
 
-        <span className="loader animate-[loader_10s_linear_infinite]"></span>
+        <span className="loader animate-loading"></span>
         <Image
           src="/ui/burger-bottom.svg"
           alt="carregando"
