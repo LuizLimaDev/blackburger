@@ -1,16 +1,20 @@
 import useCart from "@/hooks/useCart";
-import { CartProduct } from "@/types/cart";
+import { TCartProduct } from "@/types/cart";
 import priceConvert from "@/utils/priceConvert";
 import Image from "next/image";
 
-export default function CartProductCard({ product }: { product: CartProduct }) {
+export default function CartProductCard({
+  product,
+}: {
+  product: TCartProduct;
+}) {
   const { decreaseProductQuantity, increaseProductQuantity } = useCart();
 
-  function handleDecreaseQtd(product: CartProduct): void {
+  function handleDecreaseQtd(product: TCartProduct): void {
     decreaseProductQuantity(product);
   }
 
-  function handleIncreaseQtd(product: CartProduct): void {
+  function handleIncreaseQtd(product: TCartProduct): void {
     increaseProductQuantity(product);
   }
 

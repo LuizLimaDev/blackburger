@@ -2,7 +2,7 @@
 
 import { addedOnCartNotify } from "@/components/DataDisplay/Toasts/ToastContainers/ToastContainers";
 import { CartContext } from "@/context/CartContext";
-import { CartProduct } from "@/types/cart";
+import { TCartProduct } from "@/types/cart";
 import { useContext } from "react";
 
 export default function useCart() {
@@ -13,17 +13,17 @@ export default function useCart() {
     setQuantityCounter,
   } = useContext(CartContext);
 
-  function decreaseProductCounter(product?: CartProduct): void {
+  function decreaseProductCounter(product?: TCartProduct): void {
     if (quantityCounter > 0) return setQuantityCounter((prev) => (prev -= 1));
     return;
   }
 
-  function increaseProductCounter(product?: CartProduct): void {
+  function increaseProductCounter(product?: TCartProduct): void {
     setQuantityCounter((prev) => (prev += 1));
   }
 
   // cart management
-  function addProductToCart(product: CartProduct): void {
+  function addProductToCart(product: TCartProduct): void {
     const productOnCart = productsOnCart.find(
       (cartProduct) => cartProduct.id === product.id
     );
@@ -60,7 +60,7 @@ export default function useCart() {
   }
 
   // Cart qtd management
-  function decreaseProductQuantity(product: CartProduct): void {
+  function decreaseProductQuantity(product: TCartProduct): void {
     const productOnCart = productsOnCart.find(
       (cartProduct) => cartProduct.id === product.id
     );
@@ -85,7 +85,7 @@ export default function useCart() {
     }
   }
 
-  function increaseProductQuantity(product: CartProduct): void {
+  function increaseProductQuantity(product: TCartProduct): void {
     const productOnCart = productsOnCart.find(
       (cartProduct) => cartProduct.id === product.id
     );

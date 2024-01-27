@@ -6,8 +6,6 @@ import Button from "@/components/Inputs/Button/Button";
 import { deliverySchema } from "@/schemas/deliverySchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { IMaskInput } from "react-imask";
 
@@ -23,7 +21,7 @@ export type TDeliveryData = {
   complement?: string | undefined;
   cpf: string;
   phone: string;
-  paymentMethod: string;
+  payment_type: string;
 };
 
 export default function DeliveryForm({ onSubmit, orderSended }: TProps) {
@@ -40,7 +38,7 @@ export default function DeliveryForm({ onSubmit, orderSended }: TProps) {
       complement: undefined,
       cpf: undefined,
       phone: undefined,
-      paymentMethod: undefined,
+      payment_type: undefined,
     },
     resolver: yupResolver(deliverySchema),
   });
@@ -171,7 +169,7 @@ export default function DeliveryForm({ onSubmit, orderSended }: TProps) {
               disabled:text-gray-bb-300
             "
                 defaultValue=""
-                {...register("paymentMethod", {
+                {...register("payment_type", {
                   required: "Escolha uma forma de pagamento!",
                 })}
               >
@@ -213,8 +211,8 @@ export default function DeliveryForm({ onSubmit, orderSended }: TProps) {
               {errors.phone?.message && (
                 <FormAlert alert={errors.phone?.message} />
               )}
-              {errors.paymentMethod?.message && (
-                <FormAlert alert={errors.paymentMethod?.message} />
+              {errors.payment_type?.message && (
+                <FormAlert alert={errors.payment_type?.message} />
               )}
             </div>
 

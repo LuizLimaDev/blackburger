@@ -122,7 +122,7 @@ describe("render form errors", () => {
     const phoneErrorMsg = await screen.findByText(
       "Preencha o campo telefone com o DDD!"
     );
-    const paymentMethodErrorMsg = await screen.findByText(
+    const payment_typeErrorMsg = await screen.findByText(
       "Selecione um tipo de pagamento!"
     );
 
@@ -131,7 +131,7 @@ describe("render form errors", () => {
     expect(numberErrorMsg).toBeVisible();
     expect(cpfErrorMsg).toBeVisible();
     expect(phoneErrorMsg).toBeVisible();
-    expect(paymentMethodErrorMsg).toBeVisible();
+    expect(payment_typeErrorMsg).toBeVisible();
   });
 
   test("render min length errors", async () => {
@@ -179,7 +179,7 @@ describe("submit form data", () => {
       complement: "",
       cpf: "123.456.789-01",
       phone: "(11)98845-1234",
-      paymentMethod: "Pix",
+      payment_type: "Pix",
     };
     render(<DeliveryForm onSubmit={onSubmit} orderSended={false} />);
     await user.type(screen.getByPlaceholderText("cep"), formData.cep);
@@ -192,7 +192,7 @@ describe("submit form data", () => {
     await user.type(screen.getByPlaceholderText("telefone"), formData.phone);
     await user.selectOptions(
       screen.getByRole("combobox"),
-      formData.paymentMethod
+      formData.payment_type
     );
     await user.click(screen.getByRole("button"));
 
@@ -205,7 +205,7 @@ describe("submit form data", () => {
         complement: "",
         cpf: "123.456.789-01",
         phone: "(11)98845-1234",
-        paymentMethod: "Pix",
+        payment_type: "Pix",
       },
       expect.anything()
     );
