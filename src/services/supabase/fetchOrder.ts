@@ -113,7 +113,7 @@ export default async function fetchOrder(
     orderPrices.cartDiscount
   )}\r\n   total geral: R$ ${priceConvert(
     orderPrices.cartTotalPrice
-  )}\r\n}\r\n*horário do pedido:* ${currentOrderTime}\r\n*data:* ${currentOrderDate}\r\nAgradecemos o seu pedido!`;
+  )}\r\n}\r\n*horário do pedido:* ${currentOrderTime}\r\n*data:* ${currentOrderDate}\r\n\r\nAgradecemos o seu pedido!`;
 
   // URI text encode
   const shopPhone = "14988116402";
