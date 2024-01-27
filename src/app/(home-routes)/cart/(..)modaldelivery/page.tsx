@@ -3,23 +3,46 @@
 import DeliveryForm, {
   TDeliveryData,
 } from "@/components/Forms/DeliveryForm/DeliveryForm";
+import { CartContext } from "@/context/CartContext";
+import fetchOrder from "@/services/supabase/fetchOrder";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { SubmitHandler } from "react-hook-form";
 
 export default function ModalDelivery() {
+  const { productsOnCart, cartSubtotal, cartDiscount, tax, cartTotalPrice } =
+    useContext(CartContext);
   const [orderSended, setOrderSended] = useState<boolean>(false);
   const router = useRouter();
+  const { data: session } = useSession();
+
+  const userEmail: string | undefined = session?.user.email;
+  const orderPrices = {
+    cartSubtotal,
+    cartDiscount,
+    tax,
+    cartTotalPrice,
+  };
 
   const onSubmit: SubmitHandler<TDeliveryData> = async (
     data: TDeliveryData
   ) => {
+    const delivery_info = data;
+    const order = await fetchOrder(
+      userEmail,
+      productsOnCart,
+      delivery_info,
+      orderPrices
+    );
+    router.push(order);
     setOrderSended(true);
 
-    setTimeout(() => {
-      router.push("/");
-    }, 2500);
+    // optional redirect if not use whatsapp for send order
+    // setTimeout(() => {
+    //   router.push("/");
+    // }, 2500);
 
     setTimeout(() => {
       setOrderSended(false);

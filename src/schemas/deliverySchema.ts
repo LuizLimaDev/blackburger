@@ -22,5 +22,5 @@ export const deliverySchema = yup.object({
     .typeError("Preencha o campo telefone com o DDD!")
     .min(14, "O telefone deve conter no mín 9 caracteres!")
     .required("Preencha o campo telefone com o DDD!"),
-  paymentMethod: yup.string().required("Selecione um tipo de pagamento!"),
+  payment_type: yup.string().required("Selecione um tipo de pagamento!"),
 });
