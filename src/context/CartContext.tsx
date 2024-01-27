@@ -1,6 +1,6 @@
 "use client";
 
-import { CartProduct, TCartContext } from "@/types/cart";
+import { TCartProduct, TCartContext } from "@/types/cart";
 import { ReactNode, createContext, useState } from "react";
 
 export const CartContext = createContext<TCartContext>({
@@ -17,7 +17,7 @@ export const CartContext = createContext<TCartContext>({
 });
 
 const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [productsOnCart, setProductsOnCart] = useState<CartProduct[]>([]);
+  const [productsOnCart, setProductsOnCart] = useState<TCartProduct[]>([]);
   const [quantityCounter, setQuantityCounter] = useState<number>(1);
   const [currentProductId, setCurrentProductId] = useState<number>(0);
 
