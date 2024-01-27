@@ -61,10 +61,10 @@ export default function ModalDelivery() {
             rounded-lg 
             drop-shadow-bb-4
             
-            bg-gray-bb-300 
+            bg-gray-bb-400 
 
-            tablet:w-[50vw]
-            laptop:w-[28vw]
+            tablet:w-[400px]
+            laptop:w-[400px]
           "
         >
           <Link
