@@ -24,7 +24,7 @@ export const signedUpNotify = (msg: string) => {
       />
     ),
     position: "bottom-center",
-    autoClose: 3000,
+    autoClose: 1500,
     hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: false,
@@ -46,7 +46,7 @@ export const favoriteNotify = () => {
       />
     ),
     position: "bottom-center",
-    autoClose: 3000,
+    autoClose: 1500,
     hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: false,
@@ -68,7 +68,7 @@ export const addedOnCartNotify = () => {
       />
     ),
     position: "bottom-center",
-    autoClose: 3000,
+    autoClose: 1500,
     hideProgressBar: true,
     closeOnClick: true,
     pauseOnHover: false,
@@ -100,6 +100,7 @@ export default function ToastContainers() {
     <>
       <ToastContainer
         enableMultiContainer
+        autoClose={1500}
         containerId={"favorite"}
         position="bottom-center"
         limit={2}
@@ -119,6 +120,7 @@ export default function ToastContainers() {
 
       <ToastContainer
         enableMultiContainer
+        autoClose={1500}
         containerId={"cart"}
         position="bottom-center"
         limit={2}
