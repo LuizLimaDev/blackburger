@@ -217,7 +217,7 @@ export default function DeliveryForm({ onSubmit, orderSended }: TProps) {
             </div>
 
             <Button
-              className="bb-button w-full mb-10 mt-8  py-2 text-2xl"
+              className="bb-button w-full mb-10 mt-8  py-2 text-2xl bg-gray-bb-300"
               type="submit"
             >
               Enviar
