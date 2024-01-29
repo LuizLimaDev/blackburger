@@ -37,9 +37,10 @@ export default function ModalDelivery() {
       orderPrices
     );
     router.push(order);
-    setOrderSended(true);
 
-    // optional redirect if not use whatsapp for send order
+    // optional redirect if not use whatsapp to send order
+    // setOrderSended(true);
+
     // setTimeout(() => {
     //   router.push("/");
     // }, 2500);
