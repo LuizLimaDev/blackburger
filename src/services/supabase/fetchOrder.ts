@@ -90,30 +90,30 @@ export default async function fetchOrder(
   const currentOrderDate = formattedTimestamp.split(",")[0];
   const currentOrderTime = formattedTimestamp.split(",")[1];
   const currentProducts = products.map((product) => {
-    return `\r\n   ${product.quantity}x ${product.name} R$ ${priceConvert(
+    return `\r\n   ${product.quantity}x ${product.name} - R$ ${priceConvert(
       product.price * product.quantity
     )}`;
   });
 
   // whats app msg object
-  const text = `*Black Burger Hamburgueria*\r\n\r\n*pedido:* ${
+  const text = `*Black Burger Hamburgueria*\r\n\r\n*Número do pedido:* ${
     currentOrder.id
-  }\r\n*nome:* ${user.name}\r\n*email:* ${user.email}\r\n*telefone:* ${
+  }\r\n*Nome:* ${user.name}\r\n*Telefone:* ${
     delivery_info.phone
-  }\r\n*produtos:* {${currentProducts}\r\n}\r\n*informações de entrega:* {\r\n   rua: ${
+  }\r\n\r\n----------------------------------------\r\n\r\n*Produtos:* ${currentProducts}\r\n\r\n----------------------------------------\r\n\r\n*Informações de entrega:* \r\n   Rua: ${
     delivery_info.adress
-  }\r\n   número: ${delivery_info.number}\r\n${
+  }\r\n   Número: ${delivery_info.number}\r\n${
     delivery_info.complement &&
-    `   complemento: ${delivery_info.complement}\r\n`
-  }}\r\n*valores:* {\r\n   valor: R$ ${priceConvert(
+    `   Complemento: ${delivery_info.complement}\r\n`
+  }\r\n----------------------------------------\r\n\r\n*Valores:* \r\n   Subtotal: R$ ${priceConvert(
     orderPrices.cartSubtotal
-  )}\r\n   taxa de entrega: R$ ${priceConvert(
+  )}\r\n   Taxa de entrega: R$ ${priceConvert(
     orderPrices.tax
-  )}\r\n   desconto: R$ ${priceConvert(
+  )}\r\n   Desconto: R$ ${priceConvert(
     orderPrices.cartDiscount
-  )}\r\n   total geral: R$ ${priceConvert(
+  )}\r\n   *Total geral:* R$ ${priceConvert(
     orderPrices.cartTotalPrice
-  )}\r\n}\r\n*horário do pedido:* ${currentOrderTime}\r\n*data:* ${currentOrderDate}\r\n\r\nAgradecemos o seu pedido!`;
+  )}\r\n\r\n----------------------------------------\r\n\r\n*Horário do pedido:* ${currentOrderTime}\r\n*Data:* ${currentOrderDate}\r\n\r\nAgradecemos o seu pedido!`;
 
   // URI text encode
   const shopPhone = "14988116402";
