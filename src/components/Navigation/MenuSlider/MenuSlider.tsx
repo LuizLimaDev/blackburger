@@ -1,8 +1,9 @@
 import fetchCategories from "@/services/supabase/fetchCategories";
 import { TCategorie } from "@/types/categories";
 import Link from "next/link";
+import { memo } from "react";
 
-export default async function MenuSlider() {
+async function MenuSlider() {
   const categories: TCategorie[] = await fetchCategories();
 
   return (
@@ -33,3 +34,5 @@ export default async function MenuSlider() {
     </div>
   );
 }
+
+export default memo(MenuSlider);

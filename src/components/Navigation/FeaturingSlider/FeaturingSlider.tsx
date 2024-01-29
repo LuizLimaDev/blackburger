@@ -1,12 +1,13 @@
 import priceConvert from "@/utils/priceConvert";
 import { TProduct } from "@/types/products";
 import FeaturedCard from "@/components/Surfaces/FeaturedCard/FeaturedCard";
+import { memo } from "react";
 
 type TProps = {
   products: TProduct[];
 };
 
-export default function FeaturingSlider({ products }: TProps) {
+function FeaturingSlider({ products }: TProps) {
   const featuredProducts: TProduct[] = products.slice(-3);
 
   return (
@@ -46,3 +47,5 @@ export default function FeaturingSlider({ products }: TProps) {
     </>
   );
 }
+
+export default memo(FeaturingSlider);

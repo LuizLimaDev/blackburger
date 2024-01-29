@@ -6,12 +6,12 @@ import { TProduct } from "@/types/products";
 import priceConvert from "@/utils/priceConvert";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useContext } from "react";
+import { memo, useContext } from "react";
 interface TProductCardProps {
   product: TProduct;
 }
 
-export default function ProductCard({ product }: TProductCardProps) {
+function ProductCard({ product }: TProductCardProps) {
   const { products } = useContext(ProductsContext);
   const router = useRouter();
 
@@ -79,3 +79,5 @@ export default function ProductCard({ product }: TProductCardProps) {
     </>
   );
 }
+
+export default memo(ProductCard);

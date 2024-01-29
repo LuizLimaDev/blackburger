@@ -3,12 +3,13 @@ import ProductCard from "@/components/Surfaces/ProductCard/ProductCard";
 import { TProduct } from "@/types/products";
 import filterProductsById from "@/utils/filterProductsById";
 import RenderProductList from "../RenderProductList/RenderProductList";
+import { memo } from "react";
 
 type TProps = {
   productsList: TProduct[];
 };
 
-export default function ProductsDisplay({ productsList }: TProps) {
+function ProductsDisplay({ productsList }: TProps) {
   const products: TProduct[] = productsList;
   const oddProducts = 0;
   const evenProducts = 1;
@@ -50,3 +51,5 @@ export default function ProductsDisplay({ productsList }: TProps) {
     </>
   );
 }
+
+export default memo(ProductsDisplay);

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { memo } from "react";
 
 type TFeaturedCardsProps = {
   id: number;
@@ -9,7 +10,7 @@ type TFeaturedCardsProps = {
   productPrice: string;
 };
 
-export default function FeaturedCard({
+function FeaturedCard({
   id,
   src,
   alt,
@@ -78,3 +79,5 @@ export default function FeaturedCard({
     </>
   );
 }
+
+export default memo(FeaturedCard);
