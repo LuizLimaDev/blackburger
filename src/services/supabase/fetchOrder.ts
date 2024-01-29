@@ -116,7 +116,7 @@ export default async function fetchOrder(
   )}\r\n\r\n----------------------------------------\r\n\r\n*Horário do pedido:* ${currentOrderTime}\r\n*Data:* ${currentOrderDate}\r\n\r\nAgradecemos o seu pedido!`;
 
   // URI text encode
-  const shopPhone = "14988116402";
+  const shopPhone = delivery_info.phone;
   const encodeText = encodeURIComponent(text);
   const whatsMsg = `https://wa.me//+55${shopPhone}?text=${encodeText}`;
 
