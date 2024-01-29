@@ -33,7 +33,6 @@ export default function CategoryCard({ product }: TProps) {
       <div
         className="
             flex-col-center
-
             relative 
             w-[269px] 
             h-[172px] 
