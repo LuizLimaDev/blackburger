@@ -42,6 +42,7 @@ export default async function ProductDetails({
             tablet:flex-row 
             tablet:gap-20
             tablet:flex-wrap
+            tablet:h-full
 
             tablet:max-w-[620px]
             laptop:max-w-[980px]
