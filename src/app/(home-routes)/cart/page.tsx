@@ -16,7 +16,9 @@ export default function Cart() {
     <main className="relative flex h-screen flex-col items-center laptop:mx-40">
       <ArrowBackToHome />
 
-      <h1 className="mt-[72px] bb-title text-[32px] capitalize">Carrinho</h1>
+      <h1 className="mt-[72px] mb-4 bb-title text-[32px] capitalize">
+        Carrinho
+      </h1>
 
       <div className="no-scrollbar h-[47%] overflow-y-scroll pb-6 tablet:h-[75%]">
         {productsOnCart.map((product) => (
@@ -48,7 +50,17 @@ export default function Cart() {
 
       <div
         className="
-        absolute bottom-12 h-[204px] w-full rounded-t-xl bg-gray-bb-100 px-6 laptop:w-[30%]
+          fixed 
+          bottom-[8vh] 
+          h-[204px] 
+          w-full 
+          rounded-t-xl 
+          bg-gray-bb-100 
+          px-6 
+          
+          tablet:bottom-[4.5vh] 
+          laptop:bottom-[5vh] 
+          laptop:w-[30%]
         "
       >
         <div className="mt-6 flex flex-col justify-center text-gray-bb-500">

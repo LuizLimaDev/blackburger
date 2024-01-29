@@ -32,16 +32,19 @@ export default async function ProductDetails({
         <ul
           className="
             self-end
-             flex-col-center 
-             gap-7 
-             mt-9 
-             
-             tablet:flex-row 
-             tablet:gap-20
-             tablet:flex-wrap
+            flex-col-center 
+            gap-7
+            h-screen 
+            mt-9 
+            mb-6
+            ml-4
+            
+            tablet:flex-row 
+            tablet:gap-20
+            tablet:flex-wrap
 
-             tablet:max-w-[620px]
-             laptop:max-w-[980px]
+            tablet:max-w-[620px]
+            laptop:max-w-[980px]
           "
         >
           {products.map((product) => (
