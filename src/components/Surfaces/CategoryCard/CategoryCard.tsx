@@ -35,7 +35,7 @@ export default function CategoryCard({ product }: TProps) {
             flex-col-center
             relative 
             w-[269px] 
-            h-[172px] 
+            h-[180px] 
             rounded-3xl 
             drop-shadow-bb-4 
             
@@ -70,7 +70,7 @@ export default function CategoryCard({ product }: TProps) {
           </p>
         </div>
 
-        <div className="flex justify-between w-[216px] mt-4">
+        <div className="flex justify-between items-center w-[216px] mt-4">
           <Image
             src="/icons/cart.svg"
             alt="adicionar ao carrinho"
@@ -91,7 +91,7 @@ export default function CategoryCard({ product }: TProps) {
             onClick={() => handdleFavoriteProduct(currentProduct, product.id)}
           />
 
-          <span className="drop-shadow-bb-1">
+          <span className="pt-2 drop-shadow-bb-1">
             {priceConvert(product.price)}
           </span>
         </div>
