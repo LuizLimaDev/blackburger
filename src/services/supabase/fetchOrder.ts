@@ -75,8 +75,8 @@ export default async function fetchOrder(
   if (finalOrderError) console.log(finalOrderError);
 
   // db timestamp convert
-  const timestamp = new Date(currentOrder.created_at);
-  const formattedTimestamp = new Intl.DateTimeFormat("pt-BR", {
+  const timestamp: Date = new Date(currentOrder.created_at);
+  const formattedTimestamp: string = new Intl.DateTimeFormat("pt-BR", {
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
@@ -87,16 +87,16 @@ export default async function fetchOrder(
     hour12: false,
     timeZone: "UTC",
   }).format(timestamp);
-  const currentOrderDate = formattedTimestamp.split(",")[0];
-  const currentOrderTime = formattedTimestamp.split(",")[1];
-  const currentProducts = products.map((product) => {
+  const currentOrderDate: string = formattedTimestamp.split(",")[0];
+  const currentOrderTime: string = formattedTimestamp.split(",")[1];
+  const currentProducts: string[] = products.map((product) => {
     return `\r\n   ${product.quantity}x ${product.name} - R$ ${priceConvert(
       product.price * product.quantity
     )}`;
   });
 
   // whats app msg object
-  const text = `*Black Burger Hamburgueria*\r\n\r\n*Número do pedido:* ${
+  const text: string = `*Black Burger Hamburgueria*\r\n\r\n*Número do pedido:* ${
     currentOrder.id
   }\r\n*Nome:* ${user.name}\r\n*Telefone:* ${
     delivery_info.phone
@@ -116,9 +116,12 @@ export default async function fetchOrder(
   )}\r\n\r\n----------------------------------------\r\n\r\n*Horário do pedido:* ${currentOrderTime}\r\n*Data:* ${currentOrderDate}\r\n\r\nAgradecemos o seu pedido!`;
 
   // URI text encode
-  const shopPhone = delivery_info.phone;
-  const encodeText = encodeURIComponent(text);
-  const whatsMsg = `https://wa.me//+55${shopPhone}?text=${encodeText}`;
+  const shopPhone: string = delivery_info.phone;
+  const regexPattern: RegExp = /([0-9])\w+/g;
+  const formatedPhone: string = shopPhone.match(regexPattern)!.join("");
+
+  const encodeText: string = encodeURIComponent(text);
+  const whatsMsg: string = `https://wa.me//+55${formatedPhone}?text=${encodeText}`;
 
   return whatsMsg;
 }
