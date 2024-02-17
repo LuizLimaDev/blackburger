@@ -117,8 +117,11 @@ export default async function fetchOrder(
 
   // URI text encode
   const shopPhone = delivery_info.phone;
+  const regexPattern = /([0-9])\w+/g
+  const formatedPhone = shopPhone.match(regexPattern).join("")
+
   const encodeText = encodeURIComponent(text);
-  const whatsMsg = `https://wa.me//+55${shopPhone}?text=${encodeText}`;
+  const whatsMsg = `https://wa.me//+55${formatedPhone}?text=${encodeText}`;
 
   return whatsMsg;
 }
