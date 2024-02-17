@@ -3,9 +3,9 @@ import { Dispatch, SetStateAction } from "react";
 
 export const signUpService = async (
   data: IUserData,
-  setApiError: Dispatch<SetStateAction<string>>
+  setApiError?: Dispatch<SetStateAction<string>>
 ) => {
-  const res = await fetch(`${location.origin}/api/signup`, {
+  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/signup`, {
     method: "POST",
     headers: {
       "Content-type": "application/json",
@@ -17,7 +17,7 @@ export const signUpService = async (
 
   if (!status) {
     const result = await res.json();
-    setApiError(result.message);
+    setApiError && setApiError(result.message);
     return;
   }
 };

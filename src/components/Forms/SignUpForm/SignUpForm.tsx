@@ -18,8 +18,8 @@ type TProps = {
 export type IUserData = {
   name: string;
   email: string;
-  phone: string;
-  password: string;
+  phone?: string;
+  password?: string;
 };
 
 export default function SignUpForm({ onSubmit, ApiError }: TProps) {
