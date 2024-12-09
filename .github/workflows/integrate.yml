@@ -2,8 +2,9 @@ name: Black Burger CI
 
 on:
   pull_request:
-    branches: [develop, release, main]
-
+    branches: [develop, release]
+    branches-ignore:
+    - main
 jobs:
   test_pull_request:
     runs-on: ubuntu-latest
