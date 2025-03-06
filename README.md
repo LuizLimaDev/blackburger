@@ -2,7 +2,7 @@
 
 <br><br>
 
-<h3 align="center">🚧 Em pausa por questões contratuais. 🚧</h3>
+<h3 align="center">🚧 Em construção! 🚧</h3>
 
 <br>
 
