@@ -50,9 +50,9 @@
     "typescript": "^5.3.3"
   },
   "engines": {
-    "node": "20.x"
+    "node": "24.x"
   },
   "volta": {
-    "node": "20.20.2"
+    "node": "24.6.0"
   }
 }
