@@ -16,23 +16,47 @@ export const authOptions: AuthOptions = {
       },
 
       async authorize(credentials) {
-        let { data, error } = await supabase
+        if (!credentials?.email || !credentials?.password) {
+          console.warn("[auth] Missing credentials payload in authorize callback");
+          return null;
+        }
+
+        const email = String(credentials.email).trim().toLowerCase();
+
+        const { data, error } = await supabase
           .from("users")
           .select()
-          .eq("email", `${credentials?.email}`)
-          .single();
+          .ilike("email", email)
+          .maybeSingle();
 
         if (error) {
-          throw new Error("Email ou senha inválido!");
+          console.error("[auth] Supabase users query failed", {
+            code: error.code,
+            message: error.message,
+            details: error.details,
+            hint: error.hint,
+          });
+          return null;
+        }
+
+        if (!data) {
+          console.warn("[auth] User not found", { email });
+          return null;
+        }
+
+        if (!data?.password) {
+          console.warn("[auth] User found without password hash", { email });
+          return null;
         }
 
         const passwordVerification = await bcrypt.compare(
-          credentials?.password,
-          data.password
+          String(credentials.password),
+          String(data.password)
         );
 
-        if (!passwordVerification || credentials?.email !== data.email) {
-          throw new Error("Email ou senha inválido!");
+        if (!passwordVerification) {
+          console.warn("[auth] Invalid credentials", { email });
+          return null;
         }
 
         const user = {

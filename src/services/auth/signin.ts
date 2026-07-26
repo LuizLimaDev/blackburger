@@ -1,5 +1,5 @@
 import { signIn } from "next-auth/react";
 
 export const signInresult = async (provider: string) => {
-  await signIn(provider, { redirect: false });
+  return signIn(provider, { callbackUrl: "/home" });
 };

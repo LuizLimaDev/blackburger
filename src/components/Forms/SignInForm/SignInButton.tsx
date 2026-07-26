@@ -2,7 +2,6 @@
 
 import { signInresult } from "@/services/auth/signin";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 
 type Props = {
   img: string;
@@ -17,30 +16,22 @@ export default function SignInButton({
   provider,
   children,
 }: Props): JSX.Element {
-  const router = useRouter();
-
   async function handleLogin() {
     await signInresult(provider);
-
-    if (!signInresult) {
-      router.replace("/");
-    }
-
-    router.replace("/home");
   }
 
   return (
     <>
       <div
         className="
-        flex 
-        h-9 
-        w-32 
-        cursor-pointer 
-        items-center 
-        justify-center 
+        flex
+        h-9
+        w-32
+        cursor-pointer
+        items-center
+        justify-center
         gap-2
-        rounded 
+        rounded
         bg-gray-bb-400
         drop-shadow-bb-2
       "

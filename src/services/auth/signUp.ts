@@ -5,7 +5,7 @@ export const signUpService = async (
   data: IUserData,
   setApiError?: Dispatch<SetStateAction<string>>
 ) => {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/signup`, {
+  const res = await fetch(`/api/signup`, {
     method: "POST",
     headers: {
       "Content-type": "application/json",
